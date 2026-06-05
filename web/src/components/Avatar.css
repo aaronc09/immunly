@@ -1,0 +1,50 @@
+.avatar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar__ring {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: conic-gradient(var(--accent) var(--pct, 0%), var(--bg-subtle) var(--pct, 0%));
+}
+
+.avatar--sm .avatar__ring  { width: 36px;  height: 36px;  font-size: 1.1rem; }
+.avatar--md .avatar__ring  { width: 48px;  height: 48px;  font-size: 1.5rem; }
+.avatar--lg .avatar__ring  { width: 72px;  height: 72px;  font-size: 2.2rem; }
+
+.avatar__ring::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--bg-card);
+}
+
+.avatar--sm .avatar__ring::after { inset: 2px; }
+.avatar--lg .avatar__ring::after { inset: 4px; }
+
+.avatar__emoji {
+  position: relative;
+  z-index: 1;
+}
+
+.avatar__label {
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar__title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.avatar__xp {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}

@@ -1,0 +1,269 @@
+.progress-page {
+  padding-bottom: 60px;
+}
+
+.progress-page__header {
+  padding: 32px 0 24px;
+}
+
+.progress-page__header h1 { color: var(--text); margin-bottom: 4px; }
+.progress-page__header p { font-size: 1rem; color: var(--text-muted); margin: 0; }
+
+.progress-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 28px;
+  align-items: start;
+}
+
+/* Hero card */
+.progress-hero {
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.progress-hero__left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.progress-hero__level {
+  flex: 1;
+  min-width: 160px;
+}
+
+.progress-hero__level-bar {
+  height: 8px;
+  background: var(--bg-subtle);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.progress-hero__level-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+.progress-hero__level-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.progress-hero__stats {
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Section */
+.progress-section {
+  margin-bottom: 28px;
+}
+
+.progress-section h2 {
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+
+/* Module rows */
+.progress-modules {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pmod-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.pmod-row__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.pmod-row__info {
+  flex: 1;
+}
+
+.pmod-row__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pmod-row__title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.pmod-row__badges {
+  display: flex;
+  gap: 6px;
+}
+
+.pmod-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.pmod-row__bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.pmod-row__pct {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  width: 36px;
+  text-align: right;
+}
+
+.pmod-row__sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.pmod-row__sub a {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.pmod-row__sub a:hover { text-decoration: underline; }
+
+/* Weak areas */
+.weak-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.weak-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.weak-item:hover {
+  transform: translateX(3px);
+  text-decoration: none;
+}
+
+.weak-item > span:first-child {
+  font-size: 1.3rem;
+}
+
+.weak-item div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.weak-item strong {
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.weak-item span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.weak-item__cta {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* Achievements */
+.progress-aside {
+  position: sticky;
+  top: 80px;
+}
+
+.progress-aside h2 {
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.achievement-card {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  text-align: center;
+  align-items: center;
+}
+
+.achievement-card--locked {
+  opacity: 0.45;
+  filter: grayscale(1);
+}
+
+.achievement-card__icon {
+  font-size: 1.6rem;
+  margin-bottom: 4px;
+}
+
+.achievement-card strong {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.achievement-card span {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+.achievement-card__check {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 0.7rem;
+  color: var(--success);
+  font-weight: 800;
+}
+
+@media (max-width: 900px) {
+  .progress-layout {
+    grid-template-columns: 1fr;
+  }
+  .progress-aside {
+    position: static;
+  }
+}

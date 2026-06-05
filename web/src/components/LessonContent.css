@@ -1,0 +1,180 @@
+.lesson-content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Text section */
+.lc-heading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.lc-body {
+  color: var(--text-sub);
+  line-height: 1.8;
+  font-size: 0.975rem;
+}
+
+/* Callout */
+.lc-callout {
+  border-left: 4px solid var(--callout-color, var(--accent));
+  background: color-mix(in srgb, var(--callout-color, var(--accent)) 8%, var(--bg-card));
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 14px 18px;
+}
+
+.lc-callout__label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--callout-color, var(--accent));
+  margin-bottom: 6px;
+}
+
+.lc-callout p {
+  color: var(--text);
+  margin: 0;
+  font-size: 0.925rem;
+  line-height: 1.65;
+}
+
+/* Table */
+.lc-table-wrap {
+  overflow-x: auto;
+}
+
+.lc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.lc-table th {
+  padding: 10px 14px;
+  background: var(--bg-subtle);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: left;
+  border-bottom: 2px solid var(--border);
+}
+
+.lc-table td {
+  padding: 10px 14px;
+  color: var(--text-sub);
+  border-bottom: 1px solid var(--border);
+  line-height: 1.55;
+}
+
+.lc-table tr:last-child td {
+  border-bottom: none;
+}
+
+.lc-table tr:hover td {
+  background: var(--bg-subtle);
+}
+
+/* Steps */
+.lc-steps__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+  padding: 0;
+}
+
+.lc-step {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.lc-step__num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.lc-step__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.lc-step__body strong {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.lc-step__body span {
+  font-size: 0.875rem;
+  color: var(--text-sub);
+  line-height: 1.55;
+}
+
+/* Terms — always visible, no expand needed */
+.lc-terms__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.lc-term {
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: minmax(140px, 200px) 1fr;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.lc-term:last-child {
+  border-bottom: none;
+}
+
+.lc-term:hover {
+  background: var(--bg-subtle);
+}
+
+.lc-term dt {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.lc-term dd {
+  font-size: 0.875rem;
+  color: var(--text-sub);
+  line-height: 1.55;
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  .lc-term {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
