@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "_immunolearn_tmp",
-    "slug": "_immunolearn_tmp",
+    "name": "ImmunoLearn",
+    "slug": "immunolearn",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
