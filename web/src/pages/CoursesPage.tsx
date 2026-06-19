@@ -4,13 +4,14 @@ import { MODULES, MODULE_COLORS } from '../data/curriculum';
 import { useProgress } from '../context/ProgressContext';
 import './CoursesPage.css';
 
-const MODULE_ICONS = ['🔬', '🛡️', '⚠️', '💉', '📊'];
 const MODULE_DESCRIPTIONS = [
   'Start here. Understand DNA, the cell, blood cell development, and the lymphatic system — the hardware the immune system runs on.',
   'Explore the two arms of immunity: the fast innate system and the slower, specific adaptive response, including T cells, B cells, and antibodies.',
   'What happens when immunity goes wrong? Examine autoimmune disease, allergy, HIV/AIDS, and how cancer evades immune surveillance.',
   'The cutting edge. Discover how scientists are harnessing immunity through mRNA vaccines, CAR-T cell therapy, and checkpoint inhibitors.',
   'Build real scientific literacy. Learn to read papers, interpret flow cytometry, and understand RNA sequencing data.',
+  'Turn knowledge into discovery. How immunology becomes medicine, the core lab methods, and exactly how students get into research.',
+  'How computers learn patterns from data — supervised and unsupervised learning, the right models, and how to validate without fooling yourself.',
 ];
 
 export default function CoursesPage() {
@@ -25,7 +26,7 @@ export default function CoursesPage() {
         {/* Header */}
         <div className="courses-header">
           <h1>Courses</h1>
-          <p>5 modules · {totalLessons} lessons · Free forever</p>
+          <p>{MODULES.length} modules · {totalLessons} lessons · Free forever</p>
           {completedCount > 0 && (
             <div className="courses-overall">
               <span>{completedCount} / {totalLessons} lessons completed</span>
@@ -56,7 +57,7 @@ export default function CoursesPage() {
                   {/* Left: info */}
                   <div className="course-card__info">
                     <div className="course-card__head">
-                      <span className="course-card__icon">{MODULE_ICONS[i]}</span>
+                      <span className="course-card__icon">{mod.emoji}</span>
                       <div>
                         <div className="course-card__tag" style={{ color, background: color + '18' }}>
                           Module {i + 1}

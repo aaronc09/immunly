@@ -24,22 +24,7 @@
   gap: 10px;
   text-decoration: none;
   flex-shrink: 0;
-}
-
-.navbar__logo-img {
-  height: 36px;
-  width: auto;
-}
-
-.navbar__logo-text {
-  font-size: 1.15rem;
-  font-weight: 800;
   color: var(--primary);
-  letter-spacing: -0.02em;
-}
-
-.navbar__logo-text span {
-  color: var(--accent);
 }
 
 /* Desktop nav links */

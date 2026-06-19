@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Logo from './Logo';
 import './Footer.css';
 
 export default function Footer() {
@@ -7,8 +8,8 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer__inner">
         <div className="footer__brand">
-          <span className="footer__logo">Immuno<span>Learn</span></span>
-          <p>Free immunology education, built for curious minds.</p>
+          <span className="footer__logo"><Logo size={26} /></span>
+          <p>Free immunology &amp; biomedical-research education, built for curious minds.</p>
         </div>
         <div className="footer__links">
           <div className="footer__col">
@@ -27,7 +28,7 @@ export default function Footer() {
       </div>
       <div className="footer__bottom">
         <div className="container">
-          <span>© {new Date().getFullYear()} ImmunoLearn. Educational use only.</span>
+          <span>© {new Date().getFullYear()} Immunly. Educational use only.</span>
           <span>All research paper links point to published journals — content belongs to respective publishers.</span>
         </div>
       </div>

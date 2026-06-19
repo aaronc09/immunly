@@ -4,6 +4,7 @@ import { useTheme } from '../context/ThemeContext';
 import { useAuth } from '../context/AuthContext';
 import { useProgress } from '../context/ProgressContext';
 import Avatar from './Avatar';
+import Logo from './Logo';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -24,16 +25,14 @@ export default function Navbar() {
       <div className="container navbar__inner">
         {/* Logo */}
         <Link to="/" className="navbar__logo" onClick={() => setMenuOpen(false)}>
-          <img src="/logo.png" alt="ImmunoLearn" className="navbar__logo-img" onError={e => {
-            (e.currentTarget as HTMLImageElement).style.display = 'none';
-          }} />
-          <span className="navbar__logo-text">Immuno<span>Learn</span></span>
+          <Logo size={30} />
         </Link>
 
         {/* Desktop links */}
         <ul className="navbar__links">
           <li><NavLink to="/" end className={({ isActive }) => isActive ? 'active' : ''}>Home</NavLink></li>
           <li><NavLink to="/courses" className={({ isActive }) => isActive ? 'active' : ''}>Courses</NavLink></li>
+          <li><NavLink to="/reference" className={({ isActive }) => isActive ? 'active' : ''}>Reference</NavLink></li>
           {user && (
             <li><NavLink to="/progress" className={({ isActive }) => isActive ? 'active' : ''}>Progress</NavLink></li>
           )}
@@ -81,6 +80,7 @@ export default function Navbar() {
         <div className="navbar__mobile">
           <NavLink to="/" end onClick={() => setMenuOpen(false)}>Home</NavLink>
           <NavLink to="/courses" onClick={() => setMenuOpen(false)}>Courses</NavLink>
+          <NavLink to="/reference" onClick={() => setMenuOpen(false)}>Reference</NavLink>
           {user && <NavLink to="/progress" onClick={() => setMenuOpen(false)}>Progress</NavLink>}
           <NavLink to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavLink>
           {user

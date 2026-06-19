@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import Logo from '../components/Logo';
 import './LoginPage.css';
 
 type Mode = 'login' | 'register';
@@ -51,7 +52,7 @@ export default function LoginPage() {
         <div className="login-card card">
           {/* Logo area */}
           <div className="login-card__logo">
-            <span className="login-card__logo-text">Immuno<span>Learn</span></span>
+            <Logo size={44} />
             <p>{mode === 'login' ? 'Welcome back!' : 'Create your free account'}</p>
           </div>
 

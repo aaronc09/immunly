@@ -52,7 +52,7 @@ const ProgressContext = createContext<ProgressContextValue>({
 });
 
 function getKey(userId: string | null) {
-  return userId ? `immunolearn_progress_${userId}` : 'immunolearn_progress_guest';
+  return userId ? `immunly_progress_${userId}` : 'immunly_progress_guest';
 }
 
 function todayStr() {

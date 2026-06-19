@@ -18,16 +18,9 @@
 }
 
 .footer__logo {
-  font-size: 1.2rem;
-  font-weight: 800;
   color: var(--primary);
-  letter-spacing: -0.02em;
   display: block;
   margin-bottom: 8px;
-}
-
-.footer__logo span {
-  color: var(--accent);
 }
 
 .footer__brand p {

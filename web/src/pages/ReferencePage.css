@@ -1,0 +1,227 @@
+.reference-page {
+  padding-bottom: 60px;
+}
+
+.reference-header {
+  padding: 36px 0 24px;
+}
+
+.reference-header h1 {
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.reference-header > p {
+  font-size: 0.95rem;
+  color: var(--text-sub);
+  max-width: 640px;
+  margin-bottom: 20px;
+  line-height: 1.65;
+}
+
+/* Search */
+.reference-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 4px 14px;
+  max-width: 560px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.reference-search:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+.reference-search__icon {
+  font-size: 0.95rem;
+  opacity: 0.6;
+}
+
+.reference-search input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 9px 0;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.reference-search input::placeholder {
+  color: var(--text-muted);
+}
+
+.reference-search__clear {
+  background: var(--bg-subtle);
+  border: none;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reference-search__clear:hover {
+  background: var(--border);
+  color: var(--text);
+}
+
+.reference-hits {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+/* Category chips */
+.reference-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.ref-chip {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-sub);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.ref-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.ref-chip--active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* Table blocks */
+.reference-table-block {
+  margin-bottom: 36px;
+  scroll-margin-top: 80px;
+}
+
+.reference-table-block__head {
+  margin-bottom: 14px;
+}
+
+.reference-table-block__head h2 {
+  font-size: 1.2rem;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.reference-table-block__head p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.reference-table-wrap {
+  overflow-x: auto;
+  padding: 0;
+}
+
+.reference-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.reference-table th {
+  text-align: left;
+  padding: 12px 16px;
+  background: var(--bg-subtle);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 2px solid var(--border);
+  position: sticky;
+  top: 64px;
+  z-index: 1;
+}
+
+.reference-table td {
+  padding: 11px 16px;
+  color: var(--text-sub);
+  border-bottom: 1px solid var(--border);
+  line-height: 1.5;
+  vertical-align: top;
+}
+
+.reference-table tr:last-child td {
+  border-bottom: none;
+}
+
+.reference-table tbody tr:hover td {
+  background: var(--bg-subtle);
+}
+
+.reference-table__name {
+  font-weight: 700;
+  color: var(--accent) !important;
+  white-space: nowrap;
+}
+
+.reference-table__aka {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  white-space: normal;
+  margin-top: 2px;
+}
+
+/* First column a bit wider, function column flexible */
+.reference-table th:first-child,
+.reference-table td:first-child {
+  min-width: 130px;
+}
+
+.reference-table th:nth-child(2),
+.reference-table td:nth-child(2) {
+  min-width: 260px;
+}
+
+/* Empty state */
+.reference-empty {
+  text-align: center;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.reference-empty span {
+  font-size: 2.5rem;
+}
+
+.reference-empty p {
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .reference-table th {
+    position: static;
+  }
+}

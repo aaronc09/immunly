@@ -1,4 +1,4 @@
-/* ── ImmunoLearn Design System ─────────────────────────────────────────────── */
+/* ── Immunly Design System ─────────────────────────────────────────────────── */
 :root {
   /* Light mode */
   --bg:         #F7F8FC;
@@ -38,6 +38,8 @@
   --mod3: #EF4444;
   --mod4: #8B5CF6;
   --mod5: #F59E0B;
+  --mod6: #14B8A6;
+  --mod7: #6366F1;
 }
 
 [data-theme="dark"] {

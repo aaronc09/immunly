@@ -66,9 +66,9 @@ export default function ContactPage() {
 
           <div className="contact-info">
             <div className="contact-info-card card">
-              <h3>About ImmunoLearn</h3>
+              <h3>About Immunly</h3>
               <p>
-                ImmunoLearn is a free, open-access immunology education platform.
+                Immunly is a free, open-access immunology and biomedical-research education platform.
                 All lesson content is written for learners with a basic biology background.
                 Research paper links point to the original published work — we don't reproduce their content.
               </p>
@@ -83,7 +83,7 @@ export default function ContactPage() {
             <div className="contact-info-card card">
               <h3>Educators</h3>
               <p>
-                Using ImmunoLearn with students? We'd love to hear how it's working and what we can improve.
+                Using Immunly with students? We'd love to hear how it's working and what we can improve.
               </p>
             </div>
           </div>

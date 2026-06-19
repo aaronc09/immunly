@@ -277,4 +277,91 @@ export const LESSON_PAPERS: Record<string, Paper[]> = {
       note: 'Introduced Drop-seq — single-cell RNA sequencing at massive scale. Changed how we study cell populations.',
     },
   ],
+
+  // ── Module 6: Biomedical Research ──
+  'mod6-l1': [
+    {
+      title: 'Improvement of survival with ipilimumab in patients with metastatic melanoma',
+      authors: 'Hodi FS et al.',
+      year: 2010,
+      journal: 'New England Journal of Medicine',
+      doi: '10.1056/NEJMoa1003466',
+      url: 'https://doi.org/10.1056/NEJMoa1003466',
+      note: 'The trial that took CTLA-4 biology to the clinic — the first checkpoint inhibitor shown to extend survival in melanoma.',
+    },
+  ],
+  'mod6-l2': [
+    {
+      title: 'A programmable dual-RNA-guided DNA endonuclease in adaptive bacterial immunity',
+      authors: 'Jinek M et al. (Doudna & Charpentier)',
+      year: 2012,
+      journal: 'Science',
+      doi: '10.1126/science.1225829',
+      url: 'https://doi.org/10.1126/science.1225829',
+      note: 'The Nobel-winning paper that turned CRISPR-Cas9 into a programmable gene-editing tool used across biology.',
+    },
+    {
+      title: 'Continuous cultures of fused cells secreting antibody of predefined specificity',
+      authors: 'Köhler G & Milstein C',
+      year: 1975,
+      journal: 'Nature',
+      doi: '10.1038/256495a0',
+      url: 'https://doi.org/10.1038/256495a0',
+      note: 'Invented monoclonal antibodies — the foundation of countless lab assays and antibody-based drugs.',
+    },
+  ],
+  'mod6-l4': [
+    {
+      title: 'Why most published research findings are false',
+      authors: 'Ioannidis JPA',
+      year: 2005,
+      journal: 'PLoS Medicine',
+      doi: '10.1371/journal.pmed.0020124',
+      url: 'https://doi.org/10.1371/journal.pmed.0020124',
+      note: 'A landmark argument for rigorous design, adequate power, and replication — essential reading on why study design matters.',
+    },
+  ],
+
+  // ── Module 7: Machine Learning ──
+  'mod7-l1': [
+    {
+      title: 'Deep learning',
+      authors: 'LeCun Y, Bengio Y & Hinton G',
+      year: 2015,
+      journal: 'Nature',
+      doi: '10.1038/nature14539',
+      url: 'https://doi.org/10.1038/nature14539',
+      note: 'The accessible overview of deep learning by three of its pioneers — a great first read on how neural networks learn.',
+    },
+  ],
+  'mod7-l2': [
+    {
+      title: 'Random Forests',
+      authors: 'Breiman L',
+      year: 2001,
+      journal: 'Machine Learning',
+      doi: '10.1023/A:1010933404324',
+      url: 'https://doi.org/10.1023/A:1010933404324',
+      note: 'The original random forest paper — still one of the most reliable models for tabular data.',
+    },
+    {
+      title: 'XGBoost: A Scalable Tree Boosting System',
+      authors: 'Chen T & Guestrin C',
+      year: 2016,
+      journal: 'KDD',
+      doi: '10.1145/2939672.2939785',
+      url: 'https://doi.org/10.1145/2939672.2939785',
+      note: 'Introduced XGBoost, the gradient-boosting library that dominates structured-data competitions.',
+    },
+  ],
+  'mod7-l4': [
+    {
+      title: 'A Unified Approach to Interpreting Model Predictions (SHAP)',
+      authors: 'Lundberg SM & Lee S-I',
+      year: 2017,
+      journal: 'NeurIPS',
+      url: 'https://arxiv.org/abs/1705.07874',
+      note: 'The SHAP method for explaining individual model predictions by attributing them to input features.',
+    },
+  ],
 };

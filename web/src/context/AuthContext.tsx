@@ -20,8 +20,8 @@ const AuthContext = createContext<AuthContextValue>({
   logout: () => {},
 });
 
-const STORAGE_KEY = 'immunolearn_user';
-const ACCOUNTS_KEY = 'immunolearn_accounts';
+const STORAGE_KEY = 'immunly_user';
+const ACCOUNTS_KEY = 'immunly_accounts';
 
 interface StoredAccount {
   id: string;

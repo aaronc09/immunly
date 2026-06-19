@@ -721,13 +721,322 @@ const mod5: Module = {
   ],
 };
 
-export const MODULES: Module[] = [mod1, mod2, mod3, mod4, mod5];
+// ── Module 6: From Bench to Bedside — Biomedical Research ───────────────────────
+const mod6: Module = {
+  id: 'mod6', number: 6,
+  title: 'Biomedical Research',
+  subtitle: 'Turning immunology into discovery — methods and how students get started',
+  emoji: '🔬', color: '#14B8A6',
+  lessons: [
+    {
+      id: 'mod6-l1', title: 'From Lessons to the Lab', emoji: '🧪', duration: '8 min',
+      sections: [
+        { type: 'text', heading: 'Why translational science exists',
+          body: 'Everything you have learned so far — T cells, antibodies, checkpoints, cytokines — started as a discovery in someone\'s lab. Translational research is the work of moving a finding from a test tube ("the bench") to a treatment that helps a patient ("the bedside"). It is slow, collaborative, and where immunology becomes medicine: checkpoint inhibitors, mRNA vaccines, and CAR-T all walked this path.' },
+        { type: 'steps', heading: 'The translational pipeline',
+          steps: [
+            { label: 'Basic science', detail: 'Curiosity-driven work in cells and model organisms reveals how something works — e.g., the discovery that T cells carry an "off switch" (CTLA-4, PD-1).' },
+            { label: 'Preclinical', detail: 'A hypothesis is tested in cell cultures and animal models for safety and efficacy. Most candidate ideas fail here — and that is a normal, useful result.' },
+            { label: 'Translational ("T1")', detail: 'Promising biology is turned into a candidate drug, vaccine, or diagnostic and prepared for human study.' },
+            { label: 'Clinical trials', detail: 'Phase I (safety, small), Phase II (does it work?), Phase III (large, vs. standard of care). Then regulators (e.g., the FDA) review the evidence.' },
+            { label: 'Clinical practice & beyond', detail: 'Approved therapies enter clinics; post-marketing studies ("T4") track real-world safety and effectiveness across whole populations.' },
+          ],
+        },
+        { type: 'callout', label: 'A real example', color: '#14B8A6',
+          text: 'Jim Allison spent years studying CTLA-4 as basic biology. Blocking it freed T cells to attack tumors in mice (preclinical), which led to ipilimumab — the first checkpoint inhibitor approved for melanoma in 2011. Bench to bedside took roughly two decades. He shared the 2018 Nobel Prize for it.' },
+        { type: 'table', heading: 'Types of biomedical research',
+          leftHeader: 'Type', rightHeader: 'What it asks',
+          rows: [
+            { left: 'Basic / fundamental', right: 'How does this system work? (mechanism)' },
+            { left: 'Translational', right: 'Can we turn this mechanism into a therapy or test?' },
+            { left: 'Clinical', right: 'Is it safe and effective in real patients?' },
+            { left: 'Epidemiological / population', right: 'Who gets the disease, and what patterns predict it?' },
+            { left: 'Computational / dry-lab', right: 'What can we learn from existing data without a wet lab?' },
+          ],
+        },
+      ],
+      takeaways: [
+        'Translational research moves discoveries from the bench to the bedside through preclinical work, clinical trials, and regulatory review.',
+        'Most ideas fail in preclinical or early trials — that is expected and still scientifically valuable.',
+        'Checkpoint inhibitors, mRNA vaccines, and CAR-T are all immunology discoveries that completed this pipeline.',
+      ],
+      quiz: [
+        { id: 'q1', question: 'What is the main goal of translational research?', options: ['To publish as many papers as possible', 'To move a discovery from the lab toward a real treatment or test', 'To replace clinical trials', 'To study only animal models'], correctIndex: 1, explanation: 'Translational research bridges basic discovery and clinical application — turning mechanisms into therapies, diagnostics, or vaccines.' },
+        { id: 'q2', question: 'Which phase of a clinical trial primarily tests safety in a small group?', options: ['Phase I', 'Phase II', 'Phase III', 'Phase IV'], correctIndex: 0, explanation: 'Phase I trials are small and focus on safety and dosing. Efficacy is the focus of Phase II and III.' },
+      ],
+    },
+    {
+      id: 'mod6-l2', title: 'Core Lab Methods', emoji: '⚗️', duration: '9 min',
+      sections: [
+        { type: 'text', heading: 'The immunologist\'s toolkit',
+          body: 'Research questions are answered with techniques. You do not need to master these before joining a lab — you will learn them hands-on — but recognizing what each one measures makes papers far easier to read and helps you understand what a lab actually does day to day.' },
+        { type: 'terms', heading: 'Techniques you will see in almost every immunology paper',
+          terms: [
+            { term: 'Flow cytometry / FACS', definition: 'Passes single cells through a laser to count and sort them by surface markers tagged with fluorescent antibodies. The workhorse for "how many of which immune cell."' },
+            { term: 'ELISA', definition: 'Enzyme-Linked Immunosorbent Assay — uses antibodies to measure the concentration of a specific protein (e.g., a cytokine) in a sample, read out as a color change.' },
+            { term: 'PCR / qPCR', definition: 'Polymerase Chain Reaction amplifies a target DNA sequence; quantitative PCR measures how much is present. RT-qPCR does the same for RNA (gene expression).' },
+            { term: 'Western blot', definition: 'Separates proteins by size and uses antibodies to detect a specific one — confirms a protein is present and roughly how much.' },
+            { term: 'Cell culture', definition: 'Growing cells in a dish under controlled conditions, so you can treat them and observe responses. The foundation of most wet-lab experiments.' },
+            { term: 'CRISPR-Cas9', definition: 'A gene-editing tool that cuts DNA at a chosen sequence, letting researchers knock out or alter genes to test their function.' },
+            { term: 'Immunohistochemistry (IHC)', definition: 'Uses antibodies with a visible stain to show where a protein sits within a tissue slice under a microscope.' },
+            { term: 'Sequencing (DNA/RNA)', definition: 'Reads the exact order of bases. RNA-seq measures which genes are active; single-cell sequencing does this one cell at a time.' },
+          ],
+        },
+        { type: 'callout', label: 'Wet lab vs. dry lab', color: '#14B8A6',
+          text: 'A "wet lab" works with physical samples — cells, blood, reagents. A "dry lab" works with data and code (bioinformatics, statistics, modeling). Many modern labs do both, and dry-lab skills are increasingly valuable — which is exactly why the Machine Learning module is part of this app.' },
+      ],
+      takeaways: [
+        'Flow cytometry, ELISA, PCR, and Western blot are the core measurement tools of immunology.',
+        'CRISPR lets researchers edit genes to test what each one does.',
+        'Dry-lab (computational) skills now complement wet-lab work in most research groups.',
+      ],
+      quiz: [
+        { id: 'q1', question: 'Which technique would you use to count how many CD8⁺ T cells are in a blood sample?', options: ['Western blot', 'Flow cytometry', 'ELISA', 'PCR'], correctIndex: 1, explanation: 'Flow cytometry identifies and counts cells by their surface markers using fluorescent antibodies — ideal for quantifying a specific immune-cell population.' },
+        { id: 'q2', question: 'What does RNA-seq measure?', options: ['The amount of a single protein', 'Which genes are being expressed and how strongly', 'The number of cells in a sample', 'The 3D structure of an antibody'], correctIndex: 1, explanation: 'RNA sequencing reads the mRNA in a sample to reveal gene expression across the transcriptome.' },
+      ],
+    },
+    {
+      id: 'mod6-l3', title: 'Getting Into Research as a Student', emoji: '🚀', duration: '9 min',
+      sections: [
+        { type: 'text', heading: 'You can start earlier than you think',
+          body: 'You do not need a degree to contribute to research. High-school and undergraduate students join labs every year — usually by being curious, reliable, and willing to learn unglamorous tasks. The hardest part is simply getting your foot in the door, and that is a process you can actually plan for.' },
+        { type: 'steps', heading: 'A realistic path into a lab',
+          steps: [
+            { label: 'Find labs that excite you', detail: 'Look up university department websites and read faculty "research interests." Note 5–10 labs whose work connects to something you learned here — say, a lab studying checkpoint inhibitors or autoimmunity.' },
+            { label: 'Read one of their recent papers', detail: 'You will not understand all of it — that is fine. Understanding the abstract and the main figure is enough to write a genuine, specific email.' },
+            { label: 'Send a short, specific cold email', detail: 'Address the professor by name, say what you found interesting in their work, state that you are looking for research experience, and attach a short résumé. Keep it under 150 words. Ask for a brief meeting, not a job.' },
+            { label: 'Follow up once', detail: 'Professors get many emails. A single polite follow-up after 1–2 weeks is normal and often what gets a reply.' },
+            { label: 'Say yes to starter tasks', detail: 'You may begin by washing glassware, making solutions, or organizing data. Doing small things carefully is how you earn bigger responsibilities and eventually your own project.' },
+          ],
+        },
+        { type: 'table', heading: 'Where to look for opportunities',
+          leftHeader: 'Opportunity', rightHeader: 'What it is',
+          rows: [
+            { left: 'University labs (volunteer/intern)', right: 'Email faculty directly; the most common entry point.' },
+            { left: 'Summer research programs', right: 'Structured, often-paid programs (e.g., NIH, SIMR, RSI, university REUs) with applications months ahead.' },
+            { left: 'Community college / local hospitals', right: 'Smaller institutions are often very open to motivated students.' },
+            { left: 'Science fairs & mentorship programs', right: 'Programs that pair students with mentors for an independent project.' },
+            { left: 'Citizen science & open data', right: 'Projects like Foldit, or public datasets you can analyze from home with code.' },
+          ],
+        },
+        { type: 'callout', label: 'What labs actually want', color: '#14B8A6',
+          text: 'Not a genius — a reliable, honest, curious person who shows up, follows protocols carefully, records everything, and asks good questions. Enthusiasm and consistency beat a perfect transcript almost every time.' },
+        { type: 'terms', heading: 'Things that help you stand out',
+          terms: [
+            { term: 'A lab notebook habit', definition: 'Recording exactly what you did and saw, every time. Reproducibility starts with good notes, and mentors notice this immediately.' },
+            { term: 'Basic data skills', definition: 'Comfort with a spreadsheet, and ideally a little Python or R, makes you useful on day one — especially for dry-lab work.' },
+            { term: 'Reading papers', definition: 'Being able to summarize a paper\'s question, method, and finding shows you can engage with real science.' },
+            { term: 'Scientific honesty', definition: 'Reporting what actually happened — including failed experiments and surprising results — is the single most important trait a researcher can have.' },
+          ],
+        },
+      ],
+      takeaways: [
+        'The main route into a lab is a short, specific cold email to a professor whose work you have actually read.',
+        'Summer research programs, local hospitals, and open datasets are all valid entry points.',
+        'Labs value reliability, careful note-taking, and honesty over raw talent.',
+      ],
+      quiz: [
+        { id: 'q1', question: 'What makes a cold email to a professor most effective?', options: ['Sending the same generic email to 100 professors', 'Referencing something specific from their actual research and keeping it short', 'Demanding a paid position immediately', 'Listing every class you have ever taken'], correctIndex: 1, explanation: 'A specific, concise email that shows you read their work — and asks for a brief conversation rather than a job — gets far more replies than a generic mass email.' },
+        { id: 'q2', question: 'Which trait do research mentors value most in a new student?', options: ['A perfect GPA', 'Reliability and careful, honest record-keeping', 'Already knowing every technique', 'Working alone without asking questions'], correctIndex: 1, explanation: 'Reproducible science depends on people who show up, follow protocols carefully, and report what truly happened. That reliability matters more than prior expertise.' },
+      ],
+    },
+    {
+      id: 'mod6-l4', title: 'Designing a Sound Study', emoji: '📐', duration: '8 min',
+      sections: [
+        { type: 'text', heading: 'A good question, tested fairly',
+          body: 'Whether you are running a pipette or a Python script, the logic of a sound experiment is the same: a clear hypothesis, the right comparisons, and controls that rule out alternative explanations. Understanding this lets you spot strong vs. weak studies — and design your own.' },
+        { type: 'terms', heading: 'The vocabulary of experimental design',
+          terms: [
+            { term: 'Hypothesis', definition: 'A specific, testable prediction — e.g., "Blocking PD-1 will increase T-cell killing of tumor cells."' },
+            { term: 'Independent variable', definition: 'The thing you deliberately change (e.g., adding a PD-1 blocker or not).' },
+            { term: 'Dependent variable', definition: 'The outcome you measure (e.g., number of tumor cells killed).' },
+            { term: 'Control group', definition: 'An otherwise-identical group that does not receive the treatment, so you can tell the treatment caused the effect.' },
+            { term: 'Positive / negative control', definition: 'A condition expected to work (positive) or to do nothing (negative) — they confirm the experiment itself is functioning.' },
+            { term: 'Confounder', definition: 'A hidden variable that could explain your result instead of the treatment. Good design controls for these.' },
+            { term: 'Replication', definition: 'Repeating the experiment (and having others repeat it) to confirm the result is real and not chance.' },
+            { term: 'Blinding & randomization', definition: 'Hiding group assignments and assigning subjects randomly to prevent bias from creeping into results.' },
+          ],
+        },
+        { type: 'callout', label: 'Ethics is part of the method', color: '#14B8A6',
+          text: 'Research with humans or animals must be approved by an oversight board (an IRB for humans, IACUC for animals) and requires informed consent. Ethical review is not bureaucracy — it is what makes research trustworthy and protects the people it aims to help.' },
+        { type: 'text', heading: 'Why reproducibility matters',
+          body: 'A result that no one else can reproduce is not yet knowledge. Strong studies share their methods and data so others can check them. As you read papers, ask: was there a proper control? How many times was this repeated? Could something other than the treatment explain the result? These same questions apply with even more force to data-driven studies — which is where the Machine Learning module picks up.' },
+      ],
+      takeaways: [
+        'A sound experiment pairs a clear hypothesis with the right controls to rule out alternative explanations.',
+        'Controls, replication, blinding, and randomization are what separate strong studies from weak ones.',
+        'Human and animal research requires ethical review (IRB / IACUC) and informed consent.',
+      ],
+      quiz: [
+        { id: 'q1', question: 'Why is a control group essential in an experiment?', options: ['It makes the experiment bigger', 'It lets you attribute the observed effect to the treatment rather than chance or other factors', 'It is required for funding only', 'It replaces the need for replication'], correctIndex: 1, explanation: 'Without an otherwise-identical control group, you cannot tell whether the treatment — or something else entirely — caused the result.' },
+        { id: 'q2', question: 'What is a confounder?', options: ['The main treatment being tested', 'A hidden variable that could explain the result instead of the treatment', 'The measured outcome', 'A type of control'], correctIndex: 1, explanation: 'A confounder is an uncontrolled variable correlated with both the treatment and outcome, which can create a misleading apparent effect.' },
+      ],
+    },
+  ],
+};
+
+// ── Module 7: Machine Learning for Biomedicine ─────────────────────────────────
+const mod7: Module = {
+  id: 'mod7', number: 7,
+  title: 'Machine Learning',
+  subtitle: 'How computers learn patterns from data — and how to do it without fooling yourself',
+  emoji: '🤖', color: '#6366F1',
+  lessons: [
+    {
+      id: 'mod7-l1', title: 'What Is Machine Learning?', emoji: '🧠', duration: '8 min',
+      sections: [
+        { type: 'text', heading: 'Learning from examples, not rules',
+          body: 'Machine learning (ML) is a branch of artificial intelligence focused on systems that learn patterns from data and use them to make predictions or decisions. Instead of a human writing every rule by hand, the model learns from examples. In biomedicine this powers tools that flag tumors on scans, predict disease flares, and find structure in single-cell data.' },
+        { type: 'text', heading: 'Features and labels',
+          body: 'ML usually starts with data containing input variables called features (e.g., age, lab values, gene expression) and sometimes an output variable called the target or label (e.g., disease vs. no disease). The model studies the relationship between features and target, then applies what it learned to new, unseen data.' },
+        { type: 'table', heading: 'The four ways models learn',
+          leftHeader: 'Learning type', rightHeader: 'How it works',
+          rows: [
+            { left: 'Supervised', right: 'Learns from labeled examples (inputs + correct answers). Used for classification and regression.' },
+            { left: 'Unsupervised', right: 'Finds structure in data without labels — clustering, dimensionality reduction, anomaly detection.' },
+            { left: 'Semi-supervised', right: 'Uses a little labeled data plus lots of unlabeled data — helpful when labels are expensive.' },
+            { left: 'Reinforcement', right: 'An agent learns by taking actions and receiving rewards or penalties (robotics, games, control).' },
+          ],
+        },
+        { type: 'callout', label: 'Everyday examples', color: '#6366F1',
+          text: 'Predicting house prices from size and location (regression), classifying email as spam (classification), recommending movies from past viewing (recommendation), and flagging unusual transactions as possible fraud (anomaly detection) are all machine learning.' },
+      ],
+      takeaways: [
+        'Machine learning systems learn patterns from examples instead of being programmed with explicit rules.',
+        'Features are the inputs; the label/target is the answer the model tries to predict.',
+        'Supervised learning uses labeled data; unsupervised learning finds structure without labels.',
+      ],
+      quiz: [
+        { id: 'q1', question: 'In machine learning, what is a "feature"?', options: ['The final prediction', 'An input variable the model uses to make predictions', 'The correct answer for a training example', 'A type of model'], correctIndex: 1, explanation: 'Features are the input variables (e.g., age, lab values). The target/label is the answer; the model learns the relationship between them.' },
+        { id: 'q2', question: 'Which learning type finds structure in data without any labels?', options: ['Supervised learning', 'Unsupervised learning', 'Reinforcement learning', 'Semi-supervised learning'], correctIndex: 1, explanation: 'Unsupervised learning works without labeled answers — clustering, dimensionality reduction, and anomaly detection are its common tasks.' },
+      ],
+    },
+    {
+      id: 'mod7-l2', title: 'Tasks & Models', emoji: '📈', duration: '10 min',
+      sections: [
+        { type: 'text', heading: 'Match the task to the model',
+          body: 'The job determines the tool. Classification predicts a category (spam vs. not spam, benign vs. malignant). Regression predicts a continuous number (price, risk score, time to failure). Clustering groups similar points; anomaly detection flags rare patterns. Once you know your task, you can pick a model — and it is almost always best to start simple.' },
+        { type: 'table', heading: 'Common models and where they shine',
+          leftHeader: 'Model', rightHeader: 'Best for',
+          rows: [
+            { left: 'Linear regression', right: 'Predicting numbers when the relationship is roughly linear. Fast, interpretable baseline.' },
+            { left: 'Logistic regression', right: 'Classification with interpretable probabilities; a strong baseline for medical risk.' },
+            { left: 'K-nearest neighbors', right: 'Small/medium data where similar samples share labels. Sensitive to scaling.' },
+            { left: 'Decision trees', right: 'Rule-based, easy to visualize, captures nonlinearity. Can overfit if unpruned.' },
+            { left: 'Random forests', right: 'Many trees combined — stable and accurate on tabular data with little tuning.' },
+            { left: 'Gradient boosted trees', right: 'XGBoost / LightGBM / CatBoost — often the strongest for structured/tabular data.' },
+            { left: 'Support vector machines', right: 'High-dimensional data (e.g., biology, text); kernels model nonlinear patterns.' },
+            { left: 'Naive Bayes', right: 'Fast text/sparse-data classification; makes a strong independence assumption.' },
+            { left: 'Neural networks', right: 'Images, language, audio, large complex data; need more data and compute.' },
+          ],
+        },
+        { type: 'callout', label: 'High-yield pattern', color: '#6366F1',
+          text: 'For everyday tabular data (rows and columns, like a clinical spreadsheet), tree-based models — especially gradient boosting — are usually the strongest. Neural networks dominate for images, language, and audio. Always compare against a simple baseline first.' },
+      ],
+      takeaways: [
+        'Classification predicts categories; regression predicts continuous numbers.',
+        'For tabular data, tree-based models (especially gradient boosting) are usually strongest.',
+        'Neural networks excel at images, language, and audio but need more data and compute.',
+      ],
+      quiz: [
+        { id: 'q1', question: 'You want to predict a patient\'s continuous risk score from lab values. Which task is this?', options: ['Classification', 'Regression', 'Clustering', 'Anomaly detection'], correctIndex: 1, explanation: 'Predicting a continuous numeric value is regression. Predicting a category would be classification.' },
+        { id: 'q2', question: 'For a standard tabular clinical dataset, which model family is often the strongest?', options: ['Neural networks', 'Gradient boosted trees', 'K-nearest neighbors', 'Naive Bayes'], correctIndex: 1, explanation: 'Gradient boosted trees (XGBoost, LightGBM, CatBoost) frequently outperform other models on structured/tabular data, though a simple baseline should always be compared first.' },
+      ],
+    },
+    {
+      id: 'mod7-l3', title: 'The ML Workflow & Data Prep', emoji: '🛠️', duration: '10 min',
+      sections: [
+        { type: 'text', heading: 'Most of the work is the data',
+          body: 'Newcomers think ML is about choosing a fancy model. In practice, the quality of the data and the care of the workflow matter far more. Poor data leads to poor models, even with advanced algorithms — "garbage in, garbage out."' },
+        { type: 'steps', heading: 'A typical machine learning workflow',
+          steps: [
+            { label: 'Define the problem & metric', detail: 'State what you are predicting and how you will measure success — chosen to match the real-world goal.' },
+            { label: 'Collect & understand the data', detail: 'Explore distributions, missing values, and obvious errors before modeling.' },
+            { label: 'Clean & preprocess', detail: 'Fix errors and duplicates, handle missing data, encode categories, scale features when needed. Fit preprocessing on training data only.' },
+            { label: 'Split the data', detail: 'Train / validation / test, or cross-validation. Keep the test set untouched until the very end.' },
+            { label: 'Baseline, then train', detail: 'Start with a simple model, then train candidate models.' },
+            { label: 'Compare, tune, evaluate', detail: 'Compare with goal-matched metrics, tune hyperparameters, then evaluate once on the held-out test set.' },
+            { label: 'Interpret & deploy', detail: 'Check for bias, leakage, and overfitting; then deploy, monitor, and update as data changes.' },
+          ],
+        },
+        { type: 'terms', heading: 'Data & preparation concepts',
+          terms: [
+            { term: 'Numeric vs. categorical', definition: 'Numeric inputs are numbers (age, lab values). Categorical inputs are groups — ordinal (ordered, like cancer stage) or nominal (unordered, like blood type).' },
+            { term: 'One-hot encoding', definition: 'Turning a categorical variable into 0/1 columns so a model can use it.' },
+            { term: 'Feature scaling', definition: 'Putting numeric features on a comparable scale — important for KNN, SVMs, linear models, and neural networks.' },
+            { term: 'Hyperparameters', definition: 'Settings chosen before/around training (e.g., number of trees, learning rate, tree depth) — not learned from data like model parameters are.' },
+            { term: 'Feature selection', definition: 'Reducing input variables to cut noise and speed up models — but it must be done inside the training folds to avoid leakage.' },
+          ],
+        },
+        { type: 'callout', label: 'The cardinal sin: data leakage', color: '#6366F1',
+          text: 'Data leakage is when information outside the training data sneaks into preprocessing, feature selection, or tuning — for example, scaling the whole dataset before splitting, or picking features using all the labels. Leakage makes results look great but they collapse on real new data. Fit everything on training data only, and use the test set exactly once.' },
+      ],
+      takeaways: [
+        'Data quality and a careful workflow usually matter more than the choice of model.',
+        'Always start with a simple baseline before reaching for complex models.',
+        'Data leakage — letting test information influence training — is the most dangerous, easy-to-miss mistake.',
+      ],
+      quiz: [
+        { id: 'q1', question: 'Why should preprocessing (like scaling) be fit on the training data only?', options: ['It runs faster that way', 'To avoid data leakage that makes results look better than they really are', 'Because the test set has no features', 'It is not important which data you use'], correctIndex: 1, explanation: 'Fitting preprocessing on the full dataset lets test-set information leak into training, inflating performance estimates. Fit on training data, then apply to validation/test.' },
+        { id: 'q2', question: 'What is a hyperparameter?', options: ['A value learned automatically during training', 'A setting chosen before/around training, like learning rate or number of trees', 'The model\'s final prediction', 'A type of input feature'], correctIndex: 1, explanation: 'Hyperparameters (e.g., tree depth, learning rate) are configured by the user or a tuning process; model parameters are what the model learns from data.' },
+      ],
+    },
+    {
+      id: 'mod7-l4', title: 'Evaluation, Validation & Trust', emoji: '✅', duration: '11 min',
+      sections: [
+        { type: 'text', heading: 'Did it really work?',
+          body: 'A model that scores well on paper can still be useless — or dangerous — in the real world. Trustworthy ML depends on choosing the right metric, validating without leakage, and sanity-checking that the model found real signal rather than noise. This is especially true in medicine, where errors have real costs.' },
+        { type: 'table', heading: 'Choosing the right metric',
+          leftHeader: 'Metric', rightHeader: 'When it matters',
+          rows: [
+            { left: 'Accuracy', right: 'Balanced classes with similar error costs. Misleading when classes are imbalanced.' },
+            { left: 'Precision', right: 'When false positives are costly (unnecessary alarms or treatment).' },
+            { left: 'Recall (sensitivity)', right: 'When false negatives are costly (missing a real disease case).' },
+            { left: 'F1 score', right: 'Balances precision and recall for an important, rare positive class.' },
+            { left: 'PR-AUC', right: 'Imbalanced problems with a rare positive class — clearer than ROC-AUC there.' },
+            { left: 'ROC-AUC', right: 'How well the model ranks positives above negatives across thresholds.' },
+            { left: 'MAE / RMSE', right: 'Regression error. RMSE punishes large errors more and shares the target\'s units.' },
+            { left: 'Brier score', right: 'How well predicted probabilities match reality (calibration).' },
+          ],
+        },
+        { type: 'terms', heading: 'Validation & trust concepts',
+          terms: [
+            { term: 'Cross-validation', definition: 'Splitting data into folds so each fold takes a turn as validation — a more stable performance estimate than one split.' },
+            { term: 'Nested cross-validation', definition: 'An outer loop estimates performance while an inner loop handles tuning and feature selection — giving a less biased estimate after tuning.' },
+            { term: 'Grouped / stratified splitting', definition: 'Grouped keeps all samples from one patient on one side of the split (no leakage). Stratified preserves class ratios across folds.' },
+            { term: 'Overfitting vs. underfitting', definition: 'Overfitting learns noise and fails on new data; underfitting is too simple to capture the real pattern. Both hurt generalization.' },
+            { term: 'Class imbalance', definition: 'When one class is rare, accuracy is misleading — a model can "win" by always predicting the majority. Use PR-AUC, F1, and strong baselines.' },
+            { term: 'Calibration', definition: 'Whether a predicted "30% risk" really happens ~30% of the time. Matters when probabilities are used as risk estimates.' },
+            { term: 'SHAP analysis', definition: 'Estimates how much each feature pushed a prediction up or down — aids interpretation, but does not prove causation.' },
+            { term: 'Permutation (label-shuffle) test', definition: 'Shuffle the labels and re-run; if performance stays similar, the original result may be noise, not real signal.' },
+            { term: 'External validation', definition: 'Testing on an independently collected dataset — the strongest evidence that a model truly generalizes.' },
+          ],
+        },
+        { type: 'callout', label: 'Why this module sits next to immunology', color: '#6366F1',
+          text: 'Predicting something like a lupus flare from gene expression brings every one of these ideas together: imbalanced classes, repeated samples per patient (needs grouped splitting), leakage-safe pipelines, strong baselines, permutation tests, and external validation. Good ML, like good immunology, is about not fooling yourself.' },
+      ],
+      takeaways: [
+        'Pick metrics that match the real-world goal — accuracy alone is misleading on imbalanced data.',
+        'Leakage-safe validation (often nested, grouped, stratified cross-validation) gives trustworthy estimates.',
+        'Permutation tests, calibration checks, and external validation confirm a model found real signal.',
+      ],
+      quiz: [
+        { id: 'q1', question: 'A disease affects 5% of patients. A model predicts "no disease" for everyone and is 95% accurate. What is wrong?', options: ['Nothing — 95% is excellent', 'Accuracy is misleading on imbalanced data; the model catches zero real cases (recall = 0)', 'It overfit the test set', 'It needs a larger learning rate'], correctIndex: 1, explanation: 'With imbalanced classes, high accuracy can hide total failure on the rare positive class. Recall, F1, and PR-AUC reveal that the model detects no true cases.' },
+        { id: 'q2', question: 'What does a permutation (label-shuffle) test check?', options: ['Whether the model trains fast enough', 'Whether performance reflects real signal rather than noise', 'Which features to scale', 'The best learning rate'], correctIndex: 1, explanation: 'If a model performs similarly after labels are randomly shuffled, its original performance likely reflects noise or leakage rather than a genuine predictive signal.' },
+      ],
+    },
+  ],
+};
+
+export const MODULES: Module[] = [mod1, mod2, mod3, mod4, mod5, mod6, mod7];
 
 export function getModule(id: string) { return MODULES.find(m => m.id === id); }
 export function getLesson(moduleId: string, lessonId: string) {
   return getModule(moduleId)?.lessons.find(l => l.id === lessonId);
 }
 
-export const MODULE_COLORS: Record<number, string> = {
-  1: '#3B82F6', 2: '#10B981', 3: '#EF4444', 4: '#8B5CF6', 5: '#F59E0B',
+// Keyed by string module id (e.g. 'mod1'), matching how components consume it.
+export const MODULE_COLORS: Record<string, string> = {
+  mod1: '#3B82F6', mod2: '#10B981', mod3: '#EF4444', mod4: '#8B5CF6',
+  mod5: '#F59E0B', mod6: '#14B8A6', mod7: '#6366F1',
 };

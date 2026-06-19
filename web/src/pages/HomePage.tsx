@@ -6,15 +6,6 @@ import { useAuth } from '../context/AuthContext';
 import Avatar from '../components/Avatar';
 import './HomePage.css';
 
-const MODULE_ICONS = ['🔬', '🛡️', '⚠️', '💉', '📊'];
-const MODULE_DESC = [
-  'DNA, cells, and blood — the building blocks of life',
-  'Innate and adaptive immunity working together',
-  'When immunity fails — autoimmunity, allergy, HIV',
-  'Vaccines, CAR-T, and checkpoint inhibitors',
-  'How scientists study the immune system',
-];
-
 export default function HomePage() {
   const { user } = useAuth();
   const { progress, levelTitle, avatarEmoji } = useProgress();
@@ -46,7 +37,8 @@ export default function HomePage() {
               <div className="hero__tag">Free · Science-backed · Open access</div>
               <h1>Learn Immunology,<br /><span>Beautifully</span></h1>
               <p>
-                Master the immune system from DNA to cutting-edge cancer therapies.
+                Master the immune system from DNA to cutting-edge cancer therapies —
+                then translate it into biomedical research and machine learning.
                 Bite-sized lessons, landmark research, and interactive quizzes.
               </p>
               <div className="hero__cta">
@@ -54,6 +46,12 @@ export default function HomePage() {
                   {completedCount > 0 ? 'Continue Learning →' : 'Start Learning →'}
                 </Link>
                 <Link to="/courses" className="btn btn-outline hero__btn">Browse Courses</Link>
+                <button
+                  className="btn btn-ghost hero__btn"
+                  onClick={() => window.dispatchEvent(new Event('immunly:play-intro'))}
+                >
+                  ▶ Watch intro
+                </button>
               </div>
             </div>
             {user && (
@@ -86,7 +84,7 @@ export default function HomePage() {
       <section className="stats-bar">
         <div className="container stats-bar__inner">
           <div className="stats-bar__item">
-            <span className="stats-bar__num">5</span>
+            <span className="stats-bar__num">{MODULES.length}</span>
             <span className="stats-bar__label">Modules</span>
           </div>
           <div className="stats-bar__item">
@@ -123,10 +121,10 @@ export default function HomePage() {
                 <Link key={mod.id} to={`/module/${mod.id}`} className="hm-card card">
                   <div className="hm-card__accent" style={{ background: color }} />
                   <div className="hm-card__body">
-                    <div className="hm-card__icon" style={{ color }}>{MODULE_ICONS[i]}</div>
+                    <div className="hm-card__icon" style={{ color }}>{mod.emoji}</div>
                     <div className="hm-card__num" style={{ color: color + '18' }}>0{i + 1}</div>
                     <h3 style={{ color: 'var(--text)' }}>{mod.title}</h3>
-                    <p>{MODULE_DESC[i]}</p>
+                    <p>{mod.subtitle}</p>
                     <div className="hm-card__meta">
                       <span>{mod.lessons.length} lessons</span>
                       {pct > 0 && <span style={{ color }}>{pct}% done</span>}
