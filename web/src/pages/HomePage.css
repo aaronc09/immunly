@@ -1,8 +1,16 @@
 /* ── Hero ─────────────────────────────────────────────────────────────────── */
 .hero {
   padding: 72px 0 56px;
-  background: linear-gradient(160deg, var(--bg) 0%, var(--accent-dim) 100%);
+  background-image: linear-gradient(160deg, rgba(247, 248, 252, 0.82) 0%, rgba(235, 244, 255, 0.6) 100%), url('/pic1.png');
+  background-size: cover;
+  background-position: top center;
   border-bottom: 1px solid var(--border);
+}
+
+/* The artwork is tinted for the light palette, so don't show it over the
+   dark theme's navy background — it would clash rather than blend in. */
+[data-theme="dark"] .hero {
+  background: linear-gradient(160deg, var(--bg) 0%, var(--accent-dim) 100%);
 }
 
 .hero__content {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
-import { getLesson, getModule, MODULE_COLORS } from '../data/curriculum';
+import { getLesson, getModule, MODULES, MODULE_COLORS } from '../data/curriculum';
 import { LESSON_PHOTOS } from '../data/lessonPhotos';
 import { LESSON_PAPERS } from '../data/researchPapers';
 import { useProgress } from '../context/ProgressContext';
@@ -25,9 +25,14 @@ export default function LessonPage() {
   const papers = LESSON_PAPERS[lessonId!] || [];
   const isCompleted = progress.completedLessons.includes(lesson.id);
 
-  // Find next lesson
+  // Find next lesson — falling through to the next module's first lesson
+  // when this is the last lesson in the current one, so finishing a module
+  // carries the learner straight into the next instead of dead-ending.
   const lessonIdx = mod.lessons.findIndex(l => l.id === lesson.id);
   const nextLesson = mod.lessons[lessonIdx + 1];
+  const modIdx = MODULES.findIndex(m => m.id === mod.id);
+  const nextModule = !nextLesson ? MODULES[modIdx + 1] : null;
+  const nextModuleLesson = nextModule?.lessons[0];
 
   function handleCompleteLesson() {
     if (!isCompleted) {
@@ -121,9 +126,17 @@ export default function LessonPage() {
                   <Link to={`/module/${mod.id}/lesson/${nextLesson.id}`} className="btn btn-primary" style={{ background: color }}>
                     Next Lesson → {nextLesson.emoji}
                   </Link>
+                ) : nextModule && nextModuleLesson ? (
+                  <Link
+                    to={`/module/${nextModule.id}/lesson/${nextModuleLesson.id}`}
+                    className="btn btn-primary"
+                    style={{ background: MODULE_COLORS[nextModule.id] || color }}
+                  >
+                    Module Complete! Start "{nextModule.title}" →
+                  </Link>
                 ) : (
-                  <Link to={`/module/${mod.id}`} className="btn btn-primary" style={{ background: color }}>
-                    Back to Module
+                  <Link to="/courses" className="btn btn-primary" style={{ background: color }}>
+                    🎉 All Modules Complete!
                   </Link>
                 )}
                 <button className="btn btn-outline" onClick={() => { setPhase('lesson'); setSelected([]); setQuizDone(false); }}>
@@ -210,6 +223,11 @@ export default function LessonPage() {
               {isCompleted && nextLesson && (
                 <Link to={`/module/${mod.id}/lesson/${nextLesson.id}`} className="btn btn-outline">
                   Skip to next lesson
+                </Link>
+              )}
+              {isCompleted && !nextLesson && nextModule && nextModuleLesson && (
+                <Link to={`/module/${nextModule.id}/lesson/${nextModuleLesson.id}`} className="btn btn-outline">
+                  Skip to "{nextModule.title}" →
                 </Link>
               )}
             </div>
