@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface LogoProps {
   size?: number;       // icon height in px
   showWordmark?: boolean;

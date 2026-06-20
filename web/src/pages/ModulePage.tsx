@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { getModule, MODULE_COLORS } from '../data/curriculum';
 import { useProgress } from '../context/ProgressContext';

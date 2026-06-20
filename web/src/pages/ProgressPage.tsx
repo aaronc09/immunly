@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useProgress, LEVELS } from '../context/ProgressContext';
@@ -8,7 +7,7 @@ import './ProgressPage.css';
 
 export default function ProgressPage() {
   const { user } = useAuth();
-  const { progress, level, levelTitle } = useProgress();
+  const { progress, level } = useProgress();
 
   if (!user) return <Navigate to="/login" replace />;
 
@@ -82,7 +81,7 @@ export default function ProgressPage() {
             <div className="progress-section">
               <h2>Module Progress</h2>
               <div className="progress-modules">
-                {MODULES.map((mod, i) => {
+                {MODULES.map((mod) => {
                   const color = MODULE_COLORS[mod.id] || 'var(--accent)';
                   const done = mod.lessons.filter(l => progress.completedLessons.includes(l.id)).length;
                   const pct = Math.round((done / mod.lessons.length) * 100);

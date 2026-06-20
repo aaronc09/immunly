@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { MODULES, MODULE_COLORS } from '../data/curriculum';
 import { useProgress } from '../context/ProgressContext';
@@ -8,7 +7,7 @@ import './HomePage.css';
 
 export default function HomePage() {
   const { user } = useAuth();
-  const { progress, levelTitle, avatarEmoji } = useProgress();
+  const { progress } = useProgress();
 
   const totalLessons = MODULES.reduce((s, m) => s + m.lessons.length, 0);
   const completedCount = progress.completedLessons.length;

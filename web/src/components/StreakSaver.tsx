@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { getTodaysQuestion, getTodayKey } from '../data/streakQuestions';
 import { useProgress } from '../context/ProgressContext';
 import './StreakSaver.css';

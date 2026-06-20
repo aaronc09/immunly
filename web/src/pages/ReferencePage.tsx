@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { REFERENCE_TABLES, type RefEntry } from '../data/reference';
 import './ReferencePage.css';
 
