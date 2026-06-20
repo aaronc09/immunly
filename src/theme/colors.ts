@@ -1,4 +1,4 @@
-// ── ImmunoLearn Dark Design System ────────────────────────────────────────────
+// ── Immunly Dark Design System ────────────────────────────────────────────
 
 export const Colors = {
   // Core backgrounds

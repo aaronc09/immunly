@@ -54,7 +54,7 @@ export default function HomeScreen() {
           <View style={styles.header}>
             <View>
               <Text style={styles.greeting}>Good {getTimeOfDay()} 👋</Text>
-              <Text style={styles.appName}>ImmunoLearn</Text>
+              <Text style={styles.appName}>Immunly</Text>
             </View>
             <View style={styles.streakPill}>
               <Text style={styles.streakEmoji}>🔥</Text>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
+import { MODULES } from '../data/curriculum';
 import './Footer.css';
 
 export default function Footer() {
@@ -15,8 +16,9 @@ export default function Footer() {
           <div className="footer__col">
             <h4>Learn</h4>
             <Link to="/courses">All Courses</Link>
-            <Link to="/courses">Module 1 — Foundations</Link>
-            <Link to="/courses">Module 2 — Immune Response</Link>
+            {MODULES.map((mod) => (
+              <Link key={mod.id} to={`/module/${mod.id}`}>Module {mod.number} — {mod.title}</Link>
+            ))}
           </div>
           <div className="footer__col">
             <h4>Site</h4>

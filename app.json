@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ImmunoLearn",
-    "slug": "immunolearn",
+    "name": "Immunly",
+    "slug": "immunly",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

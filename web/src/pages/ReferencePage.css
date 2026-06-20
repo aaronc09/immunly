@@ -135,13 +135,33 @@
 }
 
 .reference-table-wrap {
-  overflow-x: auto;
   padding: 0;
+  /* .card sets overflow: hidden, which breaks the sticky header below by making
+     this the nearest scroll ancestor instead of the viewport. Round the corners
+     on the table cells directly instead so we can keep overflow visible. */
+  overflow: visible;
+}
+
+.reference-table thead tr:first-child th:first-child {
+  border-top-left-radius: var(--radius-lg);
+}
+
+.reference-table thead tr:first-child th:last-child {
+  border-top-right-radius: var(--radius-lg);
+}
+
+.reference-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: var(--radius-lg);
+}
+
+.reference-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: var(--radius-lg);
 }
 
 .reference-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   font-size: 0.85rem;
 }
 
@@ -221,6 +241,10 @@
 }
 
 @media (max-width: 768px) {
+  .reference-table-wrap {
+    overflow-x: auto;
+  }
+
   .reference-table th {
     position: static;
   }

@@ -2,21 +2,16 @@ import React, { useState, useEffect, useRef } from 'react';
 import Logo from './Logo';
 import './IntroVideo.css';
 
-const SEEN_KEY = 'immunly_intro_seen';
-
 /**
- * One-time intro video that plays the first time someone opens Immunly.
- * Dismisses on finish or skip and remembers via localStorage.
- * Can be replayed anytime by dispatching `window` event 'immunly:play-intro'.
+ * Replay-able intro video modal. Shown only when something dispatches the
+ * `window` event 'immunly:play-intro' (e.g. a "Watch intro" button) — the
+ * one-time welcome-on-first-visit gating lives in WelcomeIntro instead.
  */
 export default function IntroVideo() {
   const [visible, setVisible] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (!localStorage.getItem(SEEN_KEY)) {
-      setVisible(true);
-    }
     const replay = () => setVisible(true);
     window.addEventListener('immunly:play-intro', replay);
     return () => window.removeEventListener('immunly:play-intro', replay);
@@ -33,7 +28,6 @@ export default function IntroVideo() {
   }, [visible]);
 
   function dismiss() {
-    localStorage.setItem(SEEN_KEY, '1');
     if (videoRef.current) videoRef.current.pause();
     setVisible(false);
   }
@@ -41,10 +35,10 @@ export default function IntroVideo() {
   if (!visible) return null;
 
   return (
-    <div className="intro-overlay" role="dialog" aria-label="Welcome to Immunly">
+    <div className="intro-overlay" role="dialog" aria-label="Immunly intro video">
       <div className="intro-overlay__top">
         <Logo size={28} className="intro-overlay__logo" />
-        <button className="intro-overlay__skip" onClick={dismiss}>Skip intro →</button>
+        <button className="intro-overlay__skip" onClick={dismiss}>Close ✕</button>
       </div>
 
       <div className="intro-overlay__video-wrap">
@@ -60,7 +54,7 @@ export default function IntroVideo() {
       </div>
 
       <button className="btn btn-primary intro-overlay__enter" onClick={dismiss}>
-        Enter Immunly →
+        Close
       </button>
     </div>
   );

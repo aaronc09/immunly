@@ -7,6 +7,8 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import StreakSaver from './components/StreakSaver';
 import IntroVideo from './components/IntroVideo';
+import WelcomeIntro from './components/WelcomeIntro';
+import PageTransition from './components/PageTransition';
 import HomePage from './pages/HomePage';
 import CoursesPage from './pages/CoursesPage';
 import ModulePage from './pages/ModulePage';
@@ -22,21 +24,24 @@ export default function App() {
       <ThemeProvider>
         <AuthProvider>
           <ProgressProvider>
+            <WelcomeIntro />
             <IntroVideo />
             <Navbar />
             <StreakSaver />
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/courses" element={<CoursesPage />} />
-              <Route path="/module/:moduleId" element={<ModulePage />} />
-              <Route path="/module/:moduleId/lesson/:lessonId" element={<LessonPage />} />
-              <Route path="/reference" element={<ReferencePage />} />
-              <Route path="/progress" element={<ProgressPage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              {/* Catch-all */}
-              <Route path="*" element={<HomePage />} />
-            </Routes>
+            <PageTransition>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/courses" element={<CoursesPage />} />
+                <Route path="/module/:moduleId" element={<ModulePage />} />
+                <Route path="/module/:moduleId/lesson/:lessonId" element={<LessonPage />} />
+                <Route path="/reference" element={<ReferencePage />} />
+                <Route path="/progress" element={<ProgressPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+                {/* Catch-all */}
+                <Route path="*" element={<HomePage />} />
+              </Routes>
+            </PageTransition>
             <Footer />
           </ProgressProvider>
         </AuthProvider>

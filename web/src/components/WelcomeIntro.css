@@ -1,0 +1,280 @@
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 56px;
+  animation: welcomeFade 0.35s ease;
+  overflow: hidden;
+}
+
+@keyframes welcomeFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.welcome-overlay__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-size: cover;
+  background-position: center right;
+  transition: opacity 0.5s ease;
+}
+
+.welcome-overlay__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(100deg, var(--bg) 0%, var(--bg) 38%, transparent 68%);
+}
+
+.welcome-overlay__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.welcome-overlay__skip {
+  background: var(--bg-card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 9px 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.welcome-overlay__skip:hover {
+  background: var(--bg-subtle);
+}
+
+.welcome-overlay__stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+.welcome-overlay__pane {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 620px;
+  gap: 18px;
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.welcome-overlay__pane--active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.welcome-overlay__tag {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.welcome-overlay__heading {
+  font-size: 2.7rem;
+  line-height: 1.18;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 0;
+}
+
+.welcome-overlay__heading span {
+  color: var(--accent);
+}
+
+.welcome-overlay__body {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-sub);
+  max-width: 480px;
+  margin: 0;
+}
+
+.welcome-overlay__features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin: 6px 0;
+}
+
+.welcome-overlay__feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 170px;
+}
+
+.welcome-overlay__feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--bg-card);
+  box-shadow: var(--shadow-sm);
+  font-size: 1.05rem;
+}
+
+.welcome-overlay__feature-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-sub);
+  line-height: 1.3;
+}
+
+.welcome-overlay__cta {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 6px;
+}
+
+.welcome-overlay__btn {
+  font-size: 0.95rem;
+  padding: 13px 26px;
+}
+
+.welcome-overlay__auth-card {
+  width: 100%;
+  max-width: 420px;
+  margin: auto 0;
+  padding: 26px;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+/* Tighter spacing than the standalone login page — this version has to fit
+   inside a shorter overlay alongside the top bar and nav controls. */
+.welcome-overlay__auth-card .login-card__logo {
+  margin-bottom: 14px;
+}
+
+.welcome-overlay__auth-card .login-tabs {
+  margin-bottom: 16px;
+}
+
+.welcome-overlay__auth-card .login-form {
+  gap: 12px;
+}
+
+.welcome-overlay__auth-card .login-footer-note {
+  margin-top: 10px;
+}
+
+.welcome-overlay__auth-card .login-divider {
+  margin: 12px 0;
+}
+
+.welcome-overlay__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-shrink: 0;
+  padding-top: 16px;
+}
+
+.welcome-overlay__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.welcome-overlay__arrow:hover:not(:disabled) {
+  background: var(--bg-subtle);
+  transform: scale(1.06);
+}
+
+.welcome-overlay__arrow:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.welcome-overlay__dots {
+  display: flex;
+  gap: 8px;
+}
+
+.welcome-overlay__dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-overlay__dot::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--border-strong);
+  transition: background 0.15s, transform 0.15s, width 0.15s;
+}
+
+.welcome-overlay__dot:hover::before {
+  transform: scale(1.2);
+}
+
+.welcome-overlay__dot--active::before {
+  background: var(--accent);
+  width: 22px;
+  border-radius: 5px;
+}
+
+@media (max-width: 760px) {
+  .welcome-overlay {
+    padding: 20px 24px;
+  }
+
+  .welcome-overlay__bg {
+    background-position: center bottom;
+  }
+
+  .welcome-overlay__scrim {
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg) 55%, transparent 85%);
+  }
+
+  .welcome-overlay__heading {
+    font-size: 2rem;
+  }
+
+  .welcome-overlay__cta {
+    flex-wrap: wrap;
+  }
+}

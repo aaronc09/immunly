@@ -11,7 +11,7 @@ import { Colors } from '../theme/colors';
 import { useProgress } from '../data/ProgressContext';
 import { getLesson, getModule } from '../data/modules';
 
-const API_KEY_STORAGE = '@immunolearn_api_key';
+const API_KEY_STORAGE = '@immunly_api_key';
 const MODEL = 'claude-sonnet-4-20250514';
 
 function buildSystemPrompt(currentContext: { moduleId: string; lessonId: string } | null): string {
@@ -24,7 +24,7 @@ function buildSystemPrompt(currentContext: { moduleId: string; lessonId: string 
     }
   }
 
-  return `You are ImmunoBot — a friendly, expert immunology tutor for high school students interested in biomedical research. Your role is to guide students through the ImmunoLearn curriculum.${contextNote}
+  return `You are ImmunoBot — a friendly, expert immunology tutor for high school students interested in biomedical research. Your role is to guide students through the Immunly curriculum.${contextNote}
 
 Curriculum topics:
 - Module 1: Foundations — DNA, genes, proteins, cell biology, hematopoiesis (HSC → CLP/CMP → all immune cells), lymphatic system
@@ -51,7 +51,7 @@ export default function ChatScreen() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
-      content: "Hey! I'm **ImmunoBot** 🧬 — your personal immunology tutor. I know everything in the ImmunoLearn curriculum and I'm here to help you understand any concept.\n\nWhat's on your mind? You can ask me about anything from hematopoiesis to CAR-T therapy! 🔬",
+      content: "Hey! I'm **ImmunoBot** 🧬 — your personal immunology tutor. I know everything in the Immunly curriculum and I'm here to help you understand any concept.\n\nWhat's on your mind? You can ask me about anything from hematopoiesis to CAR-T therapy! 🔬",
     },
   ]);
   const [input, setInput] = useState('');
