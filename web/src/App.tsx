@@ -8,6 +8,7 @@ import StreakSaver from './components/StreakSaver';
 import IntroVideo from './components/IntroVideo';
 import WelcomeIntro from './components/WelcomeIntro';
 import PageTransition from './components/PageTransition';
+import CookieConsent from './components/CookieConsent';
 import HomePage from './pages/HomePage';
 import CoursesPage from './pages/CoursesPage';
 import ModulePage from './pages/ModulePage';
@@ -42,6 +43,7 @@ export default function App() {
               </Routes>
             </PageTransition>
             <Footer />
+            <CookieConsent />
           </ProgressProvider>
         </AuthProvider>
       </ThemeProvider>
