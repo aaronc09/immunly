@@ -73,6 +73,13 @@
 /* ── Reset ─────────────────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Smooths the light/dark theme toggle for any element that doesn't already
+   define its own transition (e.g. buttons, which animate via `all`) —
+   without this, cards/navbar/inputs flip color instantly while body fades. */
+*, *::before, *::after {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
 html { font-size: 16px; scroll-behavior: smooth; }
 
 body {

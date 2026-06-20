@@ -6,6 +6,7 @@ import './StreakSaver.css';
 export default function StreakSaver() {
   const { progress, saveStreak } = useProgress();
   const [visible, setVisible] = useState(false);
+  const [closing, setClosing] = useState(false);
   const [selected, setSelected] = useState<number | null>(null);
   const [dismissed, setDismissed] = useState(false);
 
@@ -35,12 +36,16 @@ export default function StreakSaver() {
   }
 
   function dismiss() {
-    setVisible(false);
-    setDismissed(true);
+    setClosing(true);
+    setTimeout(() => {
+      setVisible(false);
+      setClosing(false);
+      setDismissed(true);
+    }, 250);
   }
 
   return (
-    <div className="streak-overlay">
+    <div className={`streak-overlay ${closing ? 'streak-overlay--closing' : ''}`}>
       <div className="streak-modal">
         <div className="streak-modal__header">
           <span className="streak-modal__fire">🔥</span>

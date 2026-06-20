@@ -57,12 +57,10 @@ export default function Navbar() {
                 <Avatar size="sm" />
                 <span className="navbar__username">{user.name.split(' ')[0]}</span>
               </button>
-              {menuOpen && (
-                <div className="navbar__dropdown">
-                  <Link to="/progress" onClick={() => setMenuOpen(false)}>My Progress</Link>
-                  <button onClick={handleLogout}>Log out</button>
-                </div>
-              )}
+              <div className={`navbar__dropdown ${menuOpen ? 'navbar__dropdown--open' : ''}`}>
+                <Link to="/progress" onClick={() => setMenuOpen(false)}>My Progress</Link>
+                <button onClick={handleLogout}>Log out</button>
+              </div>
             </div>
           ) : (
             <Link to="/login" className="btn btn-primary navbar__login-btn">Log in</Link>
@@ -76,19 +74,17 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      {menuOpen && (
-        <div className="navbar__mobile">
-          <NavLink to="/" end onClick={() => setMenuOpen(false)}>Home</NavLink>
-          <NavLink to="/courses" onClick={() => setMenuOpen(false)}>Courses</NavLink>
-          <NavLink to="/reference" onClick={() => setMenuOpen(false)}>Reference</NavLink>
-          {user && <NavLink to="/progress" onClick={() => setMenuOpen(false)}>Progress</NavLink>}
-          <NavLink to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavLink>
-          {user
-            ? <button onClick={handleLogout} className="navbar__mobile-logout">Log out</button>
-            : <Link to="/login" className="btn btn-primary" onClick={() => setMenuOpen(false)}>Log in</Link>
-          }
-        </div>
-      )}
+      <div className={`navbar__mobile ${menuOpen ? 'navbar__mobile--open' : ''}`}>
+        <NavLink to="/" end onClick={() => setMenuOpen(false)}>Home</NavLink>
+        <NavLink to="/courses" onClick={() => setMenuOpen(false)}>Courses</NavLink>
+        <NavLink to="/reference" onClick={() => setMenuOpen(false)}>Reference</NavLink>
+        {user && <NavLink to="/progress" onClick={() => setMenuOpen(false)}>Progress</NavLink>}
+        <NavLink to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavLink>
+        {user
+          ? <button onClick={handleLogout} className="navbar__mobile-logout">Log out</button>
+          : <Link to="/login" className="btn btn-primary" onClick={() => setMenuOpen(false)}>Log in</Link>
+        }
+      </div>
     </nav>
   );
 }

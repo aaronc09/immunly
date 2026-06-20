@@ -1,14 +1,35 @@
-import React, { useState } from 'react';
+import { useState, type FormEvent } from 'react';
+import './LoginPage.css';
 import './ContactPage.css';
+
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xvznedqn';
 
 export default function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
   const [form, setForm] = useState({ name: '', email: '', message: '' });
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    // In a real app, POST to your API here
-    setSent(true);
+    setError('');
+    setSending(true);
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setSent(true);
+      } else {
+        setError("Something went wrong sending your message. Please try again or email contact@immunly.org directly.");
+      }
+    } catch {
+      setError("Couldn't reach the server. Please check your connection and try again.");
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -59,7 +80,12 @@ export default function ContactPage() {
                     required
                   />
                 </div>
-                <button type="submit" className="btn btn-primary contact-submit">Send message</button>
+
+                {error && <div className="login-error">{error}</div>}
+
+                <button type="submit" className="btn btn-primary contact-submit" disabled={sending}>
+                  {sending ? 'Sending…' : 'Send message'}
+                </button>
               </form>
             )}
           </div>

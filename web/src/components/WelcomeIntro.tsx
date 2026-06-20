@@ -22,10 +22,27 @@ export default function WelcomeIntro() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const visible = !user && !dismissed;
+  const shouldShow = !user && !dismissed;
+  // Starts already-hidden with no animation if the user is already logged in
+  // on first render; otherwise fades out (rather than vanishing instantly)
+  // whenever shouldShow flips to false — covering skip, guest, login, and
+  // register in one place since they all just flip `dismissed` or `user`.
+  const [hidden, setHidden] = useState(!shouldShow);
+  const [closing, setClosing] = useState(false);
 
   useEffect(() => {
-    if (visible) {
+    if (!shouldShow && !hidden) {
+      setClosing(true);
+      const t = setTimeout(() => {
+        setHidden(true);
+        setClosing(false);
+      }, 320);
+      return () => clearTimeout(t);
+    }
+  }, [shouldShow, hidden]);
+
+  useEffect(() => {
+    if (!hidden) {
       const prevBody = document.body.style.overflow;
       const prevHtml = document.documentElement.style.overflow;
       document.body.style.overflow = 'hidden';
@@ -35,7 +52,7 @@ export default function WelcomeIntro() {
         document.documentElement.style.overflow = prevHtml;
       };
     }
-  }, [visible]);
+  }, [hidden]);
 
   function dismiss() {
     setDismissed(true);
@@ -83,10 +100,15 @@ export default function WelcomeIntro() {
     }
   }
 
-  if (!visible) return null;
+  if (hidden) return null;
 
   return (
-    <div className="welcome-overlay" role="dialog" aria-label="Welcome to Immunly" onClick={advanceSlide}>
+    <div
+      className={`welcome-overlay ${closing ? 'welcome-overlay--closing' : ''}`}
+      role="dialog"
+      aria-label="Welcome to Immunly"
+      onClick={advanceSlide}
+    >
       {SLIDE_BACKGROUNDS.map((src, i) => (
         <div
           key={src}

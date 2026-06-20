@@ -34,7 +34,7 @@ export default function HomePage() {
           <div className="hero__content">
             <div className="hero__text">
               <div className="hero__tag">Free · Science-backed · Open access</div>
-              <h1>Learn Immunology,<br /><span>Beautifully</span></h1>
+              <h1>Learn Immunology,<br /><span>Simply</span></h1>
               <p>
                 Master the immune system from DNA to cutting-edge cancer therapies —
                 then translate it into biomedical research and machine learning.

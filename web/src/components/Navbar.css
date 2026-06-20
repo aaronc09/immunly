@@ -137,6 +137,16 @@
   box-shadow: var(--shadow);
   min-width: 160px;
   overflow: hidden;
+  opacity: 0;
+  transform: translateY(-6px) scale(0.98);
+  pointer-events: none;
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+
+.navbar__dropdown--open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
 }
 
 .navbar__dropdown a,
@@ -185,9 +195,7 @@
 .navbar__mobile {
   display: none;
   flex-direction: column;
-  padding: 12px 16px 16px;
   background: var(--bg-nav);
-  border-top: 1px solid var(--border);
 }
 
 .navbar__mobile a,
@@ -220,6 +228,20 @@
   .navbar__links { display: none; }
   .navbar__login-btn { display: none; }
   .navbar__hamburger { display: flex; }
-  .navbar__mobile { display: flex; }
+  .navbar__mobile {
+    display: flex;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0 16px;
+    border-top: 1px solid transparent;
+    transition: max-height 0.25s ease, opacity 0.2s ease, padding 0.25s ease;
+  }
+  .navbar__mobile--open {
+    max-height: 420px;
+    opacity: 1;
+    padding: 12px 16px 16px;
+    border-top-color: var(--border);
+  }
   .navbar__username { display: none; }
 }

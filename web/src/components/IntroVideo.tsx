@@ -9,6 +9,7 @@ import './IntroVideo.css';
  */
 export default function IntroVideo() {
   const [visible, setVisible] = useState(false);
+  const [closing, setClosing] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -29,13 +30,21 @@ export default function IntroVideo() {
 
   function dismiss() {
     if (videoRef.current) videoRef.current.pause();
-    setVisible(false);
+    setClosing(true);
+    setTimeout(() => {
+      setVisible(false);
+      setClosing(false);
+    }, 280);
   }
 
   if (!visible) return null;
 
   return (
-    <div className="intro-overlay" role="dialog" aria-label="Immunly intro video">
+    <div
+      className={`intro-overlay ${closing ? 'intro-overlay--closing' : ''}`}
+      role="dialog"
+      aria-label="Immunly intro video"
+    >
       <div className="intro-overlay__top">
         <Logo size={28} className="intro-overlay__logo" />
         <button className="intro-overlay__skip" onClick={dismiss}>Close ✕</button>
