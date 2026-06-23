@@ -1028,7 +1028,457 @@ const mod7: Module = {
   ],
 };
 
-export const MODULES: Module[] = [mod1, mod2, mod3, mod4, mod5, mod6, mod7];
+// ── Module 8: Clinical Immunology ──────────────────────────────────────────────
+const mod8: Module = {
+  id: 'mod8', number: 8,
+  title: 'Clinical Immunology',
+  subtitle: 'Transplants, immunodeficiencies & living with a broken immune system',
+  emoji: '🏥', color: '#EC4899',
+  lessons: [
+    {
+      id: 'mod8-l1', title: 'Transplant Rejection & Tolerance', emoji: '🫀', duration: '8 min',
+      sections: [
+        { type: 'text', heading: 'Why the Body Attacks New Organs',
+          body: 'HLA genes — the human version of MHC — are the most polymorphic genes in the genome, meaning almost no two unrelated people have an identical set. A transplanted organ carries donor HLA molecules that the recipient\'s T cells can recognise as foreign, either directly (donor antigen-presenting cells in the graft activate recipient T cells) or indirectly (recipient antigen-presenting cells process and present donor HLA peptides). Either route can trigger a full adaptive attack on the new organ.' },
+        { type: 'table', heading: 'Types of Transplant Rejection',
+          leftHeader: 'Type', rightHeader: 'Mechanism & Timeline',
+          rows: [
+            { left: 'Hyperacute', right: 'Minutes to hours. Pre-existing antibodies (e.g. ABO mismatch) bind donor blood vessels and trigger complement. Now rare thanks to pre-transplant crossmatching.' },
+            { left: 'Acute', right: 'Weeks to months. Mainly T cell-mediated direct allorecognition. The most common type, and usually reversible with stronger immunosuppression.' },
+            { left: 'Chronic', right: 'Months to years. Slow vessel wall thickening driven by both antibodies and T cells. The leading cause of long-term graft failure.' },
+          ],
+        },
+        { type: 'steps', heading: 'How Immunosuppressants Prevent Rejection',
+          steps: [
+            { label: 'Calcineurin inhibitors', detail: 'Cyclosporine and tacrolimus block the enzyme calcineurin, preventing the transcription factor NFAT from switching on the IL-2 gene — starving T cells of the signal they need to proliferate.' },
+            { label: 'Corticosteroids', detail: 'Broadly dampen inflammatory gene expression and cytokine production across many immune cell types.' },
+            { label: 'mTOR inhibitors', detail: 'Sirolimus blocks a signal downstream of the IL-2 receptor, stopping T cell proliferation even if IL-2 is present.' },
+            { label: 'Antiproliferatives', detail: 'Mycophenolate blocks a step in DNA synthesis that rapidly dividing lymphocytes depend on more heavily than most other cells.' },
+          ],
+        },
+        { type: 'callout', label: 'GVHD: rejection in reverse', color: 'purple',
+          text: 'Graft-versus-host disease (GVHD) is the mirror image of organ rejection. It happens after bone marrow/stem cell transplants, when donor T cells — now living inside the recipient — recognise the recipient\'s tissues as foreign and attack them, rather than the recipient attacking the graft.' },
+        { type: 'terms', heading: 'Key Terms',
+          terms: [
+            { term: 'HLA (Human Leukocyte Antigen)', definition: 'The human version of MHC genes; extremely polymorphic, making donor-recipient matching difficult and central to transplant rejection.' },
+            { term: 'Allorecognition', definition: 'The process by which T cells recognise genetically different (allogeneic) cells or tissue as foreign.' },
+            { term: 'Calcineurin inhibitor', definition: 'A class of immunosuppressant (e.g. tacrolimus) that blocks T cell activation by preventing IL-2 gene transcription.' },
+            { term: 'Graft-versus-host disease (GVHD)', definition: 'A complication of stem cell transplantation where donor immune cells attack the recipient\'s own tissues.' },
+          ],
+        },
+      ],
+      takeaways: [
+        'Transplant rejection is driven by T cells recognising donor HLA as foreign, either directly or indirectly.',
+        'Hyperacute, acute, and chronic rejection differ in timeline, mechanism, and how preventable/treatable they are.',
+        'GVHD is the reverse problem — donor T cells attacking the recipient — seen specifically in stem cell transplants.',
+      ],
+      quiz: [
+        { id: 'q1', question: 'Which type of transplant rejection happens within minutes to hours and is driven by pre-existing antibodies?', options: ['Acute rejection', 'Chronic rejection', 'Hyperacute rejection', 'GVHD'], correctIndex: 2, explanation: 'Hyperacute rejection is caused by pre-formed antibodies (e.g. against ABO blood group antigens) that immediately activate complement on the donor vessels — now rare due to pre-transplant crossmatching.' },
+        { id: 'q2', question: 'How do calcineurin inhibitors like tacrolimus suppress the immune system?', options: ['They kill all lymphocytes directly', 'They block NFAT-driven transcription of the IL-2 gene', 'They neutralise antibodies', 'They block antigen presentation entirely'], correctIndex: 1, explanation: 'Calcineurin inhibitors prevent the transcription factor NFAT from entering the nucleus, blocking IL-2 gene transcription and starving T cells of the proliferation signal.' },
+      ],
+    },
+    {
+      id: 'mod8-l2', title: 'Primary Immunodeficiencies: SCID & DiGeorge', emoji: '🧬', duration: '8 min',
+      sections: [
+        { type: 'text', heading: 'When the Immune System Fails to Develop',
+          body: 'Primary immunodeficiencies (PIDs) are genetic — present from birth, even if symptoms appear later — as opposed to secondary immunodeficiencies, which are acquired (such as from HIV infection, chemotherapy, or malnutrition). Over 450 genes are now known to cause primary immunodeficiencies, each disrupting a different piece of immune development or function.' },
+        { type: 'table', heading: 'SCID vs DiGeorge Syndrome',
+          leftHeader: 'Severe Combined Immunodeficiency (SCID)', rightHeader: 'DiGeorge Syndrome',
+          rows: [
+            { left: 'Genetic cause: mutations in genes like IL2RG or ADA', right: 'Genetic cause: a deletion on chromosome 22 (22q11.2)' },
+            { left: 'Mechanism: T and B lymphocytes fail to develop properly', right: 'Mechanism: the thymus forms small or absent, limiting T cell maturation' },
+            { left: 'Presentation: severe, recurrent infections from birth; fatal within ~1 year if untreated', right: 'Presentation: highly variable — heart defects, low calcium, and a spectrum of T cell deficiency' },
+            { left: 'Treatment: bone marrow/HSC transplant, or gene therapy', right: 'Treatment: thymus transplant in severe cases; supportive care in milder cases' },
+          ],
+        },
+        { type: 'callout', label: 'The "Bubble Boy" story', color: 'blue',
+          text: 'David Vetter, born in 1971 with X-linked SCID, lived 12 years inside a sterile plastic enclosure because almost any infection could have killed him. His case drove major advances in bone marrow transplantation and, decades later, the gene therapy approaches now used to treat SCID directly.' },
+        { type: 'terms', heading: 'Key Terms',
+          terms: [
+            { term: 'Severe Combined Immunodeficiency (SCID)', definition: 'A group of genetic disorders causing near-total absence of functional T and B lymphocytes, leading to life-threatening infections from infancy.' },
+            { term: 'DiGeorge Syndrome', definition: 'A genetic condition caused by a 22q11.2 chromosomal deletion, often resulting in thymic hypoplasia and reduced T cell production.' },
+            { term: 'Thymic hypoplasia', definition: 'Underdevelopment of the thymus, limiting the gland\'s capacity to mature T cells.' },
+            { term: 'Primary immunodeficiency', definition: 'A genetic disorder present from birth that impairs immune system development or function.' },
+          ],
+        },
+      ],
+      takeaways: [
+        'Primary immunodeficiencies are genetic; secondary ones are acquired (e.g. HIV, chemotherapy, malnutrition).',
+        'SCID knocks out both T and B cell development; DiGeorge mainly limits T cell maturation via a small thymus.',
+        'Bone marrow transplant and, increasingly, gene therapy can correct SCID by replacing the faulty stem cells.',
+      ],
+      quiz: [
+        { id: 'q1', question: 'What is the underlying genetic cause of DiGeorge syndrome?', options: ['A mutation in the IL2RG gene', 'A deletion on chromosome 22 (22q11.2)', 'A BTK gene mutation', 'An extra copy of chromosome 21'], correctIndex: 1, explanation: 'DiGeorge syndrome is caused by a deletion in the 22q11.2 region of chromosome 22, which often disrupts thymus development.' },
+        { id: 'q2', question: 'Why is untreated SCID life-threatening from infancy?', options: ['It causes severe allergies', 'T and B lymphocytes fail to develop, leaving the infant unable to fight infections', 'It only affects skin immunity', 'It causes autoimmune attacks on healthy tissue'], correctIndex: 1, explanation: 'SCID prevents normal T and B cell development, so infants lack both arms of adaptive immunity and are highly vulnerable to infections that healthy infants would easily clear.' },
+      ],
+    },
+    {
+      id: 'mod8-l3', title: 'Antibody Deficiencies & Other PIDs', emoji: '🧪', duration: '7 min',
+      sections: [
+        { type: 'text', heading: 'When B Cells Can\'t Make Antibodies',
+          body: 'Humoral immunodeficiencies affect the body\'s ability to produce functional antibodies. They span a wide spectrum — from selective IgA deficiency, the most common primary immunodeficiency overall (roughly 1 in 500 people), which is often entirely asymptomatic, to X-linked agammaglobulinemia, which leaves patients with essentially no circulating antibodies at all.' },
+        { type: 'terms', heading: 'Common Antibody Deficiencies',
+          terms: [
+            { term: 'X-linked Agammaglobulinemia (XLA)', definition: 'Caused by mutations in the BTK gene, which B cells need to mature. Patients have no mature B cells and develop recurrent bacterial infections once maternal antibodies wane around 6 months of age.' },
+            { term: 'Common Variable Immunodeficiency (CVID)', definition: 'The most common symptomatic antibody deficiency, usually diagnosed in adulthood. Causes low antibody levels through a variety of underlying defects, not a single gene.' },
+            { term: 'Selective IgA Deficiency', definition: 'The most common primary immunodeficiency overall. Most people are asymptomatic, but it matters clinically — patients can have severe reactions to IgA-containing blood products.' },
+          ],
+        },
+        { type: 'callout', label: 'IVIG: borrowed immunity', color: 'green',
+          text: 'Intravenous immunoglobulin (IVIG) pools purified antibodies from thousands of healthy blood donors. Patients who can\'t make their own antibodies receive regular IVIG infusions — essentially ongoing passive immunity as a long-term treatment.' },
+        { type: 'text', heading: 'Why Timing Matters',
+          body: 'Newborns are protected for the first months of life by maternal IgG antibodies that crossed the placenta. This is why XLA often isn\'t noticed until around 6 months — that\'s when borrowed maternal protection runs out and the infant\'s own (absent) antibody production becomes the only line of defence.' },
+      ],
+      takeaways: [
+        'Antibody deficiencies range from harmless (selective IgA deficiency) to severe (XLA, CVID).',
+        'XLA is caused by a BTK mutation that blocks B cell maturation entirely.',
+        'IVIG treats antibody deficiencies by supplying pooled donor antibodies on an ongoing basis.',
+      ],
+      quiz: [
+        { id: 'q1', question: 'What gene is mutated in X-linked Agammaglobulinemia?', options: ['IL2RG', 'BTK', 'ADA', 'RAG1'], correctIndex: 1, explanation: 'XLA is caused by mutations in BTK, a gene essential for B cell maturation. Without it, B cells fail to mature and patients cannot produce antibodies.' },
+        { id: 'q2', question: 'Why do XLA symptoms typically appear around 6 months of age rather than at birth?', options: ['The BTK gene only activates at 6 months', 'Maternal IgG antibodies protect the infant until they wane around that age', 'Vaccines cause the symptoms to appear', 'It takes 6 months for bacteria to become dangerous'], correctIndex: 1, explanation: 'Maternal antibodies cross the placenta and protect infants for the first few months of life. Once these wane, infants who cannot make their own antibodies become vulnerable.' },
+      ],
+    },
+    {
+      id: 'mod8-l4', title: 'Diagnosing & Living with Immune Disorders', emoji: '🩺', duration: '8 min',
+      sections: [
+        { type: 'text', heading: 'Red Flags for Immunodeficiency',
+          body: 'Recurrent, unusually severe, or hard-to-treat infections are the main clue that prompts immunodeficiency testing — for example, four or more ear infections in a year, two or more pneumonias, infections that need IV antibiotics to clear, or failure to gain weight and grow normally in infancy.' },
+        { type: 'steps', heading: 'The Diagnostic Workup',
+          steps: [
+            { label: 'Lymphocyte subset counts', detail: 'Flow cytometry counts and identifies T cells, B cells, and NK cells to see which populations are missing or reduced.' },
+            { label: 'Immunoglobulin quantification', detail: 'Blood tests measure IgG, IgA, IgM, and IgE levels to spot antibody deficiencies.' },
+            { label: 'Functional testing', detail: 'Checking antibody response to past vaccines reveals whether the immune system can actually mount a useful response, not just whether the right cells are present.' },
+            { label: 'Genetic testing', detail: 'Sequencing confirms the specific mutated gene, which guides treatment choice and family genetic counselling.' },
+          ],
+        },
+        { type: 'callout', label: 'Live vaccines: handle with care', color: 'red',
+          text: 'Live-attenuated vaccines (like MMR and varicella) contain weakened but still-replicating pathogens. In patients with significant T cell deficiencies (such as SCID), these vaccines can cause the very disease they\'re meant to prevent — so inactivated vaccines are used instead whenever a T cell defect is suspected.' },
+        { type: 'terms', heading: 'Key Terms',
+          terms: [
+            { term: 'Flow cytometry', definition: 'A laboratory technique that identifies and counts cell types based on surface markers tagged with fluorescent antibodies.' },
+            { term: 'Functional testing', definition: 'Assessing whether immune cells actually work — e.g. whether antibody levels rise appropriately after a vaccine — rather than just counting cells.' },
+            { term: 'Live-attenuated vaccine', definition: 'A vaccine containing a weakened but still-living version of a pathogen; risky for patients with significant T cell deficiencies.' },
+          ],
+        },
+      ],
+      takeaways: [
+        'Recurrent or unusually severe infections, especially needing IV antibiotics, are the main red flag for immunodeficiency.',
+        'Diagnosis combines cell counts, antibody levels, functional response testing, and genetic confirmation.',
+        'Patients with T cell deficiencies must avoid live vaccines, which can cause disease rather than prevent it.',
+      ],
+      quiz: [
+        { id: 'q1', question: 'Why are live-attenuated vaccines dangerous for some immunodeficient patients?', options: ['They cause severe allergic reactions in everyone', 'The weakened pathogen can still replicate and cause disease if T cell immunity is too weak to control it', 'They contain no active ingredient and just don\'t work', 'They are too expensive to administer safely'], correctIndex: 1, explanation: 'Live-attenuated vaccines rely on the immune system controlling a weakened, still-replicating pathogen. Without sufficient T cell function, that weakened pathogen can spread uncontrolled.' },
+        { id: 'q2', question: 'What does flow cytometry reveal in an immunodeficiency workup?', options: ['The exact DNA sequence of a mutated gene', 'Which lymphocyte populations (T, B, NK cells) are present or missing', 'Antibody levels in the blood', 'Past vaccine history'], correctIndex: 1, explanation: 'Flow cytometry identifies and counts specific cell populations based on surface markers, revealing which lymphocyte types are deficient.' },
+      ],
+    },
+  ],
+};
+
+// ── Module 9: Microbiome & Immunity ────────────────────────────────────────────
+const mod9: Module = {
+  id: 'mod9', number: 9,
+  title: 'Microbiome & Immunity',
+  subtitle: 'The trillions of microbes shaping your immune system',
+  emoji: '🧫', color: '#06B6D4',
+  lessons: [
+    {
+      id: 'mod9-l1', title: 'Meet Your Microbiome', emoji: '🔬', duration: '6 min',
+      sections: [
+        { type: 'text', heading: 'You Are Not Just Human Cells',
+          body: 'Roughly 38 trillion bacterial cells live in and on the human body — in the same order of magnitude as the number of human cells. Collectively, this community of bacteria, archaea, fungi, and viruses is called the microbiome. The gut, especially the colon, hosts by far the largest and most studied community, but the skin, mouth, and respiratory and urogenital tracts each have their own distinct microbial neighbourhoods.' },
+        { type: 'steps', heading: 'How Your Microbiome Is Built',
+          steps: [
+            { label: 'Birth', detail: 'Vaginal delivery exposes the infant to maternal vaginal and gut bacteria; babies born by C-section initially acquire more skin-associated microbes instead.' },
+            { label: 'Infancy', detail: 'Breast milk contains human milk oligosaccharides (HMOs) that the infant cannot digest but that selectively feed beneficial bacteria like Bifidobacterium.' },
+            { label: 'Weaning', detail: 'Introducing solid food dramatically increases microbial diversity as new fibres and nutrients become available.' },
+            { label: 'Childhood onward', detail: 'By around age 3, the gut microbiome stabilises into an adult-like community, though diet, geography, illness, and antibiotics continue to reshape it throughout life.' },
+          ],
+        },
+        { type: 'table', heading: 'Major Phyla in the Healthy Gut',
+          leftHeader: 'Phylum', rightHeader: 'Examples & Role',
+          rows: [
+            { left: 'Firmicutes', right: 'Includes Lactobacillus and Clostridium species; many are major producers of short-chain fatty acids.' },
+            { left: 'Bacteroidetes', right: 'Includes Bacteroides species; specialise in breaking down complex plant carbohydrates humans can\'t digest alone.' },
+            { left: 'Actinobacteria', right: 'Includes Bifidobacterium, especially abundant in breastfed infants.' },
+            { left: 'Proteobacteria', right: 'Includes E. coli; normally a small fraction — overgrowth is often a sign of dysbiosis.' },
+          ],
+        },
+        { type: 'callout', label: 'More genes than you', color: 'blue',
+          text: 'The collective microbiome encodes roughly 100 times more unique genes than the human genome itself — a vast, mostly untapped metabolic toolkit living inside you.' },
+        { type: 'terms', heading: 'Key Terms',
+          terms: [
+            { term: 'Microbiome', definition: 'The collective community of microorganisms (bacteria, archaea, fungi, viruses) living in and on a host, along with their genetic material.' },
+            { term: 'Microbiota', definition: 'The living microorganisms themselves, as opposed to their collective genetic content.' },
+            { term: 'Human milk oligosaccharide (HMO)', definition: 'A complex sugar in breast milk that the infant cannot digest but that selectively nourishes beneficial gut bacteria.' },
+            { term: 'Commensal', definition: 'A microorganism that lives in or on a host without typically causing harm, often providing some benefit.' },
+          ],
+        },
+      ],
+      takeaways: [
+        'The human body hosts roughly as many bacterial cells as human cells, dominated by the gut microbiome.',
+        'Birth mode, breastfeeding, and early diet all shape which microbes establish themselves first.',
+        'The gut microbiome stabilises into an adult-like community by about age 3, but keeps changing with diet and life events.',
+      ],
+      quiz: [
+        { id: 'q1', question: 'What do human milk oligosaccharides (HMOs) do?', options: ['Provide direct nutrition for the infant', 'Selectively feed beneficial bacteria like Bifidobacterium', 'Kill harmful gut bacteria', 'Replace the need for solid food'], correctIndex: 1, explanation: 'Infants cannot digest HMOs directly — instead, these sugars selectively nourish beneficial bacteria such as Bifidobacterium, helping shape a healthy early microbiome.' },
+        { id: 'q2', question: 'Which gut phylum is most associated with breaking down complex plant carbohydrates?', options: ['Proteobacteria', 'Actinobacteria', 'Bacteroidetes', 'Firmicutes'], correctIndex: 2, explanation: 'Bacteroidetes species specialise in fermenting complex plant fibres that human digestive enzymes alone cannot break down.' },
+      ],
+    },
+    {
+      id: 'mod9-l2', title: 'The Gut-Immune Axis', emoji: '🔗', duration: '8 min',
+      sections: [
+        { type: 'text', heading: 'Your Gut Is an Immune Organ',
+          body: 'Roughly 70-80% of the body\'s immune cells reside in gut-associated lymphoid tissue (GALT). This makes sense given the challenge involved: a single layer of epithelial cells separates trillions of microbes from the bloodstream, so the immune system must constantly distinguish harmless commensals from genuine threats — without overreacting to the former or underreacting to the latter.' },
+        { type: 'table', heading: 'How Microbes Train Immune Cells',
+          leftHeader: 'Microbial Signal', rightHeader: 'Immune Effect',
+          rows: [
+            { left: 'Short-chain fatty acids (SCFAs, e.g. butyrate)', right: 'Promote regulatory T cell (Treg) differentiation, helping dampen unnecessary inflammation.' },
+            { left: 'Segmented filamentous bacteria', right: 'Induce Th17 cells, which support the mucosal barrier\'s antimicrobial defences.' },
+            { left: 'Microbial antigens crossing the gut lining', right: 'Stimulate secretory IgA production by B cells in Peyer\'s patches.' },
+            { left: 'Microbial cell-wall fragments (e.g. peptidoglycan)', right: 'Provide low-level, tonic stimulation of innate pattern-recognition receptors, keeping the immune system primed.' },
+          ],
+        },
+        { type: 'callout', label: 'Germ-free mice tell the story', color: 'green',
+          text: 'Mice raised in completely sterile, germ-free environments develop underdeveloped GALT, fewer regulatory T cells, and weaker immune responses overall. This is strong evidence that gut microbes are required for normal immune system development — not just passive bystanders.' },
+        { type: 'terms', heading: 'Key Terms',
+          terms: [
+            { term: 'Gut-associated lymphoid tissue (GALT)', definition: 'The collection of lymphoid structures along the gastrointestinal tract, including Peyer\'s patches, that house most of the body\'s immune cells.' },
+            { term: 'Short-chain fatty acid (SCFA)', definition: 'A metabolite (e.g. butyrate) produced when gut bacteria ferment dietary fibre; promotes regulatory T cell development.' },
+            { term: 'Secretory IgA', definition: 'An antibody form secreted across mucosal surfaces that neutralises microbes without triggering strong inflammation.' },
+          ],
+        },
+      ],
+      takeaways: [
+        'The majority of the body\'s immune cells are located in gut-associated lymphoid tissue.',
+        'Gut bacteria actively shape immune development — SCFAs promote Tregs, while certain bacteria induce Th17 cells.',
+        'Germ-free mice studies show that microbes are necessary, not optional, for normal immune system development.',
+      ],
+      quiz: [
+        { id: 'q1', question: 'What immune effect do short-chain fatty acids like butyrate have?', options: ['They activate complement directly', 'They promote regulatory T cell (Treg) differentiation', 'They destroy commensal bacteria', 'They block antibody production'], correctIndex: 1, explanation: 'SCFAs such as butyrate, produced by bacterial fermentation of dietary fibre, promote Treg differentiation, helping keep gut inflammation in check.' },
+        { id: 'q2', question: 'What does the germ-free mouse model demonstrate?', options: ['Microbes have no effect on immune development', 'Microbes are required for normal immune system development', 'All bacteria are harmful to the immune system', 'The immune system develops the same with or without microbes'], correctIndex: 1, explanation: 'Germ-free mice have underdeveloped GALT and fewer Tregs, showing that normal microbial exposure is necessary for proper immune development.' },
+      ],
+    },
+    {
+      id: 'mod9-l3', title: 'Dysbiosis & Disease', emoji: '⚖️', duration: '7 min',
+      sections: [
+        { type: 'text', heading: 'When the Balance Breaks',
+          body: 'Dysbiosis describes an imbalance in the composition or function of the microbial community — not simply "bad bacteria taking over," but often a loss of overall diversity and depletion of beneficial species. Antibiotics, diet, infection, and stress can all trigger it.' },
+        { type: 'table', heading: 'Conditions Linked to Dysbiosis',
+          leftHeader: 'Condition', rightHeader: 'Microbiome Connection',
+          rows: [
+            { left: 'Inflammatory Bowel Disease (Crohn\'s, ulcerative colitis)', right: 'Reduced microbial diversity, fewer SCFA-producing species, and expansion of pro-inflammatory bacteria.' },
+            { left: 'Allergies & asthma ("hygiene hypothesis")', right: 'Reduced early-life microbial exposure correlates with higher allergy risk, possibly through insufficient Treg induction.' },
+            { left: 'Obesity & metabolic syndrome', right: 'Certain microbiome profiles appear to extract more calories from food and affect fat-storage signalling — though causality is still debated.' },
+            { left: 'C. difficile infection', right: 'Antibiotic-driven loss of competing bacteria allows toxin-producing C. difficile to overgrow unchecked.' },
+          ],
+        },
+        { type: 'callout', label: 'Correlation vs causation', color: 'orange',
+          text: 'Most human dysbiosis-disease links come from observational studies — the microbiome simply looks different in sick versus healthy people. It\'s often unclear whether dysbiosis causes disease, results from it, or both feed into each other. Treat bold "your gut bacteria cause X" headlines with healthy skepticism.' },
+        { type: 'terms', heading: 'Key Terms',
+          terms: [
+            { term: 'Dysbiosis', definition: 'An imbalance in the composition, diversity, or function of a microbial community, associated with various diseases.' },
+            { term: 'Hygiene hypothesis', definition: 'The idea that reduced early-life microbial exposure may impair proper immune development, increasing allergy and autoimmune risk.' },
+            { term: 'Clostridioides difficile (C. diff)', definition: 'A toxin-producing bacterium that can overgrow and cause severe colitis after antibiotics deplete competing gut flora.' },
+          ],
+        },
+      ],
+      takeaways: [
+        'Dysbiosis is an imbalance in microbial diversity or function, not just the presence of "bad" bacteria.',
+        'Dysbiosis is linked to IBD, allergies, metabolic syndrome, and C. difficile infection — with varying strength of evidence.',
+        'Most evidence is correlational, so causation between dysbiosis and disease is often genuinely unclear.',
+      ],
+      quiz: [
+        { id: 'q1', question: 'What allows C. difficile to overgrow and cause infection?', options: ['A high-fibre diet', 'Antibiotics depleting the competing bacteria that normally keep it in check', 'Excess stomach acid', 'A deficiency in vitamin C'], correctIndex: 1, explanation: 'Antibiotics can wipe out the diverse bacterial competition that normally suppresses C. difficile, allowing it to overgrow and produce disease-causing toxins.' },
+        { id: 'q2', question: 'Why should claims that "gut bacteria cause disease X" often be treated with caution?', options: ['The microbiome has no real effect on health', 'Most evidence is observational/correlational, so cause and effect are often unclear', 'Bacteria cannot be studied scientifically', 'Dysbiosis has been fully proven to never affect humans'], correctIndex: 1, explanation: 'Much of the human evidence linking dysbiosis to disease is correlational — the microbiome differs between sick and healthy people, but whether dysbiosis is a cause, a consequence, or both is frequently still unresolved.' },
+      ],
+    },
+    {
+      id: 'mod9-l4', title: 'Probiotics, Prebiotics & Fecal Transplants', emoji: '💊', duration: '7 min',
+      sections: [
+        { type: 'text', heading: 'Can You Fix Your Microbiome?',
+          body: 'A large industry has grown around manipulating the microbiome for health. Probiotics are live beneficial microorganisms (such as specific Lactobacillus or Bifidobacterium strains); prebiotics are non-digestible fibres, like inulin, that feed beneficial bacteria already present; synbiotics combine both approaches.' },
+        { type: 'callout', label: 'Evidence: strong in some places, thin in others', color: 'orange',
+          text: 'Probiotics have solid evidence for specific, well-studied uses — such as preventing antibiotic-associated diarrhea or treating certain cases of infectious diarrhea in children — but much weaker or absent evidence for many broader marketed claims like general "gut health" or "immunity boosting." Crucially, benefits are strain-specific: a result shown for one probiotic strain doesn\'t automatically apply to a different product.' },
+        { type: 'steps', heading: 'Fecal Microbiota Transplant (FMT)',
+          steps: [
+            { label: 'What it is', detail: 'Processed stool from a healthy, screened donor is transferred into a patient\'s gut — via colonoscopy, enema, or oral capsules — to restore a healthy microbial community.' },
+            { label: 'Strongest evidence', detail: 'Recurrent C. difficile infection. FMT cures roughly 85-90% of cases that failed standard antibiotic treatment, far outperforming antibiotics alone.' },
+            { label: 'Emerging research', detail: 'IBD, metabolic syndrome, and even some neurological and psychiatric conditions are under active investigation — but evidence there is far less established than for C. difficile.' },
+          ],
+        },
+        { type: 'terms', heading: 'Key Terms',
+          terms: [
+            { term: 'Probiotic', definition: 'A live microorganism, taken as a supplement or in food, intended to confer a health benefit.' },
+            { term: 'Prebiotic', definition: 'A non-digestible food component, typically fibre, that selectively nourishes beneficial gut bacteria.' },
+            { term: 'Fecal microbiota transplant (FMT)', definition: 'A procedure transferring stool from a healthy donor into a patient to restore a healthy gut microbial community.' },
+          ],
+        },
+      ],
+      takeaways: [
+        'Probiotic benefits are strain-specific — strong evidence for one strain doesn\'t generalise to all probiotic products.',
+        'FMT has strong, well-established evidence specifically for treating recurrent C. difficile infection.',
+        'Microbiome-based treatments for conditions like IBD or metabolic disease remain promising but far less proven.',
+      ],
+      quiz: [
+        { id: 'q1', question: 'For which condition does FMT have the strongest clinical evidence?', options: ['Seasonal allergies', 'Recurrent C. difficile infection', 'The common cold', 'Type 1 diabetes'], correctIndex: 1, explanation: 'FMT cures roughly 85-90% of recurrent C. difficile infections that failed antibiotics, making it the best-established use of the procedure.' },
+        { id: 'q2', question: 'Why can\'t evidence for one probiotic strain be assumed to apply to a different probiotic product?', options: ['All probiotics are identical regardless of strain', 'Probiotic effects are strain-specific, so results don\'t automatically generalise', 'Probiotics never have any measurable effect', 'Only prebiotics show strain-specific effects'], correctIndex: 1, explanation: 'Probiotic benefits depend on the specific strain studied — a different strain, even of the same bacterial species, may behave very differently.' },
+      ],
+    },
+  ],
+};
+
+// ── Module 10: Emerging Therapies ──────────────────────────────────────────────
+const mod10: Module = {
+  id: 'mod10', number: 10,
+  title: 'Emerging Therapies',
+  subtitle: 'Gene editing, engineered antibodies & the next generation of medicine',
+  emoji: '✂️', color: '#F97316',
+  lessons: [
+    {
+      id: 'mod10-l1', title: 'Gene Therapy Basics', emoji: '🧬', duration: '8 min',
+      sections: [
+        { type: 'text', heading: 'Treating Disease by Editing the Source Code',
+          body: 'Gene therapy introduces, corrects, or silences genetic material to treat disease, rather than just managing symptoms with drugs. It is especially powerful for diseases caused by a single faulty gene — including many of the primary immunodeficiencies covered in the Clinical Immunology module, like SCID.' },
+        { type: 'table', heading: 'Common Gene Therapy Vectors',
+          leftHeader: 'Vector', rightHeader: 'Properties',
+          rows: [
+            { left: 'Adeno-associated virus (AAV)', right: 'Mostly non-integrating, low immunogenicity, but limited cargo size (~4.7kb). Widely used for in vivo therapy.' },
+            { left: 'Lentivirus', right: 'Integrates into the host genome, larger cargo capacity. Commonly used to modify cells (e.g. T cells, stem cells) outside the body.' },
+            { left: 'Non-viral (lipid nanoparticles, naked DNA/RNA)', right: 'Generally safer delivery profile, but typically less efficient at reaching target cells than viral vectors.' },
+          ],
+        },
+        { type: 'steps', heading: 'Ex Vivo vs In Vivo Gene Therapy',
+          steps: [
+            { label: 'Ex vivo', detail: 'Cells are removed from the patient (e.g. blood stem cells or T cells), genetically modified in the lab, then infused back. CAR-T cell therapy is a form of ex vivo cell engineering.' },
+            { label: 'In vivo', detail: 'A vector is delivered directly into the patient\'s body, modifying cells in place — used, for example, in AAV-based therapies for inherited retinal disease and hemophilia.' },
+          ],
+        },
+        { type: 'callout', label: 'A cautionary chapter', color: 'red',
+          text: 'Early-2000s gene therapy trials for X-linked SCID used retroviral vectors and successfully restored immune function in several children — but a subset later developed leukemia, because the virus had inserted itself near a gene that controls cell growth (insertional mutagenesis). This pivotal lesson reshaped vector safety design toward today\'s safer AAV and self-inactivating lentiviral vectors.' },
+        { type: 'terms', heading: 'Key Terms',
+          terms: [
+            { term: 'Gene therapy', definition: 'A treatment approach that introduces, corrects, or silences genetic material to treat or prevent disease.' },
+            { term: 'AAV (Adeno-associated virus)', definition: 'A small, mostly non-integrating viral vector commonly used to deliver gene therapy directly into the body.' },
+            { term: 'Insertional mutagenesis', definition: 'Unintended disruption of a gene caused by a vector inserting its genetic payload at a harmful location in the host genome.' },
+          ],
+        },
+      ],
+      takeaways: [
+        'Gene therapy treats disease at its genetic source, rather than just managing symptoms.',
+        'Viral vectors like AAV and lentivirus deliver genetic material, but each has different cargo capacity and integration behaviour.',
+        'Early SCID gene therapy trials caused leukemia in some patients via insertional mutagenesis — a key lesson driving safer modern vector design.',
+      ],
+      quiz: [
+        { id: 'q1', question: 'What is the key difference between ex vivo and in vivo gene therapy?', options: ['Ex vivo modifies cells outside the body before reinfusion; in vivo delivers the vector directly into the patient', 'Ex vivo is always safer than in vivo', 'In vivo only works on T cells', 'There is no meaningful difference'], correctIndex: 0, explanation: 'Ex vivo therapy modifies cells like T cells or stem cells in the lab before infusing them back; in vivo therapy delivers a vector directly into the patient\'s body to modify cells in place.' },
+        { id: 'q2', question: 'What went wrong in some early X-linked SCID gene therapy trials?', options: ['The vector caused immediate organ failure', 'The retroviral vector inserted near a growth-control gene, causing leukemia in some patients', 'The therapy had no effect at all', 'Patients developed severe allergic reactions to the vector'], correctIndex: 1, explanation: 'The retroviral vectors used integrated semi-randomly into the genome; in some patients, this disrupted a gene controlling cell growth, leading to leukemia — a phenomenon called insertional mutagenesis.' },
+      ],
+    },
+    {
+      id: 'mod10-l2', title: 'CRISPR-Cas9 & Genome Editing', emoji: '✂️', duration: '9 min',
+      sections: [
+        { type: 'text', heading: 'Programmable Molecular Scissors',
+          body: 'CRISPR-Cas9 originated as a bacterial immune system that destroys invading viral DNA. Scientists repurposed it as a precise gene-editing tool: a guide RNA (gRNA) directs the Cas9 enzyme to a specific DNA sequence — next to a short marker called a PAM sequence — where Cas9 cuts both strands of the DNA double helix.' },
+        { type: 'steps', heading: 'What Happens After the Cut',
+          steps: [
+            { label: 'Non-homologous end joining (NHEJ)', detail: 'The cell\'s default, error-prone repair pathway. Often used to disrupt or knock out a gene entirely.' },
+            { label: 'Homology-directed repair (HDR)', detail: 'If a matching DNA template is supplied, the cell can use it to precisely insert or correct a sequence — true gene correction, though less efficient than NHEJ.' },
+            { label: 'Base & prime editing', detail: 'Newer refinements that chemically convert or rewrite DNA bases without fully cutting both strands, offering more precision with fewer unwanted edits.' },
+          ],
+        },
+        { type: 'callout', label: 'CRISPR meets immunology', color: 'purple',
+          text: 'CRISPR is being used to knock out genes that limit CAR-T cell persistence, create "off-the-shelf" donor CAR-T cells by deleting genes that would otherwise trigger rejection, and directly correct the mutated gene in SCID patients\' own stem cells — converging directly with the immunodeficiency and cell-therapy topics from earlier modules.' },
+        { type: 'text', heading: 'Editing Ethics: Somatic vs Germline',
+          body: 'Somatic cell editing changes only the treated individual\'s own cells and is not inherited — this is the basis of all current approved and trial therapies. Germline editing changes eggs, sperm, or embryos and would be inherited by future generations. It raises serious ethical and safety concerns and is not used clinically; a widely condemned 2018 case of a scientist editing human embryos resulted in his imprisonment.' },
+        { type: 'terms', heading: 'Key Terms',
+          terms: [
+            { term: 'CRISPR-Cas9', definition: 'A gene-editing system, adapted from bacterial antiviral defence, that uses a guide RNA to direct the Cas9 enzyme to cut a specific DNA sequence.' },
+            { term: 'Guide RNA (gRNA)', definition: 'A short RNA sequence that directs Cas9 to its target DNA sequence by base-pairing complementarity.' },
+            { term: 'Somatic vs germline editing', definition: 'Somatic editing affects only the treated individual\'s cells; germline editing affects eggs, sperm, or embryos and is inherited by offspring.' },
+          ],
+        },
+      ],
+      takeaways: [
+        'CRISPR-Cas9 uses a guide RNA to direct the Cas9 enzyme to cut a specific DNA sequence.',
+        'NHEJ disrupts genes (knockout); HDR with a template enables precise correction, though less efficiently.',
+        'Somatic editing is used clinically and is not inherited; germline editing is not used clinically due to ethical and safety concerns.',
+      ],
+      quiz: [
+        { id: 'q1', question: 'What role does the guide RNA play in CRISPR-Cas9 editing?', options: ['It directly cuts the DNA', 'It directs the Cas9 enzyme to a specific DNA sequence via base-pairing', 'It repairs the DNA after cutting', 'It replaces the need for a PAM sequence'], correctIndex: 1, explanation: 'The guide RNA base-pairs with a complementary DNA sequence, directing the Cas9 enzyme to cut at that exact location.' },
+        { id: 'q2', question: 'Why is germline gene editing not used clinically?', options: ['It is technically impossible with current tools', 'Changes would be inherited by future generations, raising serious ethical and safety concerns', 'It only works on bacteria', 'It is identical to somatic editing in every way'], correctIndex: 1, explanation: 'Germline editing alters eggs, sperm, or embryos, meaning changes — including any unintended ones — would be passed on to all future offspring, which is why it is not used in approved clinical practice.' },
+      ],
+    },
+    {
+      id: 'mod10-l3', title: 'Bispecific Antibodies', emoji: '🔗', duration: '7 min',
+      sections: [
+        { type: 'text', heading: 'Antibodies With Two Jobs',
+          body: 'A normal antibody binds one specific target with both of its arms. A bispecific antibody is engineered so each arm recognises a different target — most commonly, one arm grabs a tumour antigen while the other grabs CD3 on a T cell, physically bridging the two and forcing that T cell to attack the tumour cell, regardless of whether it would have recognised the tumour on its own.' },
+        { type: 'table', heading: 'Bispecific Antibodies vs CAR-T',
+          leftHeader: 'Bispecific Antibody', rightHeader: 'CAR-T Cell Therapy',
+          rows: [
+            { left: 'Off-the-shelf, ready to use immediately', right: 'Personalised — manufactured individually from each patient\'s own T cells' },
+            { left: 'Given as repeated infusions, like a regular drug', right: 'One-time infusion; cells can persist and expand in the body afterward' },
+            { left: 'Recruits whichever T cells the patient already has at the time of dosing', right: 'Permanently re-engineers a batch of T cells with a new receptor' },
+            { left: 'Effect fades once the drug clears the body', right: 'Can provide long-term surveillance if the engineered cells persist' },
+          ],
+        },
+        { type: 'callout', label: 'Blinatumomab: proof of concept', color: 'blue',
+          text: 'Blinatumomab, a CD19xCD3 bispecific antibody, was among the first approved bispecific "T-cell engagers" (BiTEs), used for relapsed B-cell acute lymphoblastic leukemia. It targets the same CD19 marker as CD19 CAR-T therapy — but as an off-the-shelf drug, not a custom-manufactured cell product.' },
+        { type: 'terms', heading: 'Key Terms',
+          terms: [
+            { term: 'Bispecific antibody', definition: 'An engineered antibody with two arms that each bind a different target, often used to physically link a T cell to a tumour cell.' },
+            { term: 'T-cell engager (BiTE)', definition: 'A class of bispecific antibody designed to bind CD3 on T cells and an antigen on target cells, triggering the T cell to attack.' },
+          ],
+        },
+      ],
+      takeaways: [
+        'Bispecific antibodies bind two different targets simultaneously, often bridging a T cell directly to a tumour cell.',
+        'Unlike CAR-T, bispecifics are off-the-shelf drugs given as repeated doses, not personalised one-time cell infusions.',
+        'Blinatumomab demonstrated that bispecific T-cell engagers can achieve a similar goal to CAR-T through a very different mechanism.',
+      ],
+      quiz: [
+        { id: 'q1', question: 'How does a CD19xCD3 bispecific antibody work?', options: ['It directly kills tumour cells using complement', 'One arm binds CD19 on the tumour cell while the other binds CD3, bridging a T cell to the tumour', 'It blocks CD19 to prevent B cell development', 'It only works on T cells, not tumour cells'], correctIndex: 1, explanation: 'The bispecific antibody binds CD19 on the tumour cell with one arm and CD3 on a T cell with the other, physically bridging them and triggering the T cell to attack.' },
+        { id: 'q2', question: 'What is a key practical difference between bispecific antibodies and CAR-T therapy?', options: ['Bispecifics are personalised; CAR-T is off-the-shelf', 'Bispecifics are off-the-shelf drugs given repeatedly; CAR-T is a personalised one-time cell infusion', 'They are functionally identical in every way', 'CAR-T cannot target any of the same antigens as bispecifics'], correctIndex: 1, explanation: 'Bispecific antibodies are manufactured drugs that can be given to any patient and dosed repeatedly, while CAR-T requires manufacturing a personalised cell product from each patient.' },
+      ],
+    },
+    {
+      id: 'mod10-l4', title: 'The Future of Immune Engineering', emoji: '🚀', duration: '7 min',
+      sections: [
+        { type: 'text', heading: 'Where the Field Is Headed',
+          body: 'Researchers across gene therapy, cell engineering, and antibody design are converging on the same goal: making powerful immune therapies faster to manufacture, cheaper to access, and safer to use.' },
+        { type: 'table', heading: 'Active Frontiers',
+          leftHeader: 'Direction', rightHeader: 'Goal',
+          rows: [
+            { left: 'Allogeneic ("off-the-shelf") CAR-T', right: 'Gene-edit donor T cells to remove rejection triggers, manufacture in bulk, and treat patients without the weeks-long custom manufacturing wait.' },
+            { left: 'In vivo CAR-T', right: 'Deliver CAR genes directly into a patient\'s T cells inside the body, skipping lab manufacturing entirely — still early-stage research.' },
+            { left: 'mRNA-based in vivo gene editing', right: 'Package CRISPR components in lipid nanoparticles, similar to mRNA vaccine delivery, for transient, controllable editing inside the body.' },
+            { left: 'Combination approaches', right: 'Pair checkpoint inhibitors, bispecifics, and engineered cells to attack resistant cancers from multiple angles at once.' },
+          ],
+        },
+        { type: 'callout', label: 'Promising, but not arrived yet', color: 'orange',
+          text: 'Most of these approaches are still in early clinical trials. High manufacturing cost, accessibility and equity concerns, and the need for long-term safety data are real open questions — exciting science doesn\'t always translate quickly or evenly into available treatment.' },
+        { type: 'terms', heading: 'Key Terms',
+          terms: [
+            { term: 'Allogeneic cell therapy', definition: 'A cell therapy manufactured from a healthy donor\'s cells rather than the patient\'s own, enabling bulk, off-the-shelf production.' },
+            { term: 'In vivo gene editing', definition: 'Gene editing performed directly inside the patient\'s body, rather than on cells removed and modified in a lab.' },
+            { term: 'Lipid nanoparticle (LNP)', definition: 'A fatty, microscopic delivery particle used to carry mRNA or gene-editing components into cells, as in mRNA vaccines.' },
+          ],
+        },
+      ],
+      takeaways: [
+        'Allogeneic CAR-T aims to remove the wait time of personalised manufacturing by using gene-edited donor cells.',
+        'In vivo gene editing and CAR-T generation are early-stage approaches that could someday skip lab manufacturing entirely.',
+        'Cost, accessibility, and long-term safety data remain real barriers between promising research and widely available treatment.',
+      ],
+      quiz: [
+        { id: 'q1', question: 'What problem does allogeneic ("off-the-shelf") CAR-T aim to solve?', options: ['The high cost of bispecific antibodies', 'The weeks-long wait required to manufacture a personalised CAR-T product for each patient', 'The risk of insertional mutagenesis', 'The need for live vaccines'], correctIndex: 1, explanation: 'Standard CAR-T must be manufactured individually from each patient\'s own T cells, which takes weeks. Allogeneic CAR-T uses gene-edited donor cells made in bulk in advance, removing that wait.' },
+        { id: 'q2', question: 'Why is it important to stay cautious about emerging immune therapies discussed in this lesson?', options: ['They have all already failed in clinical trials', 'Most are still early-stage research, with real cost, access, and long-term safety questions unresolved', 'They are purely theoretical and not being tested in humans at all', 'None of them have shown any promise so far'], correctIndex: 1, explanation: 'While early results are promising, most of these approaches are still in early clinical trials, and questions about manufacturing cost, equitable access, and long-term safety remain genuinely open.' },
+      ],
+    },
+  ],
+};
+
+export const MODULES: Module[] = [mod1, mod2, mod3, mod4, mod5, mod6, mod7, mod8, mod9, mod10];
 
 export function getModule(id: string) { return MODULES.find(m => m.id === id); }
 export function getLesson(moduleId: string, lessonId: string) {
@@ -1039,4 +1489,5 @@ export function getLesson(moduleId: string, lessonId: string) {
 export const MODULE_COLORS: Record<string, string> = {
   mod1: '#3B82F6', mod2: '#10B981', mod3: '#EF4444', mod4: '#8B5CF6',
   mod5: '#F59E0B', mod6: '#14B8A6', mod7: '#6366F1',
+  mod8: '#EC4899', mod9: '#06B6D4', mod10: '#F97316',
 };
