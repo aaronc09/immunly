@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import '../pages/LoginPage.css';
 import './WelcomeIntro.css';
 
-const SLIDE_BACKGROUNDS = ['/intro1.png', '/intro2.png'];
+const SLIDE_BACKGROUNDS = ['/intro1.webp', '/intro2.webp'];
 
 type AuthMode = 'login' | 'register';
 

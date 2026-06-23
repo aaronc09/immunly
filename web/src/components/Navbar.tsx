@@ -5,6 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { useProgress } from '../context/ProgressContext';
 import Avatar from './Avatar';
 import Logo from './Logo';
+import SearchModal from './SearchModal';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -13,6 +14,7 @@ export default function Navbar() {
   const { progress } = useProgress();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   function handleLogout() {
     logout();
@@ -45,6 +47,11 @@ export default function Navbar() {
           {progress.streak > 0 && (
             <span className="navbar__streak">🔥 {progress.streak}</span>
           )}
+
+          {/* Search */}
+          <button className="navbar__theme-btn" onClick={() => setSearchOpen(true)} aria-label="Search lessons">
+            🔍
+          </button>
 
           {/* Theme toggle */}
           <button className="navbar__theme-btn" onClick={toggle} aria-label="Toggle theme">
@@ -85,6 +92,8 @@ export default function Navbar() {
           : <Link to="/login" className="btn btn-primary" onClick={() => setMenuOpen(false)}>Log in</Link>
         }
       </div>
+
+      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
     </nav>
   );
 }

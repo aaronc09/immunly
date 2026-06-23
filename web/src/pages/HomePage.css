@@ -1,7 +1,7 @@
 /* ── Hero ─────────────────────────────────────────────────────────────────── */
 .hero {
   padding: 72px 0 56px;
-  background-image: linear-gradient(160deg, rgba(247, 248, 252, 0.82) 0%, rgba(235, 244, 255, 0.6) 100%), url('/pic1.png');
+  background-image: linear-gradient(160deg, rgba(247, 248, 252, 0.82) 0%, rgba(235, 244, 255, 0.6) 100%), url('/pic1.webp');
   background-size: cover;
   background-position: top center;
   border-bottom: 1px solid var(--border);
