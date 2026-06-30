@@ -76,6 +76,7 @@ const mod1: Module = {
       quiz: [
         { id: 'q1', question: 'Which enzyme reads DNA and makes an mRNA copy?', options: ['DNA polymerase', 'RNA polymerase', 'Reverse transcriptase', 'Helicase'], correctIndex: 1, explanation: 'RNA polymerase unwinds the double helix and synthesises the mRNA strand complementary to the template DNA strand during transcription.' },
         { id: 'q2', question: 'What is a codon?', options: ['An amino acid', 'A three-nucleotide mRNA sequence specifying one amino acid', 'An exon', 'A type of ribosome'], correctIndex: 1, explanation: 'Codons are three-base sequences read by the ribosome. There are 64 possible codons encoding 20 amino acids plus start and stop signals.' },
+        { id: 'q3', question: 'What happens during RNA processing in eukaryotes?', options: ['Amino acids are assembled into a chain', 'Introns are spliced out and a 5′ cap and poly-A tail are added', 'DNA is replicated', 'Proteins are folded by chaperones'], correctIndex: 1, explanation: 'Before mRNA exits the nucleus, introns are spliced out and a 5′ cap and poly-A tail are added to stabilise it — this happens between transcription and translation.' },
       ],
     },
     {
@@ -112,6 +113,8 @@ const mod1: Module = {
       ],
       quiz: [
         { id: 'q1', question: 'Where are antibodies made within a plasma cell?', options: ['Nucleus', 'Smooth ER', 'Rough ER ribosomes → Golgi', 'Mitochondria'], correctIndex: 2, explanation: 'Antibodies are secretory proteins. They are synthesised on rough ER ribosomes, folded and modified in the ER lumen, then packaged in the Golgi for secretion.' },
+        { id: 'q2', question: 'What do lysosomes allow macrophages to do?', options: ['Generate ATP for migration', 'Digest phagocytosed pathogens using hydrolytic enzymes', 'Present antigens on MHC II', 'Synthesise antibodies'], correctIndex: 1, explanation: 'Lysosomes contain digestive enzymes. Macrophages use them to destroy bacteria and debris they have engulfed by phagocytosis.' },
+        { id: 'q3', question: 'What role does the cytoskeleton play in immune cells?', options: ['It stores genetic material', 'It enables migration to infection sites and formation of the immunological synapse', 'It produces cytokines', 'It packages antibodies for secretion'], correctIndex: 1, explanation: 'The cytoskeleton is a network of filaments that lets immune cells change shape, migrate toward infection sites, and form stable contacts like the immunological synapse with T cells.' },
       ],
     },
     {
@@ -156,6 +159,7 @@ const mod1: Module = {
       quiz: [
         { id: 'q1', question: 'What is the common ancestor of all blood and immune cells?', options: ['Neutrophil', 'Monocyte', 'Hematopoietic stem cell', 'Dendritic cell'], correctIndex: 2, explanation: 'The HSC is the multipotent stem cell in bone marrow from which all blood cell lineages — myeloid and lymphoid — derive.' },
         { id: 'q2', question: 'T cells and B cells arise from which progenitor?', options: ['Common myeloid progenitor', 'Common lymphoid progenitor', 'Megakaryocyte', 'Monocyte'], correctIndex: 1, explanation: 'T cells, B cells, and NK cells all derive from the Common Lymphoid Progenitor (CLP).' },
+        { id: 'q3', question: 'Why does bone marrow transplantation work as a treatment?', options: ['It replaces damaged lymph nodes', 'Donated hematopoietic stem cells can repopulate the patient\'s entire immune system', 'It directly replaces antibodies', 'It removes the need for a thymus'], correctIndex: 1, explanation: 'Because HSCs are multipotent and self-renewing, a donor\'s healthy HSCs can rebuild a patient\'s entire blood and immune system after transplantation.' },
       ],
     },
     {
@@ -192,6 +196,8 @@ const mod1: Module = {
       ],
       quiz: [
         { id: 'q1', question: 'Where do T cells mature and undergo selection?', options: ['Bone marrow', 'Spleen', 'Thymus', 'Lymph node'], correctIndex: 2, explanation: 'T cell precursors migrate from the bone marrow to the thymus where positive selection (must recognise MHC) and negative selection (must not react to self) occur.' },
+        { id: 'q2', question: 'In which zone of a lymph node do dendritic cells present antigens to T cells?', options: ['Cortex', 'Paracortex', 'Medulla', 'Germinal centre'], correctIndex: 1, explanation: 'The paracortex is the T cell zone of a lymph node, where antigen-loaded dendritic cells activate T cells and launch the adaptive response.' },
+        { id: 'q3', question: 'What is the main function of the spleen?', options: ['T cell maturation', 'B cell maturation', 'Filtering blood and responding to blood-borne antigens', 'Producing hematopoietic stem cells'], correctIndex: 2, explanation: 'The spleen is a secondary lymphoid organ that filters blood and mounts immune responses against blood-borne antigens, distinct from the thymus and bone marrow which are primary lymphoid organs.' },
       ],
     },
   ],
@@ -239,6 +245,7 @@ const mod2: Module = {
       quiz: [
         { id: 'q1', question: 'Which feature is unique to adaptive immunity?', options: ['Speed of response', 'Use of phagocytosis', 'Immunological memory', 'Pattern recognition receptors'], correctIndex: 2, explanation: 'Only the adaptive immune system generates memory cells that persist after infection and provide faster, stronger responses on re-exposure — the basis of vaccination.' },
         { id: 'q2', question: 'Which cell type bridges innate and adaptive immunity?', options: ['Neutrophil', 'NK cell', 'Dendritic cell', 'Mast cell'], correctIndex: 2, explanation: 'Dendritic cells sense pathogens with innate receptors, then migrate to lymph nodes and present antigen peptides on MHC molecules to naïve T cells, initiating the adaptive response.' },
+        { id: 'q3', question: 'What do pattern recognition receptors (PRRs) detect?', options: ['Specific antigens unique to one pathogen', 'PAMPs — conserved molecular patterns shared across many microbes', 'Self-MHC molecules', 'Antibody isotypes'], correctIndex: 1, explanation: 'PRRs like Toll-like receptors recognise PAMPs (Pathogen-Associated Molecular Patterns) — conserved structures like LPS or flagellin shared broadly across classes of microbes, allowing fast, non-specific detection.' },
       ],
     },
     {
@@ -266,6 +273,8 @@ const mod2: Module = {
       ],
       quiz: [
         { id: 'q1', question: 'How do NK cells detect tumour cells?', options: ['Via TCR recognition of tumour antigen', 'Via missing MHC I expression ("missing self")', 'Via IgE-mediated degranulation', 'Via complement activation'], correctIndex: 1, explanation: 'NK cells check for MHC I expression. Healthy cells display MHC I, which inhibits NK cells. Virally infected and tumour cells often downregulate MHC I — NK cells detect this "missing self" and kill.' },
+        { id: 'q2', question: 'What are neutrophil extracellular traps (NETs)?', options: ['Antibody-coated vesicles', 'Sticky webs of DNA that catch and trap bacteria', 'A type of cytokine receptor', 'Phagocytic vacuoles in macrophages'], correctIndex: 1, explanation: 'NETs are sticky webs of DNA released by neutrophils that physically trap and help kill bacteria — one of several neutrophil weapons alongside phagocytosis and degranulation.' },
+        { id: 'q3', question: 'Which cytokines drive the redness, swelling, and fever of inflammation?', options: ['IL-4 and IL-13', 'IL-1β, IL-6, and TNF-α', 'IL-10 and TGF-β', 'IL-2 and IFN-γ'], correctIndex: 1, explanation: 'When macrophages detect a pathogen, they release IL-1β, IL-6, and TNF-α, which cause vasodilation, vascular permeability, fever, and recruitment of more immune cells.' },
       ],
     },
     {
@@ -300,6 +309,8 @@ const mod2: Module = {
       ],
       quiz: [
         { id: 'q1', question: 'Which cytokine is primarily responsible for driving Th1 differentiation and macrophage activation?', options: ['IL-4', 'IL-10', 'IFN-γ', 'IL-12'], correctIndex: 3, explanation: 'IL-12 (from DCs and macrophages) drives naive T cells to differentiate into Th1 cells, which then produce IFN-γ to activate macrophages — a positive feedback loop for clearing intracellular pathogens.' },
+        { id: 'q2', question: 'Which cells express MHC Class I molecules?', options: ['Only dendritic cells', 'Only B cells', 'All nucleated cells', 'Only macrophages'], correctIndex: 2, explanation: 'MHC Class I is expressed on virtually all nucleated cells, allowing CD8⁺ T cells to survey the intracellular contents of any cell — unlike MHC II, which is restricted to professional antigen-presenting cells.' },
+        { id: 'q3', question: 'Which cytokine dampens immune responses to prevent excessive tissue damage?', options: ['TNF-α', 'IL-12', 'IL-10', 'IFN-γ'], correctIndex: 2, explanation: 'IL-10, produced by Tregs and macrophages, is an anti-inflammatory cytokine that reins in immune responses to limit collateral damage.' },
       ],
     },
     {
@@ -340,6 +351,7 @@ const mod2: Module = {
       quiz: [
         { id: 'q1', question: 'What happens to a T cell that receives signal 1 (antigen) but NOT signal 2 (co-stimulation)?', options: ['It becomes a memory cell', 'It differentiates into Th1', 'It becomes anergic — unresponsive', 'It undergoes apoptosis immediately'], correctIndex: 2, explanation: 'Without CD28–B7 co-stimulation (signal 2), antigen recognition alone leads to anergy — the T cell becomes functionally unresponsive. This is a peripheral tolerance mechanism to prevent autoimmunity.' },
         { id: 'q2', question: 'Somatic hypermutation occurs in which structure?', options: ['Thymus', 'Bone marrow', 'Germinal centres in lymph nodes', 'Spleen red pulp'], correctIndex: 2, explanation: 'Germinal centres are specialised microstructures in lymph node follicles where B cells undergo somatic hypermutation and are selected for higher affinity antibodies — a process called affinity maturation.' },
+        { id: 'q3', question: 'What does class-switch recombination change about an antibody?', options: ['Its antigen specificity', 'Its isotype (e.g. IgM to IgG), while keeping the same antigen specificity', 'Its amino acid sequence in the variable region', 'Its binding affinity through mutation'], correctIndex: 1, explanation: 'Class-switch recombination changes which antibody isotype (IgM, IgG, IgA, IgE) a B cell produces, while the antigen-binding specificity stays the same — distinct from somatic hypermutation, which changes affinity.' },
       ],
     },
   ],
@@ -380,6 +392,8 @@ const mod3: Module = {
       ],
       quiz: [
         { id: 'q1', question: 'What is molecular mimicry in the context of autoimmunity?', options: ['A pathogen copying host cell DNA', 'A pathogen antigen resembling a self-antigen, leading to cross-reactive immune attack', 'T cells imitating B cells', 'Complement mimicking antibodies'], correctIndex: 1, explanation: 'Molecular mimicry: immune responses raised against a pathogen antigen that resembles a self-antigen can cross-react with self-tissues. Classic example: Streptococcus M protein mimics cardiac myosin → rheumatic fever.' },
+        { id: 'q2', question: 'Where does central tolerance for T cells occur?', options: ['Bone marrow', 'Lymph nodes', 'Thymus', 'Spleen'], correctIndex: 2, explanation: 'In the thymus, T cells that react too strongly to self-antigens are deleted through clonal deletion — this is central tolerance for the T cell lineage.' },
+        { id: 'q3', question: 'In Type 1 Diabetes, what do CD8⁺ T cells destroy?', options: ['Thyroid hormone receptors', 'Insulin-producing pancreatic β-cells', 'Synovial joint lining', 'Myelin sheath around neurons'], correctIndex: 1, explanation: 'Type 1 Diabetes results from CD8⁺ T cells destroying insulin-producing β-cells in the pancreas, with autoantibodies against insulin and GAD serving as diagnostic markers.' },
       ],
     },
     {
@@ -414,6 +428,8 @@ const mod3: Module = {
       ],
       quiz: [
         { id: 'q1', question: 'What triggers mast cell degranulation in a Type I allergic reaction?', options: ['Complement activation', 'TCR recognition of allergen-MHC', 'Cross-linking of IgE on the mast cell surface by allergen', 'NK cell-mediated contact'], correctIndex: 2, explanation: 'Pre-formed IgE (from prior sensitisation) is bound to FcεRI on mast cells. When allergen cross-links two IgE molecules simultaneously, the FcεRI signals cause immediate degranulation and histamine release.' },
+        { id: 'q2', question: 'What is the first-line emergency treatment for anaphylaxis?', options: ['Oral antihistamines', 'Intramuscular epinephrine', 'Inhaled corticosteroids', 'IV antibiotics'], correctIndex: 1, explanation: 'Epinephrine (adrenaline), given intramuscularly, reverses the vasodilation and bronchospasm of anaphylaxis and can be lifesaving within minutes.' },
+        { id: 'q3', question: 'What causes the late-phase allergic response, 6–24 hours after exposure?', options: ['Histamine released from mast cells', 'Complement-mediated cell lysis', 'Newly synthesised cytokines (IL-4, IL-5, IL-13) recruiting eosinophils', 'Direct viral cytotoxicity'], correctIndex: 2, explanation: 'While histamine drives the immediate symptoms, the late phase is driven by newly made cytokines that recruit eosinophils, causing persistent inflammation and, in chronic asthma, airway remodelling.' },
       ],
     },
     {
@@ -449,6 +465,8 @@ const mod3: Module = {
       ],
       quiz: [
         { id: 'q1', question: 'Why does HIV cause AIDS even though it\'s a viral infection?', options: ['HIV directly destroys red blood cells', 'HIV progressively depletes CD4⁺ T cells, crippling the immune system\'s ability to fight all infections', 'HIV produces a toxin that kills all white blood cells', 'HIV causes bone marrow failure'], correctIndex: 1, explanation: 'CD4⁺ T cells orchestrate both cellular and humoral immune responses. As HIV depletes them over years, the immune system loses its commander — leaving the body vulnerable to ordinarily harmless opportunistic infections.' },
+        { id: 'q2', question: 'What CD4⁺ T cell count is used to diagnose AIDS?', options: ['Below 800 cells/µL', 'Below 500 cells/µL', 'Below 200 cells/µL', 'Below 50 cells/µL'], correctIndex: 2, explanation: 'AIDS is diagnosed when CD4⁺ T cell count falls below 200 cells/µL (normal is roughly 500–1200) or an AIDS-defining illness occurs.' },
+        { id: 'q3', question: 'What does HIV integrase do?', options: ['Converts viral RNA into DNA', 'Inserts the HIV DNA (provirus) into the host cell\'s chromosome', 'Cleaves viral precursor proteins', 'Binds CD4 to initiate entry'], correctIndex: 1, explanation: 'Integrase inserts the reverse-transcribed HIV DNA into the host genome as a provirus, where it can remain latent for years — this is why HIV cannot be cured by current antiretrovirals alone.' },
       ],
     },
     {
@@ -479,6 +497,8 @@ const mod3: Module = {
       ],
       quiz: [
         { id: 'q1', question: 'How does PD-L1 on tumour cells help them evade immunity?', options: ['It activates the complement cascade', 'It binds PD-1 on T cells, sending an inhibitory signal that suppresses anti-tumour T cell activity', 'It increases MHC I expression to hide tumour antigens', 'It stimulates Treg proliferation via IL-2'], correctIndex: 1, explanation: 'PD-L1 (programmed death-ligand 1) on tumour cells binds PD-1 on T cells, triggering an inhibitory signal that reduces T cell cytokine production and proliferation — effectively exhausting the anti-tumour response.' },
+        { id: 'q2', question: 'During which phase of cancer immunoediting is the tumour controlled but not eliminated?', options: ['Elimination', 'Equilibrium', 'Escape', 'Evasion'], correctIndex: 1, explanation: 'During equilibrium, the immune system holds the tumour in check without fully eliminating it. Resistant tumour variants evolve under this pressure, sometimes over years, before breaking free in the escape phase.' },
+        { id: 'q3', question: 'What is the role of myeloid-derived suppressor cells (MDSCs) in the tumour microenvironment?', options: ['They present tumour antigens to activate T cells', 'They paralyse effector T cells, creating an immunosuppressive environment', 'They directly kill tumour cells', 'They produce antibodies against the tumour'], correctIndex: 1, explanation: 'MDSCs, along with Tregs and anti-inflammatory cytokines like TGF-β and IL-10, help create an immunosuppressive tumour microenvironment that blunts effector T cell function.' },
       ],
     },
   ],
@@ -522,6 +542,8 @@ const mod4: Module = {
       ],
       quiz: [
         { id: 'q1', question: 'Why can\'t mRNA vaccines alter your DNA?', options: ['The mRNA is too small to enter the nucleus', 'mRNA stays in the cytoplasm and is degraded within days — it has no mechanism to integrate into chromosomal DNA', 'Vaccines are injected into muscle, not into the bloodstream', 'RNA is chemically identical to DNA so the immune system ignores it'], correctIndex: 1, explanation: 'mRNA cannot be reverse-transcribed into DNA (no reverse transcriptase in most human cells) and cannot enter the nucleus. It is degraded by cellular RNases within a few days after translation.' },
+        { id: 'q2', question: 'What is the role of lipid nanoparticles (LNPs) in mRNA vaccines?', options: ['They directly trigger antibody production', 'They protect the fragile mRNA and help it enter cells, also acting as an adjuvant', 'They replace the need for ribosomes', 'They convert mRNA into DNA'], correctIndex: 1, explanation: 'Bare mRNA degrades rapidly in the body. LNPs encapsulate and protect it, help it fuse with and enter cells, and themselves act as an adjuvant by activating innate immune cells.' },
+        { id: 'q3', question: 'Why did Karikó and Weissman modify vaccine mRNA with pseudouridine?', options: ['To make the mRNA larger', 'To prevent innate immune recognition and improve mRNA stability', 'To help the mRNA enter the nucleus', 'To make the antigen more potent'], correctIndex: 1, explanation: 'Pseudouridine replaces regular uridine in vaccine mRNA, preventing the innate immune system from destroying it before translation — a Nobel-winning insight that made effective mRNA vaccines possible.' },
       ],
     },
     {
@@ -556,6 +578,8 @@ const mod4: Module = {
       ],
       quiz: [
         { id: 'q1', question: 'Why is CAR-T therapy more versatile than normal T cell immunity for targeting cancer?', options: ['CARs respond faster than TCRs', 'CARs recognise tumour antigens directly without requiring MHC presentation — bypassing MHC I downregulation', 'CAR-T cells produce more antibodies', 'CAR-T cells live for only 24 hours'], correctIndex: 1, explanation: 'Normal TCR-mediated killing requires MHC I to display the tumour antigen — but many tumours downregulate MHC I. CARs use antibody-derived binding and bypass MHC entirely, so tumour MHC I loss doesn\'t protect the cancer.' },
+        { id: 'q2', question: 'Why do patients receive lymphodepleting chemotherapy before CAR-T infusion?', options: ['To kill remaining cancer cells directly', 'To create space for the infused CAR-T cells to expand', 'To reduce CRS risk to zero', 'To remove the need for leukapheresis'], correctIndex: 1, explanation: 'Lymphodepletion clears out existing T cells, creating room and reducing competition for resources so the infused CAR-T cells can expand effectively in the patient.' },
+        { id: 'q3', question: 'How is Cytokine Release Syndrome (CRS) typically treated?', options: ['Increasing the CAR-T dose', 'IL-6 receptor blockade with tocilizumab', 'Stopping all immunosuppression', 'A second round of leukapheresis'], correctIndex: 1, explanation: 'CRS is driven by massive cytokine release, especially IL-6, as CAR-T cells activate. Tocilizumab blocks the IL-6 receptor and is the standard treatment for moderate-to-severe CRS.' },
       ],
     },
     {
@@ -590,6 +614,8 @@ const mod4: Module = {
       ],
       quiz: [
         { id: 'q1', question: 'Why did CTLA-4 and PD-1 discoveries win the 2018 Nobel Prize?', options: ['They explained the Central Dogma', 'They led to checkpoint inhibitor immunotherapy — a transformative cancer treatment that works by removing immune brakes', 'They discovered CAR-T cell therapy', 'They developed the first mRNA vaccine'], correctIndex: 1, explanation: 'Allison and Honjo discovered that blocking CTLA-4 and PD-1 could unleash T cells against cancer. This led to checkpoint inhibitor drugs that have produced durable responses in melanoma, lung cancer, and many others.' },
+        { id: 'q2', question: 'What does ipilimumab block?', options: ['PD-1', 'PD-L1', 'CTLA-4', 'LAG-3'], correctIndex: 2, explanation: 'Ipilimumab is an anti-CTLA-4 antibody, approved in 2011 for melanoma as the first checkpoint inhibitor — it blocks CTLA-4\'s competition with CD28 for B7 binding, increasing T cell co-stimulation.' },
+        { id: 'q3', question: 'What are irAEs (immune-related adverse events)?', options: ['Allergic reactions to the antibody itself', 'Side effects resembling mild autoimmunity, caused by increased self-reactivity from checkpoint blockade', 'Infections caused by immunosuppression', 'Tumour resistance to the drug'], correctIndex: 1, explanation: 'By releasing the brakes on T cells generally, not just anti-tumour T cells, checkpoint inhibitors can increase self-reactivity — causing irAEs that resemble autoimmune disease and are managed with corticosteroids.' },
       ],
     },
   ],
@@ -644,6 +670,8 @@ const mod5: Module = {
       ],
       quiz: [
         { id: 'q1', question: 'What is the most efficient first step when approaching a new scientific paper?', options: ['Read the methods section in full', 'Read the abstract to judge relevance', 'Email the authors', 'Read the results section and then the introduction'], correctIndex: 1, explanation: 'The abstract gives you the research question, approach, key findings, and conclusion in ~250 words. It\'s the most efficient way to decide whether a paper is worth your time to read fully.' },
+        { id: 'q2', question: 'What does a p-value of less than 0.05 conventionally indicate?', options: ['The result is definitely true', 'The result is statistically significant by convention, though not proof', 'The sample size was too small', 'The study had no control group'], correctIndex: 1, explanation: 'p < 0.05 is a widely used significance threshold, meaning results this extreme would be unlikely under pure chance — but it is a convention, not a guarantee of truth or importance.' },
+        { id: 'q3', question: 'What information does the Methods section of a paper provide?', options: ['The authors\' opinions on future research', 'How the experiments were done, including reproducibility details', 'A summary of the entire study', 'A list of related papers'], correctIndex: 1, explanation: 'The Methods section describes exactly how the experiments were performed, which is essential for assessing whether the results are reliable and reproducible.' },
       ],
     },
     {
@@ -672,6 +700,8 @@ const mod5: Module = {
       ],
       quiz: [
         { id: 'q1', question: 'A researcher wants to count how many CD4⁺ T cells are in a blood sample and check which are also PD-1⁺. Which technique is best?', options: ['Western blot', 'ELISA', 'Flow cytometry', 'qRT-PCR'], correctIndex: 2, explanation: 'Flow cytometry allows simultaneous detection of multiple surface markers (CD4, PD-1) on individual cells. A researcher can gate on CD4⁺ cells and then see what fraction co-express PD-1 — impossible with bulk techniques like ELISA or western blot.' },
+        { id: 'q2', question: 'Which technique would best measure the concentration of a specific cytokine in serum?', options: ['Western blot', 'ELISA', 'Flow cytometry', 'Immunohistochemistry'], correctIndex: 1, explanation: 'ELISA uses capture and detection antibodies to quantify a specific protein in solution, such as a cytokine in serum, producing a sensitive, quantitative readout.' },
+        { id: 'q3', question: 'What can immunohistochemistry (IHC) reveal that flow cytometry cannot?', options: ['The exact number of cells of a given type', 'The amount of a soluble protein in blood', 'Where a protein is physically located within intact tissue', 'The DNA sequence of a gene'], correctIndex: 2, explanation: 'IHC stains intact tissue sections, preserving spatial information about where a protein sits — such as tumour-infiltrating lymphocytes — which flow cytometry loses by breaking tissue into single cells.' },
       ],
     },
     {
@@ -716,6 +746,8 @@ const mod5: Module = {
       ],
       quiz: [
         { id: 'q1', question: 'What key advantage does single-cell RNA-seq have over bulk RNA-seq?', options: ['It measures protein levels rather than RNA', 'It reveals gene expression at the level of individual cells, uncovering cell-type heterogeneity hidden in bulk averages', 'It is cheaper and requires less computational power', 'It measures genomic DNA rather than mRNA'], correctIndex: 1, explanation: 'Bulk RNA-seq averages gene expression across all cells in a sample, masking the diversity within. scRNA-seq measures each cell individually, allowing identification of rare cell types, subpopulations, and transitional states.' },
+        { id: 'q2', question: 'What does a volcano plot display in RNA-seq analysis?', options: ['Cell locations on a UMAP', 'log2(fold-change) versus −log10(p-value) to highlight significant gene expression changes', 'The raw sequencing reads', 'The structure of the reference genome'], correctIndex: 1, explanation: 'A volcano plot puts fold-change on one axis and statistical significance on the other, making genes that are both strongly changed and statistically significant stand out as dots in the upper corners.' },
+        { id: 'q3', question: 'What is the purpose of the alignment step in an RNA-seq pipeline?', options: ['To normalise read counts for sequencing depth', 'To map sequencing reads back to a reference genome and determine which gene they came from', 'To visualise results as a heatmap', 'To extract RNA from cells'], correctIndex: 1, explanation: 'Alignment tools like STAR or HISAT2 map each short sequencing read to a reference genome or transcriptome, identifying which gene each read originated from before counting can occur.' },
       ],
     },
   ],
@@ -763,6 +795,7 @@ const mod6: Module = {
       quiz: [
         { id: 'q1', question: 'What is the main goal of translational research?', options: ['To publish as many papers as possible', 'To move a discovery from the lab toward a real treatment or test', 'To replace clinical trials', 'To study only animal models'], correctIndex: 1, explanation: 'Translational research bridges basic discovery and clinical application — turning mechanisms into therapies, diagnostics, or vaccines.' },
         { id: 'q2', question: 'Which phase of a clinical trial primarily tests safety in a small group?', options: ['Phase I', 'Phase II', 'Phase III', 'Phase IV'], correctIndex: 0, explanation: 'Phase I trials are small and focus on safety and dosing. Efficacy is the focus of Phase II and III.' },
+        { id: 'q3', question: 'Which type of research asks "who gets the disease, and what patterns predict it"?', options: ['Basic / fundamental research', 'Translational research', 'Epidemiological / population research', 'Computational / dry-lab research'], correctIndex: 2, explanation: 'Epidemiological research studies patterns of disease across populations — who is affected and what factors predict risk — distinct from basic mechanism-focused research.' },
       ],
     },
     {
@@ -793,6 +826,7 @@ const mod6: Module = {
       quiz: [
         { id: 'q1', question: 'Which technique would you use to count how many CD8⁺ T cells are in a blood sample?', options: ['Western blot', 'Flow cytometry', 'ELISA', 'PCR'], correctIndex: 1, explanation: 'Flow cytometry identifies and counts cells by their surface markers using fluorescent antibodies — ideal for quantifying a specific immune-cell population.' },
         { id: 'q2', question: 'What does RNA-seq measure?', options: ['The amount of a single protein', 'Which genes are being expressed and how strongly', 'The number of cells in a sample', 'The 3D structure of an antibody'], correctIndex: 1, explanation: 'RNA sequencing reads the mRNA in a sample to reveal gene expression across the transcriptome.' },
+        { id: 'q3', question: 'What is the key difference between a "wet lab" and a "dry lab"?', options: ['A wet lab only studies water-borne pathogens', 'A wet lab works with physical samples; a dry lab works with data and code', 'A dry lab cannot use CRISPR', 'There is no real difference'], correctIndex: 1, explanation: 'A wet lab handles physical materials like cells and reagents, while a dry lab focuses on data, code, and computational analysis — many modern labs combine both.' },
       ],
     },
     {
@@ -838,6 +872,7 @@ const mod6: Module = {
       quiz: [
         { id: 'q1', question: 'What makes a cold email to a professor most effective?', options: ['Sending the same generic email to 100 professors', 'Referencing something specific from their actual research and keeping it short', 'Demanding a paid position immediately', 'Listing every class you have ever taken'], correctIndex: 1, explanation: 'A specific, concise email that shows you read their work — and asks for a brief conversation rather than a job — gets far more replies than a generic mass email.' },
         { id: 'q2', question: 'Which trait do research mentors value most in a new student?', options: ['A perfect GPA', 'Reliability and careful, honest record-keeping', 'Already knowing every technique', 'Working alone without asking questions'], correctIndex: 1, explanation: 'Reproducible science depends on people who show up, follow protocols carefully, and report what truly happened. That reliability matters more than prior expertise.' },
+        { id: 'q3', question: 'Besides emailing university labs directly, what is another valid entry point into research as a student?', options: ['Only PhD programs accept students', 'Structured summer research programs (e.g. NIH, SIMR, RSI, university REUs)', 'There are no other options', 'Research requires a college degree first'], correctIndex: 1, explanation: 'Summer research programs, local hospitals, science fairs with mentorship, and citizen science/open-data projects are all valid ways in, alongside directly emailing faculty.' },
       ],
     },
     {
@@ -870,6 +905,7 @@ const mod6: Module = {
       quiz: [
         { id: 'q1', question: 'Why is a control group essential in an experiment?', options: ['It makes the experiment bigger', 'It lets you attribute the observed effect to the treatment rather than chance or other factors', 'It is required for funding only', 'It replaces the need for replication'], correctIndex: 1, explanation: 'Without an otherwise-identical control group, you cannot tell whether the treatment — or something else entirely — caused the result.' },
         { id: 'q2', question: 'What is a confounder?', options: ['The main treatment being tested', 'A hidden variable that could explain the result instead of the treatment', 'The measured outcome', 'A type of control'], correctIndex: 1, explanation: 'A confounder is an uncontrolled variable correlated with both the treatment and outcome, which can create a misleading apparent effect.' },
+        { id: 'q3', question: 'What must happen before research can be conducted on human or animal subjects?', options: ['Nothing extra is required beyond a hypothesis', 'Approval by an oversight board (IRB for humans, IACUC for animals) and informed consent where applicable', 'Only a faculty advisor\'s signature', 'Publication in a journal first'], correctIndex: 1, explanation: 'Ethical review boards like an IRB (humans) or IACUC (animals) must approve research involving living subjects, and informed consent is required for human studies — this protects participants and keeps research trustworthy.' },
       ],
     },
   ],
@@ -909,6 +945,7 @@ const mod7: Module = {
       quiz: [
         { id: 'q1', question: 'In machine learning, what is a "feature"?', options: ['The final prediction', 'An input variable the model uses to make predictions', 'The correct answer for a training example', 'A type of model'], correctIndex: 1, explanation: 'Features are the input variables (e.g., age, lab values). The target/label is the answer; the model learns the relationship between them.' },
         { id: 'q2', question: 'Which learning type finds structure in data without any labels?', options: ['Supervised learning', 'Unsupervised learning', 'Reinforcement learning', 'Semi-supervised learning'], correctIndex: 1, explanation: 'Unsupervised learning works without labeled answers — clustering, dimensionality reduction, and anomaly detection are its common tasks.' },
+        { id: 'q3', question: 'Predicting a house price from its size and location is an example of which ML task?', options: ['Classification', 'Regression', 'Clustering', 'Reinforcement learning'], correctIndex: 1, explanation: 'Predicting a continuous numeric value, like a price, is regression — as opposed to classification, which predicts a category.' },
       ],
     },
     {
@@ -941,6 +978,7 @@ const mod7: Module = {
       quiz: [
         { id: 'q1', question: 'You want to predict a patient\'s continuous risk score from lab values. Which task is this?', options: ['Classification', 'Regression', 'Clustering', 'Anomaly detection'], correctIndex: 1, explanation: 'Predicting a continuous numeric value is regression. Predicting a category would be classification.' },
         { id: 'q2', question: 'For a standard tabular clinical dataset, which model family is often the strongest?', options: ['Neural networks', 'Gradient boosted trees', 'K-nearest neighbors', 'Naive Bayes'], correctIndex: 1, explanation: 'Gradient boosted trees (XGBoost, LightGBM, CatBoost) frequently outperform other models on structured/tabular data, though a simple baseline should always be compared first.' },
+        { id: 'q3', question: 'Which model family generally excels at images, language, and audio data?', options: ['Linear regression', 'Decision trees', 'Neural networks', 'Naive Bayes'], correctIndex: 2, explanation: 'Neural networks dominate for images, language, and audio, though they typically need more data and compute than tree-based models used for tabular data.' },
       ],
     },
     {
@@ -979,6 +1017,7 @@ const mod7: Module = {
       quiz: [
         { id: 'q1', question: 'Why should preprocessing (like scaling) be fit on the training data only?', options: ['It runs faster that way', 'To avoid data leakage that makes results look better than they really are', 'Because the test set has no features', 'It is not important which data you use'], correctIndex: 1, explanation: 'Fitting preprocessing on the full dataset lets test-set information leak into training, inflating performance estimates. Fit on training data, then apply to validation/test.' },
         { id: 'q2', question: 'What is a hyperparameter?', options: ['A value learned automatically during training', 'A setting chosen before/around training, like learning rate or number of trees', 'The model\'s final prediction', 'A type of input feature'], correctIndex: 1, explanation: 'Hyperparameters (e.g., tree depth, learning rate) are configured by the user or a tuning process; model parameters are what the model learns from data.' },
+        { id: 'q3', question: 'What is one-hot encoding used for?', options: ['Scaling numeric features', 'Turning a categorical variable into 0/1 columns so a model can use it', 'Removing missing values', 'Splitting data into train/test sets'], correctIndex: 1, explanation: 'One-hot encoding converts a categorical variable (e.g. blood type) into separate binary columns, since most models require numeric input rather than category labels.' },
       ],
     },
     {
@@ -1023,6 +1062,7 @@ const mod7: Module = {
       quiz: [
         { id: 'q1', question: 'A disease affects 5% of patients. A model predicts "no disease" for everyone and is 95% accurate. What is wrong?', options: ['Nothing — 95% is excellent', 'Accuracy is misleading on imbalanced data; the model catches zero real cases (recall = 0)', 'It overfit the test set', 'It needs a larger learning rate'], correctIndex: 1, explanation: 'With imbalanced classes, high accuracy can hide total failure on the rare positive class. Recall, F1, and PR-AUC reveal that the model detects no true cases.' },
         { id: 'q2', question: 'What does a permutation (label-shuffle) test check?', options: ['Whether the model trains fast enough', 'Whether performance reflects real signal rather than noise', 'Which features to scale', 'The best learning rate'], correctIndex: 1, explanation: 'If a model performs similarly after labels are randomly shuffled, its original performance likely reflects noise or leakage rather than a genuine predictive signal.' },
+        { id: 'q3', question: 'What does external validation test for?', options: ['Whether the model trains quickly', 'Whether a model truly generalises, by testing on an independently collected dataset', 'The model\'s hyperparameters', 'Whether the data has missing values'], correctIndex: 1, explanation: 'External validation — testing on data collected independently of the original study — is the strongest evidence that a model\'s performance will hold up beyond the data it was built on.' },
       ],
     },
   ],
@@ -1075,6 +1115,7 @@ const mod8: Module = {
       quiz: [
         { id: 'q1', question: 'Which type of transplant rejection happens within minutes to hours and is driven by pre-existing antibodies?', options: ['Acute rejection', 'Chronic rejection', 'Hyperacute rejection', 'GVHD'], correctIndex: 2, explanation: 'Hyperacute rejection is caused by pre-formed antibodies (e.g. against ABO blood group antigens) that immediately activate complement on the donor vessels — now rare due to pre-transplant crossmatching.' },
         { id: 'q2', question: 'How do calcineurin inhibitors like tacrolimus suppress the immune system?', options: ['They kill all lymphocytes directly', 'They block NFAT-driven transcription of the IL-2 gene', 'They neutralise antibodies', 'They block antigen presentation entirely'], correctIndex: 1, explanation: 'Calcineurin inhibitors prevent the transcription factor NFAT from entering the nucleus, blocking IL-2 gene transcription and starving T cells of the proliferation signal.' },
+        { id: 'q3', question: 'What is the difference between direct and indirect allorecognition?', options: ['There is no real difference', 'Direct: donor antigen-presenting cells activate recipient T cells; indirect: recipient APCs present processed donor HLA peptides', 'Direct only happens in GVHD; indirect only in organ rejection', 'Direct involves antibodies; indirect involves T cells'], correctIndex: 1, explanation: 'In direct allorecognition, donor APCs within the graft directly activate recipient T cells. In indirect allorecognition, recipient APCs process and present donor HLA peptides — both routes can trigger rejection.' },
       ],
     },
     {
@@ -1110,6 +1151,7 @@ const mod8: Module = {
       quiz: [
         { id: 'q1', question: 'What is the underlying genetic cause of DiGeorge syndrome?', options: ['A mutation in the IL2RG gene', 'A deletion on chromosome 22 (22q11.2)', 'A BTK gene mutation', 'An extra copy of chromosome 21'], correctIndex: 1, explanation: 'DiGeorge syndrome is caused by a deletion in the 22q11.2 region of chromosome 22, which often disrupts thymus development.' },
         { id: 'q2', question: 'Why is untreated SCID life-threatening from infancy?', options: ['It causes severe allergies', 'T and B lymphocytes fail to develop, leaving the infant unable to fight infections', 'It only affects skin immunity', 'It causes autoimmune attacks on healthy tissue'], correctIndex: 1, explanation: 'SCID prevents normal T and B cell development, so infants lack both arms of adaptive immunity and are highly vulnerable to infections that healthy infants would easily clear.' },
+        { id: 'q3', question: 'David Vetter, the "Bubble Boy," had X-linked SCID. What did his case help drive forward?', options: ['The invention of the first vaccine', 'Advances in bone marrow transplantation and later gene therapy for SCID', 'The discovery of HLA genes', 'The first checkpoint inhibitor'], correctIndex: 1, explanation: 'David Vetter\'s 12 years living in a sterile enclosure due to X-linked SCID helped drive major advances in bone marrow transplantation, and decades later, the gene therapy approaches now used to treat SCID directly.' },
       ],
     },
     {
@@ -1137,6 +1179,7 @@ const mod8: Module = {
       quiz: [
         { id: 'q1', question: 'What gene is mutated in X-linked Agammaglobulinemia?', options: ['IL2RG', 'BTK', 'ADA', 'RAG1'], correctIndex: 1, explanation: 'XLA is caused by mutations in BTK, a gene essential for B cell maturation. Without it, B cells fail to mature and patients cannot produce antibodies.' },
         { id: 'q2', question: 'Why do XLA symptoms typically appear around 6 months of age rather than at birth?', options: ['The BTK gene only activates at 6 months', 'Maternal IgG antibodies protect the infant until they wane around that age', 'Vaccines cause the symptoms to appear', 'It takes 6 months for bacteria to become dangerous'], correctIndex: 1, explanation: 'Maternal antibodies cross the placenta and protect infants for the first few months of life. Once these wane, infants who cannot make their own antibodies become vulnerable.' },
+        { id: 'q3', question: 'What is the most common primary immunodeficiency overall, and how does it usually present?', options: ['XLA — always severe', 'CVID — always diagnosed in infancy', 'Selective IgA deficiency — most people are asymptomatic', 'SCID — always fatal without treatment'], correctIndex: 2, explanation: 'Selective IgA deficiency is the most common primary immunodeficiency, affecting roughly 1 in 500 people, and most are entirely asymptomatic — though it matters clinically for reactions to IgA-containing blood products.' },
       ],
     },
     {
@@ -1170,6 +1213,7 @@ const mod8: Module = {
       quiz: [
         { id: 'q1', question: 'Why are live-attenuated vaccines dangerous for some immunodeficient patients?', options: ['They cause severe allergic reactions in everyone', 'The weakened pathogen can still replicate and cause disease if T cell immunity is too weak to control it', 'They contain no active ingredient and just don\'t work', 'They are too expensive to administer safely'], correctIndex: 1, explanation: 'Live-attenuated vaccines rely on the immune system controlling a weakened, still-replicating pathogen. Without sufficient T cell function, that weakened pathogen can spread uncontrolled.' },
         { id: 'q2', question: 'What does flow cytometry reveal in an immunodeficiency workup?', options: ['The exact DNA sequence of a mutated gene', 'Which lymphocyte populations (T, B, NK cells) are present or missing', 'Antibody levels in the blood', 'Past vaccine history'], correctIndex: 1, explanation: 'Flow cytometry identifies and counts specific cell populations based on surface markers, revealing which lymphocyte types are deficient.' },
+        { id: 'q3', question: 'What does immunoglobulin quantification measure in a diagnostic workup?', options: ['The number of T cells', 'Levels of IgG, IgA, IgM, and IgE in the blood', 'The exact mutated gene', 'Response to a skin prick test'], correctIndex: 1, explanation: 'Immunoglobulin quantification measures the blood levels of each antibody class, helping reveal antibody deficiencies like CVID or selective IgA deficiency.' },
       ],
     },
   ],
@@ -1223,6 +1267,7 @@ const mod9: Module = {
       quiz: [
         { id: 'q1', question: 'What do human milk oligosaccharides (HMOs) do?', options: ['Provide direct nutrition for the infant', 'Selectively feed beneficial bacteria like Bifidobacterium', 'Kill harmful gut bacteria', 'Replace the need for solid food'], correctIndex: 1, explanation: 'Infants cannot digest HMOs directly — instead, these sugars selectively nourish beneficial bacteria such as Bifidobacterium, helping shape a healthy early microbiome.' },
         { id: 'q2', question: 'Which gut phylum is most associated with breaking down complex plant carbohydrates?', options: ['Proteobacteria', 'Actinobacteria', 'Bacteroidetes', 'Firmicutes'], correctIndex: 2, explanation: 'Bacteroidetes species specialise in fermenting complex plant fibres that human digestive enzymes alone cannot break down.' },
+        { id: 'q3', question: 'How does the gene content of the microbiome compare to the human genome?', options: ['It is roughly equal', 'It encodes roughly 100 times more unique genes than the human genome', 'It has no genes of its own', 'It is smaller than the human genome'], correctIndex: 1, explanation: 'The collective microbiome encodes roughly 100 times more unique genes than the human genome — a vast metabolic toolkit beyond human DNA alone.' },
       ],
     },
     {
@@ -1257,6 +1302,7 @@ const mod9: Module = {
       quiz: [
         { id: 'q1', question: 'What immune effect do short-chain fatty acids like butyrate have?', options: ['They activate complement directly', 'They promote regulatory T cell (Treg) differentiation', 'They destroy commensal bacteria', 'They block antibody production'], correctIndex: 1, explanation: 'SCFAs such as butyrate, produced by bacterial fermentation of dietary fibre, promote Treg differentiation, helping keep gut inflammation in check.' },
         { id: 'q2', question: 'What does the germ-free mouse model demonstrate?', options: ['Microbes have no effect on immune development', 'Microbes are required for normal immune system development', 'All bacteria are harmful to the immune system', 'The immune system develops the same with or without microbes'], correctIndex: 1, explanation: 'Germ-free mice have underdeveloped GALT and fewer Tregs, showing that normal microbial exposure is necessary for proper immune development.' },
+        { id: 'q3', question: 'What immune cell type do segmented filamentous bacteria induce in the gut?', options: ['Regulatory T cells (Tregs)', 'Th17 cells, supporting mucosal barrier defence', 'NK cells', 'Mast cells'], correctIndex: 1, explanation: 'Segmented filamentous bacteria specifically induce Th17 cells, which support the antimicrobial defences of the mucosal barrier — distinct from the Treg-promoting effect of SCFAs.' },
       ],
     },
     {
@@ -1291,6 +1337,7 @@ const mod9: Module = {
       quiz: [
         { id: 'q1', question: 'What allows C. difficile to overgrow and cause infection?', options: ['A high-fibre diet', 'Antibiotics depleting the competing bacteria that normally keep it in check', 'Excess stomach acid', 'A deficiency in vitamin C'], correctIndex: 1, explanation: 'Antibiotics can wipe out the diverse bacterial competition that normally suppresses C. difficile, allowing it to overgrow and produce disease-causing toxins.' },
         { id: 'q2', question: 'Why should claims that "gut bacteria cause disease X" often be treated with caution?', options: ['The microbiome has no real effect on health', 'Most evidence is observational/correlational, so cause and effect are often unclear', 'Bacteria cannot be studied scientifically', 'Dysbiosis has been fully proven to never affect humans'], correctIndex: 1, explanation: 'Much of the human evidence linking dysbiosis to disease is correlational — the microbiome differs between sick and healthy people, but whether dysbiosis is a cause, a consequence, or both is frequently still unresolved.' },
+        { id: 'q3', question: 'According to the hygiene hypothesis, what increases allergy and asthma risk?', options: ['Too much dietary fibre', 'Reduced early-life microbial exposure, possibly through insufficient Treg induction', 'Excessive antibiotic resistance', 'High SCFA production'], correctIndex: 1, explanation: 'The hygiene hypothesis proposes that reduced early-life microbial exposure may impair proper immune development — including insufficient Treg induction — raising allergy and autoimmune risk.' },
       ],
     },
     {
@@ -1323,6 +1370,7 @@ const mod9: Module = {
       quiz: [
         { id: 'q1', question: 'For which condition does FMT have the strongest clinical evidence?', options: ['Seasonal allergies', 'Recurrent C. difficile infection', 'The common cold', 'Type 1 diabetes'], correctIndex: 1, explanation: 'FMT cures roughly 85-90% of recurrent C. difficile infections that failed antibiotics, making it the best-established use of the procedure.' },
         { id: 'q2', question: 'Why can\'t evidence for one probiotic strain be assumed to apply to a different probiotic product?', options: ['All probiotics are identical regardless of strain', 'Probiotic effects are strain-specific, so results don\'t automatically generalise', 'Probiotics never have any measurable effect', 'Only prebiotics show strain-specific effects'], correctIndex: 1, explanation: 'Probiotic benefits depend on the specific strain studied — a different strain, even of the same bacterial species, may behave very differently.' },
+        { id: 'q3', question: 'What is the key difference between a probiotic and a prebiotic?', options: ['They are the same thing', 'A probiotic is a live beneficial microorganism; a prebiotic is a fibre that feeds bacteria already present', 'A prebiotic is always a live microorganism', 'A probiotic always requires a colonoscopy to administer'], correctIndex: 1, explanation: 'Probiotics introduce live beneficial microorganisms directly, while prebiotics are non-digestible fibres (like inulin) that selectively nourish beneficial bacteria already living in the gut.' },
       ],
     },
   ],
@@ -1372,6 +1420,7 @@ const mod10: Module = {
       quiz: [
         { id: 'q1', question: 'What is the key difference between ex vivo and in vivo gene therapy?', options: ['Ex vivo modifies cells outside the body before reinfusion; in vivo delivers the vector directly into the patient', 'Ex vivo is always safer than in vivo', 'In vivo only works on T cells', 'There is no meaningful difference'], correctIndex: 0, explanation: 'Ex vivo therapy modifies cells like T cells or stem cells in the lab before infusing them back; in vivo therapy delivers a vector directly into the patient\'s body to modify cells in place.' },
         { id: 'q2', question: 'What went wrong in some early X-linked SCID gene therapy trials?', options: ['The vector caused immediate organ failure', 'The retroviral vector inserted near a growth-control gene, causing leukemia in some patients', 'The therapy had no effect at all', 'Patients developed severe allergic reactions to the vector'], correctIndex: 1, explanation: 'The retroviral vectors used integrated semi-randomly into the genome; in some patients, this disrupted a gene controlling cell growth, leading to leukemia — a phenomenon called insertional mutagenesis.' },
+        { id: 'q3', question: 'What is a key advantage of AAV vectors for in vivo gene therapy?', options: ['Unlimited cargo capacity', 'Mostly non-integrating with low immunogenicity, though limited in cargo size', 'They always integrate into the host genome', 'They require ex vivo cell modification'], correctIndex: 1, explanation: 'AAV vectors are mostly non-integrating and provoke a relatively low immune response, making them well-suited for in vivo delivery — their main limitation is a small cargo capacity (~4.7kb).' },
       ],
     },
     {
@@ -1406,6 +1455,7 @@ const mod10: Module = {
       quiz: [
         { id: 'q1', question: 'What role does the guide RNA play in CRISPR-Cas9 editing?', options: ['It directly cuts the DNA', 'It directs the Cas9 enzyme to a specific DNA sequence via base-pairing', 'It repairs the DNA after cutting', 'It replaces the need for a PAM sequence'], correctIndex: 1, explanation: 'The guide RNA base-pairs with a complementary DNA sequence, directing the Cas9 enzyme to cut at that exact location.' },
         { id: 'q2', question: 'Why is germline gene editing not used clinically?', options: ['It is technically impossible with current tools', 'Changes would be inherited by future generations, raising serious ethical and safety concerns', 'It only works on bacteria', 'It is identical to somatic editing in every way'], correctIndex: 1, explanation: 'Germline editing alters eggs, sperm, or embryos, meaning changes — including any unintended ones — would be passed on to all future offspring, which is why it is not used in approved clinical practice.' },
+        { id: 'q3', question: 'What is the difference between NHEJ and HDR after a CRISPR-Cas9 cut?', options: ['They are the same repair process', 'NHEJ is error-prone and often disrupts a gene; HDR uses a template for precise correction', 'HDR is always more efficient than NHEJ', 'NHEJ requires a DNA template; HDR does not'], correctIndex: 1, explanation: 'NHEJ is the cell\'s default, error-prone repair pathway, often used to knock out a gene. HDR uses a supplied DNA template for precise correction, but is less efficient than NHEJ.' },
       ],
     },
     {
@@ -1439,6 +1489,7 @@ const mod10: Module = {
       quiz: [
         { id: 'q1', question: 'How does a CD19xCD3 bispecific antibody work?', options: ['It directly kills tumour cells using complement', 'One arm binds CD19 on the tumour cell while the other binds CD3, bridging a T cell to the tumour', 'It blocks CD19 to prevent B cell development', 'It only works on T cells, not tumour cells'], correctIndex: 1, explanation: 'The bispecific antibody binds CD19 on the tumour cell with one arm and CD3 on a T cell with the other, physically bridging them and triggering the T cell to attack.' },
         { id: 'q2', question: 'What is a key practical difference between bispecific antibodies and CAR-T therapy?', options: ['Bispecifics are personalised; CAR-T is off-the-shelf', 'Bispecifics are off-the-shelf drugs given repeatedly; CAR-T is a personalised one-time cell infusion', 'They are functionally identical in every way', 'CAR-T cannot target any of the same antigens as bispecifics'], correctIndex: 1, explanation: 'Bispecific antibodies are manufactured drugs that can be given to any patient and dosed repeatedly, while CAR-T requires manufacturing a personalised cell product from each patient.' },
+        { id: 'q3', question: 'What does blinatumomab target?', options: ['CD19 and CD3, bridging a tumour cell to a T cell', 'PD-1 and PD-L1', 'CTLA-4 only', 'CD4 and CD8'], correctIndex: 0, explanation: 'Blinatumomab is a CD19xCD3 bispecific T-cell engager (BiTE), binding CD19 on B-cell leukaemia cells and CD3 on T cells to trigger T cell attack — approved for relapsed B-cell ALL.' },
       ],
     },
     {
@@ -1473,6 +1524,7 @@ const mod10: Module = {
       quiz: [
         { id: 'q1', question: 'What problem does allogeneic ("off-the-shelf") CAR-T aim to solve?', options: ['The high cost of bispecific antibodies', 'The weeks-long wait required to manufacture a personalised CAR-T product for each patient', 'The risk of insertional mutagenesis', 'The need for live vaccines'], correctIndex: 1, explanation: 'Standard CAR-T must be manufactured individually from each patient\'s own T cells, which takes weeks. Allogeneic CAR-T uses gene-edited donor cells made in bulk in advance, removing that wait.' },
         { id: 'q2', question: 'Why is it important to stay cautious about emerging immune therapies discussed in this lesson?', options: ['They have all already failed in clinical trials', 'Most are still early-stage research, with real cost, access, and long-term safety questions unresolved', 'They are purely theoretical and not being tested in humans at all', 'None of them have shown any promise so far'], correctIndex: 1, explanation: 'While early results are promising, most of these approaches are still in early clinical trials, and questions about manufacturing cost, equitable access, and long-term safety remain genuinely open.' },
+        { id: 'q3', question: 'What is the goal of in vivo CAR-T generation?', options: ['To replace bispecific antibodies entirely', 'To deliver CAR genes directly into a patient\'s T cells inside the body, skipping lab manufacturing', 'To make CAR-T cells permanently allogeneic', 'To remove the need for any gene delivery vector'], correctIndex: 1, explanation: 'In vivo CAR-T generation aims to engineer T cells directly inside the patient\'s body — via an engineered vector or lipid nanoparticle — avoiding the weeks-long ex vivo manufacturing process entirely.' },
       ],
     },
   ],
