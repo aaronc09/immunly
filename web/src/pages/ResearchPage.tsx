@@ -2,14 +2,15 @@ import { useState, useEffect, useRef, Fragment } from 'react';
 import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps';
 import type { RSMGeography } from 'react-simple-maps';
 import { useTheme } from '../context/ThemeContext';
-import { ONLINE_PROGRAMS, INPERSON_PROGRAMS } from '../data/researchPrograms';
-import type { OnlineProgram, InPersonProgram } from '../data/researchPrograms';
+import { ONLINE_PROGRAMS, INPERSON_PROGRAMS, COMPETITIONS } from '../data/researchPrograms';
+import type { OnlineProgram, InPersonProgram, Competition } from '../data/researchPrograms';
 import './ResearchPage.css';
 
 const TABS = [
   { label: 'How to Find Research',    icon: '🔬' },
-  { label: 'Online Opportunities',    icon: '💻' },
+  { label: 'Online Research Programs', icon: '💻' },
   { label: 'In-Person Opportunities', icon: '📍' },
+  { label: 'Competitions',            icon: '🏆' },
 ] as const;
 
 const STAGES = [
@@ -113,11 +114,12 @@ export default function ResearchPage() {
         )}
       </div>
 
-      {/* ── Tab content — Online and In-Person only ── */}
+      {/* ── Tab content ── */}
       <div className="research-tab-content">
         <div className="container">
           {tab === 1 && <OnlineTab />}
           {tab === 2 && <InPersonTab />}
+          {tab === 3 && <CompetitionsTab />}
         </div>
       </div>
     </div>
@@ -262,22 +264,44 @@ function WetLabContent() {
   );
 }
 
-// ─── TAB 2: ONLINE OPPORTUNITIES ─────────────────────────────────────────────
+// ─── TAB 2: COMPETITIONS ─────────────────────────────────────────────────────
 
-function OnlineTab() {
+const COMPETITION_FILTERS = ['All', 'Free', 'Biology', 'National', 'International', 'Prestigious'] as const;
+
+function CompetitionsTab() {
   const [expanded, setExpanded] = useState<string | null>(null);
+  const [filter, setFilter] = useState<string>('All');
+
+  const visible = filter === 'All'
+    ? COMPETITIONS
+    : COMPETITIONS.filter((c) => c.tags.includes(filter));
+
   return (
-    <div className="online-tab">
+    <div className="competitions-tab">
       <p className="tab-intro">
-        These programs run virtually — apply from anywhere. Listed roughly by selectivity (least to most).
+        These competitions recognize original research and outstanding STEM achievement.
+        Listed by prestige — most selective first.
       </p>
-      <div className="program-list">
-        {ONLINE_PROGRAMS.map((prog) => (
-          <OnlineProgramCard
-            key={prog.id}
-            prog={prog}
-            isOpen={expanded === prog.id}
-            onToggle={() => setExpanded((p) => (p === prog.id ? null : prog.id))}
+
+      <div className="comp-filter-bar">
+        {COMPETITION_FILTERS.map((f) => (
+          <button
+            key={f}
+            className={`comp-filter-btn ${filter === f ? 'comp-filter-btn--active' : ''}`}
+            onClick={() => setFilter(f)}
+          >
+            {f}
+          </button>
+        ))}
+      </div>
+
+      <div className="comp-list">
+        {visible.map((comp) => (
+          <CompetitionCard
+            key={comp.id}
+            comp={comp}
+            isOpen={expanded === comp.id}
+            onToggle={() => setExpanded((p) => (p === comp.id ? null : comp.id))}
           />
         ))}
       </div>
@@ -285,30 +309,147 @@ function OnlineTab() {
   );
 }
 
+function CompetitionCard({ comp, isOpen, onToggle }: { comp: Competition; isOpen: boolean; onToggle: () => void }) {
+  return (
+    <div className={`comp-card ${isOpen ? 'comp-card--open' : ''}`}>
+      <button className="comp-card__header" onClick={onToggle} aria-expanded={isOpen}>
+        <div className="comp-card__left">
+          <span className="comp-card__trophy">🏆</span>
+          <div className="comp-card__meta">
+            <span className="comp-card__name">{comp.name}</span>
+            <span className="comp-card__org">{comp.org}</span>
+          </div>
+        </div>
+        <div className="comp-card__right">
+          <span className="comp-card__prize">{comp.prize}</span>
+          <span className="comp-card__chevron">{isOpen ? '▲' : '▼'}</span>
+        </div>
+      </button>
+      <div className="comp-card__short">{comp.description.split('.')[0]}.</div>
+
+      {isOpen && (
+        <div className="comp-card__details">
+          <p className="comp-card__full-desc">{comp.description}</p>
+          <div className="comp-card__info-grid">
+            <div className="info-row"><span className="info-key">Eligibility</span><span>{comp.eligibility}</span></div>
+            <div className="info-row"><span className="info-key">Deadline</span><span>{comp.deadline}</span></div>
+            <div className="info-row"><span className="info-key">Cost</span><span>{comp.cost}</span></div>
+            <div className="info-row"><span className="info-key">Prize</span><span>{comp.prize}</span></div>
+          </div>
+          <div className="comp-card__tags">
+            {comp.tags.map((tag) => (
+              <span key={tag} className="comp-tag">{tag}</span>
+            ))}
+          </div>
+          <a href={comp.url} target="_blank" rel="noopener noreferrer" className="btn comp-apply-btn">
+            Learn More →
+          </a>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── TAB 1: ONLINE OPPORTUNITIES ─────────────────────────────────────────────
+
+const ONLINE_FILTERS = [
+  'All', 'Free', 'Paid', 'Biology', 'AI', 'Selective',
+  'Beginner', '1-on-1', 'Small Group', 'International',
+  'Publication Support', 'College Credit', 'Year-Long',
+] as const;
+
+function getFormatLabel(format: string): string {
+  const stripped = format.replace(/^Online,\s*/i, '');
+  const lower = stripped.toLowerCase();
+  if (lower.includes('year')) return 'Year-Long';
+  if (lower.includes('group') && lower.includes('1-on-1')) return '1-on-1 / Group';
+  if (lower.includes('1-on-1')) return '1-on-1';
+  if (lower.includes('small group')) return 'Small Group';
+  if (lower.includes('project program') || lower.includes('group-based')) return 'Group Course';
+  if (lower.includes('group')) return 'Group Course';
+  return stripped.split(',')[0].trim();
+}
+
+function OnlineTab() {
+  const [expanded, setExpanded] = useState<string | null>(null);
+  const [filter, setFilter] = useState<string>('All');
+
+  const visible = filter === 'All'
+    ? ONLINE_PROGRAMS
+    : ONLINE_PROGRAMS.filter((p) => p.tags.includes(filter) || p.type === filter);
+
+  return (
+    <div className="online-tab">
+      <div className="online-disclaimer">
+        Program details including costs, deadlines, and formats change frequently. Always verify current information on each program's official website before applying. Immunly does not endorse or have affiliations with any listed program.
+      </div>
+
+      <p className="tab-intro">
+        Online research mentorship, academic research, and structured project programs for high school students. Programs vary in selectivity, mentor involvement, and final outcomes — read descriptions carefully.
+      </p>
+
+      <div className="online-filter-bar">
+        {ONLINE_FILTERS.map((f) => (
+          <button
+            key={f}
+            className={`online-filter-btn ${filter === f ? 'online-filter-btn--active' : ''}`}
+            onClick={() => setFilter(f)}
+          >
+            {f}
+          </button>
+        ))}
+      </div>
+
+      <div className="program-list">
+        {visible.map((prog) => (
+          <OnlineProgramCard
+            key={prog.id}
+            prog={prog}
+            isOpen={expanded === prog.id}
+            onToggle={() => setExpanded((p) => (p === prog.id ? null : prog.id))}
+          />
+        ))}
+        {visible.length === 0 && (
+          <p className="no-results">No programs match this filter.</p>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function OnlineProgramCard({ prog, isOpen, onToggle }: { prog: OnlineProgram; isOpen: boolean; onToggle: () => void }) {
+  const costBadgeClass = prog.type === 'Free' ? 'online-badge online-badge--free' : 'online-badge online-badge--paid';
+
   return (
     <div className={`online-card ${isOpen ? 'online-card--open' : ''}`}>
       <button className="online-card__header" onClick={onToggle} aria-expanded={isOpen}>
         <div className="online-card__meta">
-          <span className="online-card__name">{prog.name}</span>
-          <span className="online-card__org">{prog.org}</span>
+          <div className="online-card__name-row">
+            <span className={costBadgeClass}>{prog.type}</span>
+            <span className="online-badge online-badge--format">{getFormatLabel(prog.format)}</span>
+            <span className="online-card__name">{prog.name}</span>
+          </div>
+          <span className="online-card__org">{prog.organization}</span>
         </div>
         <div className="online-card__right">
-          <span className="online-card__deadline">📅 {prog.deadline}</span>
           <span className="online-card__chevron">{isOpen ? '▲' : '▼'}</span>
         </div>
       </button>
-      <div className="online-card__short">{prog.shortDesc}</div>
+      <div className="online-card__short">{prog.description.split('.')[0]}.</div>
       {isOpen && (
         <div className="online-card__details">
-          <p className="online-card__full-desc">{prog.fullDesc}</p>
+          <p className="online-card__full-desc">{prog.description}</p>
           <div className="online-card__info-grid">
             <div className="info-row"><span className="info-key">Eligibility</span><span>{prog.eligibility}</span></div>
-            <div className="info-row"><span className="info-key">Duration</span><span>{prog.duration}</span></div>
+            <div className="info-row"><span className="info-key">Format</span><span>{prog.format}</span></div>
             <div className="info-row"><span className="info-key">Cost</span><span>{prog.cost}</span></div>
+            <div className="info-row"><span className="info-key">Deadline</span><span>{prog.deadline}</span></div>
           </div>
-          <a href={prog.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary apply-btn">
-            Apply Now →
+          <div className="online-card__tags">
+            {prog.tags.map((tag) => <span key={tag} className="online-tag">{tag}</span>)}
+          </div>
+          <a href={prog.link} target="_blank" rel="noopener noreferrer" className="btn btn-primary apply-btn">
+            Apply / Learn More →
           </a>
         </div>
       )}
