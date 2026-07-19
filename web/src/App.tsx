@@ -6,7 +6,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import StreakSaver from './components/StreakSaver';
 // import IntroVideo from './components/IntroVideo';
-// import WelcomeIntro from './components/WelcomeIntro';
+import WelcomeIntro from './components/WelcomeIntro';
 import PageTransition from './components/PageTransition';
 import CookieConsent from './components/CookieConsent';
 import HomePage from './pages/HomePage';
@@ -25,7 +25,7 @@ export default function App() {
       <ThemeProvider>
         <AuthProvider>
           <ProgressProvider>
-            {/* <WelcomeIntro /> */}
+            <WelcomeIntro />
             {/* <IntroVideo /> */}
             <Navbar />
             <StreakSaver />
