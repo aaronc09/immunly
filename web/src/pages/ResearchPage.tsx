@@ -106,20 +106,45 @@ const COLD_EMAIL_DONTS = [
   'Give up after one rejection',
 ];
 
+const STAGES = [
+  { number: 1, icon: '💻', title: 'Start Here: Dry Lab',            color: 'var(--accent)',  sub: 'No equipment needed. Just curiosity and a computer.' },
+  { number: 2, icon: '🎓', title: 'Level Up: Programs & Mentorship', color: 'var(--success)', sub: 'Build credentials and get structured guidance.' },
+  { number: 3, icon: '🧪', title: 'Wet Lab: The Hard Truth',         color: 'var(--warning)', sub: 'Rare but possible — here\'s exactly how.' },
+] as const;
+
 function HowToFindTab() {
+  const [active, setActive] = useState(0);
+
   return (
     <div className="how-to-find">
-      <div className="roadmap">
+
+      {/* ── Stepper ── */}
+      <div className="stage-stepper">
+        {STAGES.map((s, i) => (
+          <div key={i} className="stepper-slot">
+            <button
+              className={`stepper-item ${active === i ? 'stepper-item--active' : ''}`}
+              style={{ '--stage-color': s.color } as React.CSSProperties}
+              onClick={() => setActive(i)}
+            >
+              <div className="stepper-badge" style={{ background: s.color }}>
+                <span className="stepper-num">{s.number}</span>
+                <span className="stepper-icon">{s.icon}</span>
+              </div>
+              <span className="stepper-title">{s.title}</span>
+            </button>
+            {i < 2 && <span className="stepper-arrow" aria-hidden>→</span>}
+          </div>
+        ))}
+      </div>
+
+      {/* ── Panels (only one visible at a time) ── */}
+      <div className="stage-panels">
 
         {/* Stage 1 */}
-        <div className="roadmap-stage">
-          <div className="roadmap-stage__badge" style={{ background: 'var(--accent)' }}>
-            <span className="stage-number">1</span>
-            <span className="stage-icon">💻</span>
-          </div>
-          <div className="roadmap-stage__body">
-            <h2 className="roadmap-stage__title">Start Here: Dry Lab</h2>
-            <p className="roadmap-stage__sub">No equipment needed. Just curiosity and a computer.</p>
+        <div className={`stage-panel ${active === 0 ? 'stage-panel--active' : ''}`}>
+          <div className="stage-panel__inner">
+            <p className="stage-panel__sub">{STAGES[0].sub}</p>
             <div className="stage-cards">
               {DRY_LAB_CARDS.map((c) => (
                 <div key={c.title} className={`stage-card ${c.highlight ? 'stage-card--highlight' : ''}`}>
@@ -134,19 +159,10 @@ function HowToFindTab() {
           </div>
         </div>
 
-        <div className="roadmap-connector" aria-hidden>
-          <span>→</span>
-        </div>
-
         {/* Stage 2 */}
-        <div className="roadmap-stage">
-          <div className="roadmap-stage__badge" style={{ background: 'var(--success)' }}>
-            <span className="stage-number">2</span>
-            <span className="stage-icon">🎓</span>
-          </div>
-          <div className="roadmap-stage__body">
-            <h2 className="roadmap-stage__title">Level Up: Programs &amp; Mentorship</h2>
-            <p className="roadmap-stage__sub">Build credentials and get structured guidance.</p>
+        <div className={`stage-panel ${active === 1 ? 'stage-panel--active' : ''}`}>
+          <div className="stage-panel__inner">
+            <p className="stage-panel__sub">{STAGES[1].sub}</p>
             <div className="stage-cards">
               {PROGRAM_CARDS.map((c) => (
                 <div key={c.title} className="stage-card">
@@ -161,19 +177,10 @@ function HowToFindTab() {
           </div>
         </div>
 
-        <div className="roadmap-connector" aria-hidden>
-          <span>→</span>
-        </div>
-
         {/* Stage 3 */}
-        <div className="roadmap-stage">
-          <div className="roadmap-stage__badge" style={{ background: 'var(--warning)' }}>
-            <span className="stage-number">3</span>
-            <span className="stage-icon">🧪</span>
-          </div>
-          <div className="roadmap-stage__body">
-            <h2 className="roadmap-stage__title">Wet Lab: The Hard Truth</h2>
-            <p className="roadmap-stage__sub">Rare but possible — here's exactly how.</p>
+        <div className={`stage-panel ${active === 2 ? 'stage-panel--active' : ''}`}>
+          <div className="stage-panel__inner">
+            <p className="stage-panel__sub">{STAGES[2].sub}</p>
 
             <div className="stage-callout">
               <p>

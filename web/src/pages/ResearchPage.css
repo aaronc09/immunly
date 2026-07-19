@@ -69,75 +69,142 @@
   margin-bottom: 24px;
 }
 
-/* ── HOW TO FIND — Roadmap ─────────────────────────────────────────────────── */
+/* ── HOW TO FIND — Stepper + Accordion ────────────────────────────────────── */
 
-.roadmap {
+/* Stepper row */
+.stage-stepper {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0;
+  margin-bottom: 24px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 4px;
 }
 
-.roadmap-stage {
+.stage-stepper::-webkit-scrollbar { display: none; }
+
+.stepper-slot {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.stepper-arrow {
+  font-size: 1.4rem;
+  color: var(--text-muted);
+  padding: 0 6px;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stepper-item {
   flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
+  padding: 14px 8px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  position: relative;
 }
 
-.roadmap-stage__badge {
-  width: 64px;
-  height: 64px;
+.stepper-item::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 12%;
+  right: 12%;
+  height: 3px;
+  border-radius: 2px 2px 0 0;
+  background: transparent;
+  transition: background 0.2s;
+}
+
+.stepper-item:hover {
+  background: var(--bg-subtle);
+}
+
+.stepper-item--active {
+  border-color: var(--stage-color, var(--accent));
+  box-shadow: 0 0 0 1px var(--stage-color, var(--accent));
+}
+
+.stepper-item--active::after {
+  background: var(--stage-color, var(--accent));
+}
+
+.stepper-badge {
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-sm);
 }
 
-.stage-number {
-  font-size: 0.65rem;
+.stepper-num {
+  font-size: 0.6rem;
   font-weight: 800;
   color: rgba(255,255,255,0.85);
   letter-spacing: 0.05em;
   line-height: 1;
 }
 
-.stage-icon {
-  font-size: 1.2rem;
+.stepper-icon {
+  font-size: 1.1rem;
   line-height: 1;
 }
 
-.roadmap-stage__body {
-  width: 100%;
+.stepper-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-sub);
+  text-align: center;
+  line-height: 1.3;
+  transition: color 0.2s;
 }
 
-.roadmap-stage__title {
-  font-size: 1rem;
-  font-weight: 800;
-  margin-bottom: 4px;
-  text-align: center;
+.stepper-item--active .stepper-title {
+  color: var(--stage-color, var(--accent));
 }
 
-.roadmap-stage__sub {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  text-align: center;
+/* Stage panels */
+.stage-panels {
+  position: relative;
+}
+
+.stage-panel {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.42s ease, opacity 0.28s ease;
+}
+
+.stage-panel--active {
+  max-height: 4000px;
+  opacity: 1;
+}
+
+.stage-panel__inner {
+  padding: 4px 0 8px;
+}
+
+.stage-panel__sub {
+  font-size: 0.88rem;
+  color: var(--text-sub);
   margin-bottom: 16px;
-}
-
-.roadmap-connector {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.6rem;
-  color: var(--text-muted);
-  padding: 0 8px;
-  margin-top: 22px;
-  flex-shrink: 0;
 }
 
 /* ── Stage Cards ───────────────────────────────────────────────────────────── */
@@ -634,21 +701,6 @@
 /* ── Responsive ────────────────────────────────────────────────────────────── */
 
 @media (max-width: 900px) {
-  .roadmap {
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .roadmap-connector {
-    transform: rotate(90deg);
-    margin: -12px 0;
-  }
-
-  .roadmap-stage {
-    flex-direction: column;
-    align-items: center;
-  }
-
   .cold-email-grid {
     grid-template-columns: 1fr;
   }
@@ -660,6 +712,25 @@
   .program-panel {
     width: 100%;
     min-height: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .stepper-title {
+    font-size: 0.7rem;
+  }
+
+  .stepper-badge {
+    width: 40px;
+    height: 40px;
+  }
+
+  .stepper-icon {
+    font-size: 0.95rem;
+  }
+
+  .stepper-item {
+    padding: 10px 4px 10px;
   }
 }
 
