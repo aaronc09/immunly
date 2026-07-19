@@ -486,31 +486,44 @@ type MapSelection =
   | { type: 'cluster'; ids: string[] }
   | null;
 
-// Group programs within (0.3 / zoom) degrees of each other
-function buildClusters(programs: InPersonProgram[], zoom: number): ClusterItem[] {
-  const threshold = 0.3 / Math.max(zoom, 1);
-  const remaining = [...programs];
+// Approximate SVG position using linear interpolation of geoAlbersUsa CONUS bounds
+const _LON_MIN = -124.8, _LON_MAX = -66.9, _LAT_MIN = 24.5, _LAT_MAX = 49.4;
+function svgXY(lon: number, lat: number): [number, number] {
+  return [
+    ((lon - _LON_MIN) / (_LON_MAX - _LON_MIN)) * 960,
+    ((_LAT_MAX - lat) / (_LAT_MAX - _LAT_MIN)) * 600,
+  ];
+}
+
+// Cluster programs whose screen-pixel distance (SVG units × k) < CLUSTER_PX.
+// As k increases, only truly co-located programs stay clustered.
+const CLUSTER_PX = 26;
+
+function buildClusters(programs: InPersonProgram[], k: number): ClusterItem[] {
+  const pts = programs.map((p) => {
+    const [x, y] = svgXY(p.lon, p.lat);
+    return { p, x, y };
+  });
+  const remaining = [...pts];
   const clusters: ClusterItem[] = [];
 
   while (remaining.length > 0) {
     const anchor = remaining.shift()!;
-    const group: InPersonProgram[] = [anchor];
+    const group = [anchor];
 
     for (let i = remaining.length - 1; i >= 0; i--) {
-      const other = remaining[i];
-      if (
-        Math.abs(anchor.lat - other.lat) < threshold &&
-        Math.abs(anchor.lon - other.lon) < threshold
-      ) {
-        group.push(other);
+      const b = remaining[i];
+      const screenDist = Math.hypot(anchor.x - b.x, anchor.y - b.y) * k;
+      if (screenDist < CLUSTER_PX) {
+        group.push(b);
         remaining.splice(i, 1);
       }
     }
 
     clusters.push({
-      ids: group.map((p) => p.id),
-      lat: group.reduce((s, p) => s + p.lat, 0) / group.length,
-      lon: group.reduce((s, p) => s + p.lon, 0) / group.length,
+      ids: group.map((g) => g.p.id),
+      lat: group.reduce((s, g) => s + g.p.lat, 0) / group.length,
+      lon: group.reduce((s, g) => s + g.p.lon, 0) / group.length,
     });
   }
 
@@ -526,6 +539,7 @@ function InPersonTab() {
   const [mapZoom, setMapZoom] = useState(DEFAULT_ZOOM);
   const [mapCenter, setMapCenter] = useState<[number, number]>(DEFAULT_CENTER);
   const [liveZoom, setLiveZoom] = useState(DEFAULT_ZOOM);
+  const [currentK, setCurrentK] = useState(DEFAULT_ZOOM);
 
   const mapFill   = theme === 'dark' ? '#1C2A45' : '#DDE8F5';
   const mapStroke = theme === 'dark' ? '#253654' : '#B8CCE4';
@@ -550,6 +564,7 @@ function InPersonTab() {
       const newZoom = Math.min(8, liveZoom * 2.5);
       setMapZoom(newZoom);
       setLiveZoom(newZoom);
+      setCurrentK(newZoom);
     } else {
       setSelection({ type: 'cluster', ids: cluster.ids });
     }
@@ -558,17 +573,22 @@ function InPersonTab() {
   function handleZoomIn() {
     const newZoom = Math.min(8, mapZoom * 1.6);
     setMapZoom(newZoom);
+    setLiveZoom(newZoom);
+    setCurrentK(newZoom);
   }
 
   function handleZoomOut() {
     const newZoom = Math.max(1, mapZoom / 1.6);
     setMapZoom(newZoom);
+    setLiveZoom(newZoom);
+    setCurrentK(newZoom);
   }
 
   function handleReset() {
     setMapZoom(DEFAULT_ZOOM);
     setMapCenter(DEFAULT_CENTER);
     setLiveZoom(DEFAULT_ZOOM);
+    setCurrentK(DEFAULT_ZOOM);
     setSelection(null);
   }
 
@@ -597,11 +617,12 @@ function InPersonTab() {
                 center={mapCenter}
                 minZoom={1}
                 maxZoom={8}
-                onMove={({ zoom: k }: { zoom: number }) => setLiveZoom(k)}
+                onMove={({ zoom: k }: { zoom: number }) => { setLiveZoom(k); setCurrentK(k); }}
                 onMoveEnd={({ coordinates, zoom: k }: { coordinates: [number, number]; zoom: number }) => {
                   setMapCenter(coordinates);
                   setMapZoom(k);
                   setLiveZoom(k);
+                  setCurrentK(k);
                 }}
               >
                 <Geographies geography="/us-states.json">
@@ -649,17 +670,17 @@ function InPersonTab() {
                     >
                       {isSingleActive && (
                         <circle
-                          r={18}
+                          r={18 / currentK}
                           fill="#EF4444"
                           fillOpacity={0.18}
                           style={{ pointerEvents: 'none' }}
                         />
                       )}
                       <circle
-                        r={isCluster ? 11 : isSingleActive ? 11 : 8}
+                        r={(isCluster ? 11 : isSingleActive ? 11 : 8) / currentK}
                         fill={fill}
                         stroke="white"
-                        strokeWidth={2}
+                        strokeWidth={2 / currentK}
                         style={{ cursor: 'pointer' }}
                       />
                       {isCluster && (
@@ -667,7 +688,7 @@ function InPersonTab() {
                           textAnchor="middle"
                           dominantBaseline="central"
                           fill="white"
-                          fontSize={9}
+                          fontSize={9 / currentK}
                           fontWeight="bold"
                           style={{ pointerEvents: 'none', userSelect: 'none' }}
                         >
