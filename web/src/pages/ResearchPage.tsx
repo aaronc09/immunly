@@ -356,18 +356,25 @@ const ONLINE_FILTERS = [
   'All', 'Free', 'Paid', 'Biology', 'AI', 'Selective',
   'Beginner', '1-on-1', 'Small Group', 'International',
   'Publication Support', 'College Credit', 'Year-Long',
+  'In-Person', 'Competition', 'Scholarship',
 ] as const;
 
 function getFormatLabel(format: string): string {
+  const lower = format.toLowerCase();
+  if (lower.includes('competition') || lower.includes('judged') ||
+      lower.includes('symposia') || lower.includes('state-level')) return 'Competition';
+  if (lower.includes('residential')) return 'Residential';
+  if (lower.includes('in-person')) return 'In-Person';
+  if (lower.includes('project submission')) return 'Award';
   const stripped = format.replace(/^Online,\s*/i, '');
-  const lower = stripped.toLowerCase();
-  if (lower.includes('year')) return 'Year-Long';
-  if (lower.includes('group') && lower.includes('1-on-1')) return '1-on-1 / Group';
-  if (lower.includes('1-on-1')) return '1-on-1';
-  if (lower.includes('small group')) return 'Small Group';
-  if (lower.includes('project program') || lower.includes('group-based')) return 'Group Course';
-  if (lower.includes('group')) return 'Group Course';
-  return stripped.split(',')[0].trim();
+  const stripLower = stripped.toLowerCase();
+  if (stripLower.includes('year')) return 'Year-Long';
+  if (stripLower.includes('group') && stripLower.includes('1-on-1')) return 'Online 1-on-1 / Group';
+  if (stripLower.includes('1-on-1')) return 'Online 1-on-1';
+  if (stripLower.includes('small group')) return 'Online Small Group';
+  if (stripLower.includes('project program') || stripLower.includes('group-based')) return 'Online Group';
+  if (stripLower.includes('self-paced') || stripLower.includes('course')) return 'Online Course';
+  return lower.startsWith('online') ? 'Online' : stripped.split(',')[0].trim();
 }
 
 function OnlineTab() {
@@ -417,15 +424,24 @@ function OnlineTab() {
   );
 }
 
+function getCostBadge(prog: OnlineProgram): { cls: string; label: string } {
+  if (prog.type === 'Free' && prog.cost.toLowerCase().includes('enter')) {
+    return { cls: 'online-badge online-badge--free-enter', label: 'Free to Enter' };
+  }
+  if (prog.type === 'Free') return { cls: 'online-badge online-badge--free', label: 'Free' };
+  if (prog.type === 'Selective') return { cls: 'online-badge online-badge--selective', label: 'Selective' };
+  return { cls: 'online-badge online-badge--paid', label: 'Paid' };
+}
+
 function OnlineProgramCard({ prog, isOpen, onToggle }: { prog: OnlineProgram; isOpen: boolean; onToggle: () => void }) {
-  const costBadgeClass = prog.type === 'Free' ? 'online-badge online-badge--free' : 'online-badge online-badge--paid';
+  const costBadge = getCostBadge(prog);
 
   return (
     <div className={`online-card ${isOpen ? 'online-card--open' : ''}`}>
       <button className="online-card__header" onClick={onToggle} aria-expanded={isOpen}>
         <div className="online-card__meta">
           <div className="online-card__name-row">
-            <span className={costBadgeClass}>{prog.type}</span>
+            <span className={costBadge.cls}>{costBadge.label}</span>
             <span className="online-badge online-badge--format">{getFormatLabel(prog.format)}</span>
             <span className="online-card__name">{prog.name}</span>
           </div>
