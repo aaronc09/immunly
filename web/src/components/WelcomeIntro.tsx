@@ -58,10 +58,6 @@ export default function WelcomeIntro() {
     setDismissed(true);
   }
 
-  function watchIntro() {
-    window.dispatchEvent(new Event('immunly:play-intro'));
-  }
-
   function continueAsGuest() {
     setDismissed(true);
     navigate('/');
@@ -152,9 +148,7 @@ export default function WelcomeIntro() {
             <button className="btn btn-primary welcome-overlay__btn" onClick={() => setSlide(1)}>
               Get Started →
             </button>
-            <button className="btn btn-ghost welcome-overlay__btn" onClick={watchIntro}>
-              ▶ Watch intro
-            </button>
+            {/* intro video button hidden for now */}
           </div>
         </div>
 
