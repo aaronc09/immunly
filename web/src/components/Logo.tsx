@@ -16,7 +16,7 @@ export default function Logo({ size = 32, showWordmark = true, dark, className }
   return (
     <span className={className} style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
       <img
-        src={useDark ? '/icon2dark.png' : '/icon2light.png'}
+        src={useDark ? '/icon2dark.png' : '/transparenticon2light.png'}
         alt={showWordmark ? '' : 'Immunly'}
         height={size}
         width={size}
