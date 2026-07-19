@@ -18,7 +18,7 @@ export const LESSON_PHOTOS: Record<string, LessonPhoto> = {
   },
 
   'mod1-l2': {
-    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Animal_Cell.svg/800px-Animal_Cell.svg.png',
+    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Animal_Cell.svg/960px-Animal_Cell.svg.png',
     alt: 'Diagram of an animal cell showing major organelles',
     credit: 'Mariana Ruiz Villarreal (LadyofHats), Public Domain, via Wikimedia Commons',
     creditUrl: 'https://commons.wikimedia.org/wiki/File:Animal_Cell.svg',
@@ -42,15 +42,15 @@ export const LESSON_PHOTOS: Record<string, LessonPhoto> = {
   },
 
   'mod2-l1': {
-    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Innate_and_Adaptive_immune_system.svg/800px-Innate_and_Adaptive_immune_system.svg.png',
-    alt: 'Overview diagram comparing innate and adaptive immunity',
-    credit: 'Mikael Häggström, Public Domain, via Wikimedia Commons',
-    creditUrl: 'https://commons.wikimedia.org/wiki/File:Innate_and_Adaptive_immune_system.svg',
-    caption: 'Innate immunity acts immediately; adaptive immunity takes days but creates specific memory.',
+    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Dendritic_cell.svg/960px-Dendritic_cell.svg.png',
+    alt: 'Illustration of a dendritic cell with branching projections',
+    credit: 'Wikimedia Commons, Public Domain',
+    creditUrl: 'https://commons.wikimedia.org/wiki/File:Dendritic_cell.svg',
+    caption: 'A dendritic cell — the bridge between innate and adaptive immunity, presenting antigens to T cells.',
   },
 
   'mod2-l2': {
-    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Blausen_0676_Neutrophil.png/800px-Blausen_0676_Neutrophil.png',
+    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Blausen_0676_Neutrophil.png/960px-Blausen_0676_Neutrophil.png',
     alt: 'Illustration of a neutrophil',
     credit: 'BruceBlaus, CC BY 3.0, via Wikimedia Commons',
     creditUrl: 'https://commons.wikimedia.org/wiki/File:Blausen_0676_Neutrophil.png',
@@ -74,11 +74,11 @@ export const LESSON_PHOTOS: Record<string, LessonPhoto> = {
   },
 
   'mod3-l1': {
-    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Rheumatoid_Arthritis.jpg/800px-Rheumatoid_Arthritis.jpg',
-    alt: 'X-ray showing joint damage from rheumatoid arthritis',
-    credit: 'Hellerhoff, CC BY-SA 3.0, via Wikimedia Commons',
-    creditUrl: 'https://commons.wikimedia.org/wiki/File:Rheumatoid_Arthritis.jpg',
-    caption: 'X-ray of hands with rheumatoid arthritis — an autoimmune disease destroying the joint lining.',
+    url: 'https://upload.wikimedia.org/wikipedia/commons/8/87/Rheumatoid_Arthritis_Hands.jpg',
+    alt: 'Photograph of hands with visible joint swelling from rheumatoid arthritis',
+    credit: 'Wikimedia Commons, CC BY-SA 3.0',
+    creditUrl: 'https://commons.wikimedia.org/wiki/File:Rheumatoid_Arthritis_Hands.jpg',
+    caption: 'Hands showing the characteristic joint swelling and deformity of rheumatoid arthritis.',
   },
 
   'mod3-l2': {
@@ -113,28 +113,12 @@ export const LESSON_PHOTOS: Record<string, LessonPhoto> = {
     caption: 'Delivered mRNA is translated by ribosomes into a viral antigen, which the immune system learns to recognise.',
   },
 
-  'mod4-l2': {
-    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Car_T_Cell_Therapy.svg/800px-Car_T_Cell_Therapy.svg.png',
-    alt: 'Diagram showing the steps of CAR-T cell therapy',
-    credit: 'National Cancer Institute (NCI), Public Domain',
-    creditUrl: 'https://commons.wikimedia.org/wiki/File:Car_T_Cell_Therapy.svg',
-    caption: 'CAR-T therapy: extract T cells → engineer chimeric antigen receptor → expand → infuse back to target cancer.',
-  },
-
   'mod4-l3': {
     url: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Immune_checkpoints_in_the_tumour_microenvironment.svg',
     alt: 'Checkpoint pathways in the tumour microenvironment',
     credit: 'Petrova et al., CC BY 4.0, via Wikimedia Commons',
     creditUrl: 'https://commons.wikimedia.org/wiki/File:Immune_checkpoints_in_the_tumour_microenvironment.svg',
     caption: 'Anti-PD-1 and anti-CTLA-4 antibodies block inhibitory signals, reawakening T cells against tumours.',
-  },
-
-  'mod5-l1': {
-    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Scientific_journal_headers.png/800px-Scientific_journal_headers.png',
-    alt: 'Stack of scientific journal covers',
-    credit: 'AJC1 (cropped), CC BY-SA 2.0, via Wikimedia Commons',
-    creditUrl: 'https://commons.wikimedia.org/wiki/File:Scientific_journal_headers.png',
-    caption: 'Scientific papers are the primary currency of biomedical research — knowing how to read them is essential.',
   },
 
   'mod5-l2': {
@@ -146,7 +130,7 @@ export const LESSON_PHOTOS: Record<string, LessonPhoto> = {
   },
 
   'mod5-l3': {
-    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Heatmap.png/800px-Heatmap.png',
+    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Heatmap.png/960px-Heatmap.png',
     alt: 'Gene expression heatmap from RNA sequencing data',
     credit: 'Mrmw, CC0, via Wikimedia Commons',
     creditUrl: 'https://commons.wikimedia.org/wiki/File:Heatmap.png',
