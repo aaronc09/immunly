@@ -1,0 +1,679 @@
+/* ── Research Page ─────────────────────────────────────────────────────────── */
+
+.research-page {
+  padding-bottom: 80px;
+}
+
+.research-header {
+  padding: 40px 0 24px;
+}
+
+.research-header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.research-header p {
+  color: var(--text-sub);
+  font-size: 1rem;
+}
+
+/* ── Tabs ──────────────────────────────────────────────────────────────────── */
+
+.research-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 32px;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.research-tabs::-webkit-scrollbar { display: none; }
+
+.research-tab-btn {
+  padding: 10px 18px;
+  border: none;
+  background: transparent;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-sub);
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.research-tab-btn:hover {
+  color: var(--text);
+  background: var(--bg-subtle);
+}
+
+.research-tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.research-tab-content {
+  padding-top: 8px;
+}
+
+.tab-intro {
+  color: var(--text-sub);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+
+/* ── HOW TO FIND — Roadmap ─────────────────────────────────────────────────── */
+
+.roadmap {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.roadmap-stage {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.roadmap-stage__badge {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow);
+}
+
+.stage-number {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.stage-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.roadmap-stage__body {
+  width: 100%;
+}
+
+.roadmap-stage__title {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.roadmap-stage__sub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.roadmap-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: var(--text-muted);
+  padding: 0 8px;
+  margin-top: 22px;
+  flex-shrink: 0;
+}
+
+/* ── Stage Cards ───────────────────────────────────────────────────────────── */
+
+.stage-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stage-card {
+  display: flex;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+}
+
+.stage-card--highlight {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+}
+
+[data-theme="dark"] .stage-card--highlight {
+  background: rgba(79, 156, 249, 0.1);
+  border-color: rgba(79, 156, 249, 0.4);
+}
+
+.stage-card__icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.stage-card strong {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 3px;
+  color: var(--text);
+}
+
+.stage-card p {
+  color: var(--text-sub);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── Stage 3: Callout ──────────────────────────────────────────────────────── */
+
+.stage-callout {
+  padding: 14px 16px;
+  background: var(--warning-bg);
+  border: 1px solid var(--warning);
+  border-radius: var(--radius);
+  font-size: 0.88rem;
+  color: var(--text);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.cold-email-heading {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.cold-email-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.cold-email-column {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  font-size: 0.82rem;
+}
+
+.cold-email-column__header {
+  padding: 8px 12px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+.cold-email-column--do .cold-email-column__header {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.cold-email-column--dont .cold-email-column__header {
+  background: var(--error-bg);
+  color: var(--error);
+}
+
+.cold-email-column ul {
+  list-style: none;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cold-email-column--do li::before {
+  content: '✓ ';
+  color: var(--success);
+  font-weight: 700;
+}
+
+.cold-email-column--dont li::before {
+  content: '✗ ';
+  color: var(--error);
+  font-weight: 700;
+}
+
+/* ── Email Template ────────────────────────────────────────────────────────── */
+
+.email-template {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  font-size: 0.83rem;
+}
+
+.email-template__label {
+  padding: 8px 14px;
+  background: var(--bg-subtle);
+  font-weight: 700;
+  font-size: 0.8rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-sub);
+  letter-spacing: 0.03em;
+}
+
+.email-template__field {
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.email-template__body {
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-sub);
+  line-height: 1.5;
+}
+
+.email-template__body p {
+  margin: 0;
+}
+
+.email-field-key {
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* ── ONLINE TAB ────────────────────────────────────────────────────────────── */
+
+.online-tab {
+  max-width: 760px;
+}
+
+.program-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.online-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.online-card--open {
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.online-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px 0;
+  width: 100%;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.online-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.online-card__name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.online-card__org {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.online-card__right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.online-card__deadline {
+  font-size: 0.78rem;
+  color: var(--text-sub);
+  white-space: nowrap;
+}
+
+.online-card__chevron {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.online-card__short {
+  padding: 6px 16px 14px;
+  font-size: 0.83rem;
+  color: var(--text-sub);
+  line-height: 1.5;
+}
+
+.online-card__details {
+  padding: 0 16px 16px;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: detailsFadeIn 0.18s ease;
+}
+
+@keyframes detailsFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.online-card__full-desc {
+  font-size: 0.88rem;
+  color: var(--text-sub);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.online-card__info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.info-row {
+  display: flex;
+  gap: 12px;
+  font-size: 0.85rem;
+}
+
+.info-key {
+  font-weight: 700;
+  color: var(--text);
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
+.apply-btn {
+  align-self: flex-start;
+  padding: 9px 20px;
+  font-size: 0.88rem;
+}
+
+/* ── IN-PERSON TAB ─────────────────────────────────────────────────────────── */
+
+.inperson-layout {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+.map-wrapper {
+  flex: 1;
+  min-width: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.map-wrapper svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ── Program Panel ─────────────────────────────────────────────────────────── */
+
+.program-panel {
+  width: 280px;
+  flex-shrink: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s;
+}
+
+.program-panel--visible {
+  align-items: flex-start;
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.program-panel__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 24px;
+  text-align: center;
+}
+
+.panel-empty-icon {
+  font-size: 2rem;
+  opacity: 0.4;
+}
+
+.program-panel__empty p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ── Program Detail ────────────────────────────────────────────────────────── */
+
+.program-detail {
+  padding: 18px;
+  width: 100%;
+  position: relative;
+  animation: detailsFadeIn 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.program-detail__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 26px;
+  height: 26px;
+  border: none;
+  background: var(--bg-subtle);
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  color: var(--text-sub);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.program-detail__close:hover {
+  background: var(--border);
+}
+
+.program-detail__location {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--error);
+  letter-spacing: 0.04em;
+}
+
+.program-detail__name {
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.3;
+  padding-right: 30px;
+}
+
+.program-detail__institution {
+  font-size: 0.78rem;
+  color: var(--text-sub);
+  font-weight: 500;
+}
+
+.program-detail__desc {
+  font-size: 0.85rem;
+  color: var(--text-sub);
+  line-height: 1.55;
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+}
+
+.program-detail__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.detail-meta-row {
+  display: flex;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--text-sub);
+}
+
+.detail-meta-row span:first-child {
+  flex-shrink: 0;
+}
+
+/* ── In-Person List (scrollable fallback / mobile) ─────────────────────────── */
+
+.inperson-list {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+}
+
+.inperson-list h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-sub);
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.inperson-list__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 8px;
+}
+
+.inperson-list-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.inperson-list-item:hover {
+  background: var(--bg-subtle);
+}
+
+.inperson-list-item--active {
+  border-color: var(--error);
+  background: var(--error-bg);
+}
+
+.list-item-pin {
+  font-size: 0.85rem;
+}
+
+.list-item-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.list-item-loc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .roadmap {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .roadmap-connector {
+    transform: rotate(90deg);
+    margin: -12px 0;
+  }
+
+  .roadmap-stage {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cold-email-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .inperson-layout {
+    flex-direction: column;
+  }
+
+  .program-panel {
+    width: 100%;
+    min-height: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .research-header h1 { font-size: 1.5rem; }
+
+  .research-tab-btn {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+
+  .roadmap-stage__title { font-size: 0.95rem; }
+
+  .cold-email-grid { grid-template-columns: 1fr; }
+
+  .online-card__right { flex-direction: column; gap: 4px; align-items: flex-end; }
+}

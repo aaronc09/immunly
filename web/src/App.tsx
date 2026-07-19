@@ -17,6 +17,7 @@ import ProgressPage from './pages/ProgressPage';
 import LoginPage from './pages/LoginPage';
 import ContactPage from './pages/ContactPage';
 import ReferencePage from './pages/ReferencePage';
+import ResearchPage from './pages/ResearchPage';
 
 export default function App() {
   return (
@@ -35,6 +36,7 @@ export default function App() {
                 <Route path="/module/:moduleId" element={<ModulePage />} />
                 <Route path="/module/:moduleId/lesson/:lessonId" element={<LessonPage />} />
                 <Route path="/reference" element={<ReferencePage />} />
+                <Route path="/research" element={<ResearchPage />} />
                 <Route path="/progress" element={<ProgressPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/contact" element={<ContactPage />} />

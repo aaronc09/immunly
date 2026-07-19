@@ -35,6 +35,7 @@ export default function Navbar() {
           <li><NavLink to="/" end className={({ isActive }) => isActive ? 'active' : ''}>Home</NavLink></li>
           <li><NavLink to="/courses" className={({ isActive }) => isActive ? 'active' : ''}>Courses</NavLink></li>
           <li><NavLink to="/reference" className={({ isActive }) => isActive ? 'active' : ''}>Reference</NavLink></li>
+          <li><NavLink to="/research" className={({ isActive }) => isActive ? 'active' : ''}>Research</NavLink></li>
           {user && (
             <li><NavLink to="/progress" className={({ isActive }) => isActive ? 'active' : ''}>Progress</NavLink></li>
           )}
@@ -85,6 +86,7 @@ export default function Navbar() {
         <NavLink to="/" end onClick={() => setMenuOpen(false)}>Home</NavLink>
         <NavLink to="/courses" onClick={() => setMenuOpen(false)}>Courses</NavLink>
         <NavLink to="/reference" onClick={() => setMenuOpen(false)}>Reference</NavLink>
+        <NavLink to="/research" onClick={() => setMenuOpen(false)}>Research</NavLink>
         {user && <NavLink to="/progress" onClick={() => setMenuOpen(false)}>Progress</NavLink>}
         <NavLink to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavLink>
         {user

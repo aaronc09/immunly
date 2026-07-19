@@ -22,6 +22,7 @@ export default function Footer() {
           <div className="footer__col">
             <h4>Site</h4>
             <Link to="/">Home</Link>
+            <Link to="/research">Research</Link>
             <Link to="/contact">Contact</Link>
             <Link to="/login">Log in</Link>
           </div>
