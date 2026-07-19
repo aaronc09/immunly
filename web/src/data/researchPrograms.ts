@@ -50,7 +50,7 @@ export const ONLINE_PROGRAMS: OnlineProgram[] = [
     description: 'Free online summer research initiative in biological sciences associated with Harvard University. Students engage with mentored research projects across molecular biology, genetics, and related fields. Verify current program availability, format, and eligibility at the official website before applying.',
     eligibility: 'High school students — check official website for current requirements',
     deadline: 'Check official website for current application cycle',
-    link: 'https://www.openbio.org',
+    link: 'https://soco.college.harvard.edu/00003/application/',
     tags: ['Biology', 'Free', 'Selective'],
   },
   {
