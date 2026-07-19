@@ -46,7 +46,7 @@ export default function IntroVideo() {
       aria-label="Immunly intro video"
     >
       <div className="intro-overlay__top">
-        <Logo size={28} className="intro-overlay__logo" />
+        <Logo size={28} dark className="intro-overlay__logo" />
         <button className="intro-overlay__skip" onClick={dismiss}>Close ✕</button>
       </div>
 

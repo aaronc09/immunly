@@ -115,7 +115,7 @@ export default function WelcomeIntro() {
       <div className="welcome-overlay__scrim" />
 
       <div className="welcome-overlay__top" onClick={stop}>
-        <Logo size={30} />
+        <Logo size={30} dark />
         <button className="welcome-overlay__skip" onClick={dismiss}>Skip intro →</button>
       </div>
 
