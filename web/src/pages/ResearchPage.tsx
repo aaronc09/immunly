@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, Fragment } from 'react';
-import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps';
+import { ComposableMap, Geographies, Geography, Marker, ZoomableGroup } from 'react-simple-maps';
 import type { RSMGeography } from 'react-simple-maps';
 import { useTheme } from '../context/ThemeContext';
 import { ONLINE_PROGRAMS, INPERSON_PROGRAMS, COMPETITIONS } from '../data/researchPrograms';
@@ -475,77 +475,294 @@ function OnlineProgramCard({ prog, isOpen, onToggle }: { prog: OnlineProgram; is
 
 // ─── TAB 3: IN-PERSON OPPORTUNITIES ──────────────────────────────────────────
 
+interface ClusterItem {
+  ids: string[];
+  lat: number;
+  lon: number;
+}
+
+type MapSelection =
+  | { type: 'single'; id: string }
+  | { type: 'cluster'; ids: string[] }
+  | null;
+
+// Group programs within (0.3 / zoom) degrees of each other
+function buildClusters(programs: InPersonProgram[], zoom: number): ClusterItem[] {
+  const threshold = 0.3 / Math.max(zoom, 1);
+  const remaining = [...programs];
+  const clusters: ClusterItem[] = [];
+
+  while (remaining.length > 0) {
+    const anchor = remaining.shift()!;
+    const group: InPersonProgram[] = [anchor];
+
+    for (let i = remaining.length - 1; i >= 0; i--) {
+      const other = remaining[i];
+      if (
+        Math.abs(anchor.lat - other.lat) < threshold &&
+        Math.abs(anchor.lon - other.lon) < threshold
+      ) {
+        group.push(other);
+        remaining.splice(i, 1);
+      }
+    }
+
+    clusters.push({
+      ids: group.map((p) => p.id),
+      lat: group.reduce((s, p) => s + p.lat, 0) / group.length,
+      lon: group.reduce((s, p) => s + p.lon, 0) / group.length,
+    });
+  }
+
+  return clusters;
+}
+
+const DEFAULT_CENTER: [number, number] = [-97, 38];
+const DEFAULT_ZOOM = 1;
+
 function InPersonTab() {
   const { theme } = useTheme();
-  const [selected, setSelected] = useState<string | null>(null);
+  const [selection, setSelection] = useState<MapSelection>(null);
+  const [mapZoom, setMapZoom] = useState(DEFAULT_ZOOM);
+  const [mapCenter, setMapCenter] = useState<[number, number]>(DEFAULT_CENTER);
+  const [liveZoom, setLiveZoom] = useState(DEFAULT_ZOOM);
 
   const mapFill   = theme === 'dark' ? '#1C2A45' : '#DDE8F5';
   const mapStroke = theme === 'dark' ? '#253654' : '#B8CCE4';
   const mapHover  = theme === 'dark' ? '#253654' : '#C8D9EF';
-  const selectedProg = INPERSON_PROGRAMS.find((p) => p.id === selected) ?? null;
+
+  const clusters = buildClusters(INPERSON_PROGRAMS, liveZoom);
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setSelected(null); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setSelection(null); };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
+  function handleClusterClick(cluster: ClusterItem) {
+    if (cluster.ids.length === 1) {
+      const id = cluster.ids[0];
+      setSelection((sel) =>
+        sel?.type === 'single' && sel.id === id ? null : { type: 'single', id }
+      );
+    } else if (liveZoom < 6) {
+      setMapCenter([cluster.lon, cluster.lat]);
+      const newZoom = Math.min(8, liveZoom * 2.5);
+      setMapZoom(newZoom);
+      setLiveZoom(newZoom);
+    } else {
+      setSelection({ type: 'cluster', ids: cluster.ids });
+    }
+  }
+
+  function handleZoomIn() {
+    const newZoom = Math.min(8, mapZoom * 1.6);
+    setMapZoom(newZoom);
+  }
+
+  function handleZoomOut() {
+    const newZoom = Math.max(1, mapZoom / 1.6);
+    setMapZoom(newZoom);
+  }
+
+  function handleReset() {
+    setMapZoom(DEFAULT_ZOOM);
+    setMapCenter(DEFAULT_CENTER);
+    setLiveZoom(DEFAULT_ZOOM);
+    setSelection(null);
+  }
+
+  const selectedProg =
+    selection?.type === 'single'
+      ? INPERSON_PROGRAMS.find((p) => p.id === selection.id) ?? null
+      : null;
+
   return (
     <div className="inperson-tab">
       <p className="tab-intro">
-        Click a pin to see program details. Pins show continental US programs — more being added.
+        Click a pin to see program details. Scroll or pinch to zoom; drag to pan.
+        Numbered clusters contain multiple programs — click to zoom in.
       </p>
       <div className="inperson-layout">
-        <div className="map-wrapper">
-          <ComposableMap projection="geoAlbersUsa" width={960} height={600}>
-            <Geographies geography="/us-states.json">
-              {({ geographies }: { geographies: RSMGeography[] }) =>
-                geographies.map((geo: RSMGeography) => (
-                  <Geography
-                    key={geo.rsmKey}
-                    geography={geo}
-                    style={{
-                      default: { fill: mapFill, stroke: mapStroke, strokeWidth: 0.6, outline: 'none' },
-                      hover:   { fill: mapHover, stroke: mapStroke, strokeWidth: 0.6, outline: 'none' },
-                      pressed: { fill: mapHover, stroke: mapStroke, strokeWidth: 0.6, outline: 'none' },
-                    }}
-                  />
-                ))
-              }
-            </Geographies>
-            {INPERSON_PROGRAMS.map((prog) => {
-              const isActive = selected === prog.id;
-              return (
-                <Marker key={prog.id} coordinates={[prog.lon, prog.lat]} onClick={() => setSelected(isActive ? null : prog.id)}>
-                  <circle r={isActive ? 11 : 8} fill={isActive ? '#FF2020' : '#EF4444'} stroke="white" strokeWidth={isActive ? 2.5 : 2}
-                    style={{ cursor: 'pointer', transition: 'r 0.15s ease, fill 0.15s ease' }} />
-                  {isActive && <circle r={18} fill="#EF4444" fillOpacity={0.2} />}
-                  <title>{prog.name} — {prog.city}, {prog.state}</title>
-                </Marker>
-              );
-            })}
-          </ComposableMap>
+        <div className="map-container">
+          <div className="map-zoom-controls">
+            <button className="map-zoom-btn" onClick={handleZoomIn} aria-label="Zoom in">+</button>
+            <button className="map-zoom-btn" onClick={handleZoomOut} aria-label="Zoom out">−</button>
+            <button className="map-zoom-btn map-zoom-btn--reset" onClick={handleReset} aria-label="Reset view">⌂</button>
+          </div>
+          <div className="map-wrapper">
+            <ComposableMap projection="geoAlbersUsa" width={960} height={600}>
+              <ZoomableGroup
+                zoom={mapZoom}
+                center={mapCenter}
+                minZoom={1}
+                maxZoom={8}
+                onMove={({ zoom: k }: { zoom: number }) => setLiveZoom(k)}
+                onMoveEnd={({ coordinates, zoom: k }: { coordinates: [number, number]; zoom: number }) => {
+                  setMapCenter(coordinates);
+                  setMapZoom(k);
+                  setLiveZoom(k);
+                }}
+              >
+                <Geographies geography="/us-states.json">
+                  {({ geographies }: { geographies: RSMGeography[] }) =>
+                    geographies.map((geo: RSMGeography) => (
+                      <Geography
+                        key={geo.rsmKey}
+                        geography={geo}
+                        style={{
+                          default: { fill: mapFill, stroke: mapStroke, strokeWidth: 0.5, outline: 'none' },
+                          hover:   { fill: mapHover, stroke: mapStroke, strokeWidth: 0.5, outline: 'none' },
+                          pressed: { fill: mapHover, stroke: mapStroke, strokeWidth: 0.5, outline: 'none' },
+                        }}
+                      />
+                    ))
+                  }
+                </Geographies>
+
+                {clusters.map((cluster) => {
+                  const isCluster = cluster.ids.length > 1;
+                  const singleId = cluster.ids[0];
+                  const isSingleActive =
+                    !isCluster &&
+                    selection?.type === 'single' &&
+                    selection.id === singleId;
+                  const isClusterActive =
+                    isCluster &&
+                    selection?.type === 'cluster' &&
+                    cluster.ids.length === selection.ids.length &&
+                    cluster.ids.every((id) => selection.ids.includes(id));
+
+                  const fill = isCluster
+                    ? isClusterActive ? '#1D4ED8' : '#3B82F6'
+                    : isSingleActive ? '#FF2020' : '#EF4444';
+
+                  const prog = !isCluster
+                    ? INPERSON_PROGRAMS.find((p) => p.id === singleId)
+                    : null;
+
+                  return (
+                    <Marker
+                      key={cluster.ids.join('|')}
+                      coordinates={[cluster.lon, cluster.lat]}
+                      onClick={() => handleClusterClick(cluster)}
+                    >
+                      {isSingleActive && (
+                        <circle
+                          r={18}
+                          fill="#EF4444"
+                          fillOpacity={0.18}
+                          style={{ pointerEvents: 'none' }}
+                        />
+                      )}
+                      <circle
+                        r={isCluster ? 11 : isSingleActive ? 11 : 8}
+                        fill={fill}
+                        stroke="white"
+                        strokeWidth={2}
+                        style={{ cursor: 'pointer' }}
+                      />
+                      {isCluster && (
+                        <text
+                          textAnchor="middle"
+                          dominantBaseline="central"
+                          fill="white"
+                          fontSize={9}
+                          fontWeight="bold"
+                          style={{ pointerEvents: 'none', userSelect: 'none' }}
+                        >
+                          {cluster.ids.length}
+                        </text>
+                      )}
+                      <title>
+                        {isCluster
+                          ? `${cluster.ids.length} programs — click to zoom in`
+                          : `${prog?.name ?? ''} — ${prog?.city}, ${prog?.state}`}
+                      </title>
+                    </Marker>
+                  );
+                })}
+              </ZoomableGroup>
+            </ComposableMap>
+          </div>
         </div>
-        <div className={`program-panel ${selectedProg ? 'program-panel--visible' : ''}`}>
-          {selectedProg
-            ? <ProgramDetail prog={selectedProg} onClose={() => setSelected(null)} />
-            : <div className="program-panel__empty"><span className="panel-empty-icon">📍</span><p>Click a red pin on the map to see program details.</p></div>
-          }
+
+        <div className={`program-panel ${selection ? 'program-panel--visible' : ''}`}>
+          {selection?.type === 'single' && selectedProg ? (
+            <ProgramDetail prog={selectedProg} onClose={() => setSelection(null)} />
+          ) : selection?.type === 'cluster' ? (
+            <ClusterList
+              ids={selection.ids}
+              onSelect={(id) => setSelection({ type: 'single', id })}
+              onClose={() => setSelection(null)}
+            />
+          ) : (
+            <div className="program-panel__empty">
+              <span className="panel-empty-icon">📍</span>
+              <p>Click a pin on the map to see program details.</p>
+            </div>
+          )}
         </div>
       </div>
+
       <div className="inperson-list">
         <h3>All Programs</h3>
         <div className="inperson-list__grid">
           {INPERSON_PROGRAMS.map((prog) => (
-            <button key={prog.id}
-              className={`inperson-list-item ${selected === prog.id ? 'inperson-list-item--active' : ''}`}
-              onClick={() => setSelected(selected === prog.id ? null : prog.id)}>
+            <button
+              key={prog.id}
+              className={`inperson-list-item ${
+                selection?.type === 'single' && selection.id === prog.id
+                  ? 'inperson-list-item--active'
+                  : ''
+              }`}
+              onClick={() =>
+                setSelection((sel) =>
+                  sel?.type === 'single' && sel.id === prog.id
+                    ? null
+                    : { type: 'single', id: prog.id }
+                )
+              }
+            >
               <span className="list-item-pin">📍</span>
               <span className="list-item-name">{prog.name}</span>
               <span className="list-item-loc">{prog.city}, {prog.state}</span>
             </button>
           ))}
         </div>
+      </div>
+    </div>
+  );
+}
+
+function ClusterList({
+  ids,
+  onSelect,
+  onClose,
+}: {
+  ids: string[];
+  onSelect: (id: string) => void;
+  onClose: () => void;
+}) {
+  const progs = ids
+    .map((id) => INPERSON_PROGRAMS.find((p) => p.id === id))
+    .filter((p): p is InPersonProgram => p !== undefined);
+
+  return (
+    <div className="program-detail">
+      <button className="program-detail__close" onClick={onClose} aria-label="Close">✕</button>
+      <div className="program-detail__location">
+        📍 {progs[0]?.city}, {progs[0]?.state}
+      </div>
+      <h3 className="program-detail__name">{progs.length} Programs at this Location</h3>
+      <p className="program-detail__institution">Select a program to see details</p>
+      <div className="cluster-list">
+        {progs.map((prog) => (
+          <button key={prog.id} className="cluster-list-item" onClick={() => onSelect(prog.id)}>
+            <span className="cluster-list-item__name">{prog.name}</span>
+            <span className="cluster-list-item__inst">{prog.institution}</span>
+          </button>
+        ))}
       </div>
     </div>
   );
@@ -562,6 +779,8 @@ function ProgramDetail({ prog, onClose }: { prog: InPersonProgram; onClose: () =
       <div className="program-detail__meta">
         <div className="detail-meta-row"><span>⏱</span><span>{prog.duration}</span></div>
         <div className="detail-meta-row"><span>📅</span><span>Deadline: {prog.deadline}</span></div>
+        {prog.cost && <div className="detail-meta-row"><span>💰</span><span>{prog.cost}</span></div>}
+        {prog.eligibility && <div className="detail-meta-row"><span>🎓</span><span>{prog.eligibility}</span></div>}
       </div>
       <a href={prog.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary apply-btn">
         Apply Now →

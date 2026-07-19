@@ -775,9 +775,14 @@
   margin-bottom: 32px;
 }
 
-.map-wrapper {
+/* Outer container: holds the map + absolutely-positioned zoom controls */
+.map-container {
   flex: 1;
   min-width: 0;
+  position: relative;
+}
+
+.map-wrapper {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -789,6 +794,52 @@
   display: block;
   width: 100%;
   height: auto;
+  cursor: grab;
+}
+
+.map-wrapper svg:active {
+  cursor: grabbing;
+}
+
+/* ── Zoom Controls ────────────────────────────────────────────────────────── */
+
+.map-zoom-controls {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.map-zoom-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: background 0.13s, border-color 0.13s, color 0.13s;
+}
+
+.map-zoom-btn:hover {
+  background: var(--bg-subtle);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.map-zoom-btn--reset {
+  font-size: 0.85rem;
+  margin-top: 3px;
 }
 
 /* ── Program Panel ─────────────────────────────────────────────────────────── */
@@ -909,6 +960,44 @@
 
 .detail-meta-row span:first-child {
   flex-shrink: 0;
+}
+
+/* ── Cluster List (multiple programs at same pin) ────────────────────────── */
+
+.cluster-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.cluster-list-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.13s, background 0.13s;
+}
+
+.cluster-list-item:hover {
+  border-color: var(--accent);
+  background: var(--bg-card);
+}
+
+.cluster-list-item__name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.cluster-list-item__inst {
+  font-size: 0.75rem;
+  color: var(--text-muted);
 }
 
 /* ── In-Person List ────────────────────────────────────────────────────────── */
@@ -1188,6 +1277,10 @@
 
   .inperson-layout {
     flex-direction: column;
+  }
+
+  .map-container {
+    width: 100%;
   }
 
   .program-panel {
